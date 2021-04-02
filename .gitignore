@@ -1,2 +1,4 @@
 lua/
 *.lua
+plugin/
+*.vim

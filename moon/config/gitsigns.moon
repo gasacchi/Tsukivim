@@ -46,6 +46,3 @@ gitsigns_setup =
     ["x ih"]: ":<C-U>lua require'gitsigns'.select_hunk()<CR>"
 
 setup gitsigns_setup
-
-return
-

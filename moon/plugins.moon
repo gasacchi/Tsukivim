@@ -57,7 +57,9 @@ packages = (use) ->
   use 'wfxr/minimap.vim'                       -- blazing fast minimap 
   -- use 'beauwilliams/focus.nvim'             -- Focus Auto Resize TODO
   -- use 'camspiers/animate.vim'               -- Animated TODO
+  -- psliwka/vim-smoothie                      -- Smooth scrolling
   use 'junegunn/goyo.vim'                      -- Zen Mode 
+  -- junegunn/limelight.vim
   -----------------------------------------------------------------------------
   
   -- Language, etc. -----------------------------------------------------------

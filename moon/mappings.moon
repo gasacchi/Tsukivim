@@ -22,6 +22,8 @@ nvim_set_keymap "n", "<UP>",   "<NOP>", opts
 nvim_set_keymap "i", "jk",     "<ESC>", opts
 -- Escape from command mode with jk
 nvim_set_keymap "c", "jk",     "<C-c>", opts
+-- Map Ctrl + Backspace to delete word
+nvim_set_keymap "i", "<C-H>", "<C-W>", opts 
 
 -- purescript Unicode shortcut
 cmd "autocmd FileType purescript inoremap <buffer> ;l ∀"

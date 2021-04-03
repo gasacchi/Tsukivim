@@ -6,6 +6,7 @@ cmd 'packadd packer.nvim'
 packages = (use) ->
   -- Package Manager ----------------------------------------------------------
   use 'wbthomason/packer.nvim'                 -- Packer 
+  use 'svermeulen/nvim-moonmaker'              -- Moonscript Utility
   -----------------------------------------------------------------------------
 
   -- LSP & Completion --------------------------------------------------------
@@ -61,7 +62,6 @@ packages = (use) ->
   
   -- Language, etc. -----------------------------------------------------------
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
-  use 'svermeulen/nvim-moonmaker'              -- Moonscript Utility
   -- use 'FrigoEU/psc-ide-vim'                    -- Purescript ide
   -----------------------------------------------------------------------------
   

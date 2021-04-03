@@ -1,32 +1,33 @@
 import bo from vim
 -- General 
-require'settings'
+require "settings"
 
 -- Plugins
-require'plugins'
+require "plugins"
 
 -- Mappings
-require'mappings'
+require "mappings"
 
 -- UI
-require'ui'
+require "ui"
 
 -- Plugins Configuration
-unless filetype == 'purescript'
-  require'config/completion'
+unless filetype == "purescript"
+  require "config/completion"
 
-require'config/whichkey'
-require'config/dashboard'
-require'config/gitsigns' 
-require'config/lspkindicons'
-require'config/indent'
-require'config/hop'
-require'config/nvimtree'
-require'config/colorizer'
-require'config/minimap'
-require'config/goyo'
-require'config/neogit'
+require "config/whichkey"
+require "config/dashboard"
+require "config/gitsigns" 
+require "config/lspkindicons"
+require "config/indent"
+require "config/hop"
+require "config/nvimtree"
+require "config/colorizer"
+require "config/minimap"
+require "config/goyo"
+require "config/neogit"
+require "config/telescope"
 
 
 -- LSP Configuration
-require'lsp/init'
+require "lsp/init"

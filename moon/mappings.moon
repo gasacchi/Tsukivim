@@ -209,7 +209,7 @@ w =
   k: { "<C-w>k",                             " Move up" }
   l: { "<C-w>l",                             " Move right" }
   o: { "<C-w>o",                             " Close other window " }
-  c: { "<C-w>c",                             " Close current window " }
+  d: { "<C-w>c",                             " Close current window " }
   n: { "<C-w>w",                             "怜Next window" }
   p: { "<C-w>p",                             "玲Prev window" }
   w: { "<C-w>n",                             " New Window buffer" }

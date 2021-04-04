@@ -27,6 +27,7 @@ require "config/minimap"
 require "config/goyo"
 require "config/neogit"
 require "config/telescope"
+require "config/focus"
 
 
 -- LSP Configuration

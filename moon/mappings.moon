@@ -123,25 +123,33 @@ h =
 o = 
   name: "冷+Open"
   [" "]: { "<Esc>",                          " Close" }
-  t: { ":NvimTreeToggle",                    "滑Tree" }
+  e: { ":NvimTreeToggle",                    "滑Tree" }
+  t: { ":",                    "滑Tree" }
 
 -- Editor
 eval = (file = vim.g.file_to_eval) ->
   vim.cmd "let g:file_to_eval = substitute(expand('%:p'), 'moon', 'lua', 'g')"
   vim.cmd "luafile #{file}"
 
+compile_and_eval = (file) ->
+  unless file == "init"
+    cmd "MoonCompile"
+    eval!
+  else
+    cmd "!moonc $NVIM_ROOT/init.moon"
+    cmd "luafile $NVIM_ROOT/init.lua"
+
 e = 
   name: " +Editor"
   [" "]: { "<Esc>",                          " Close" }
-  e: { ":Moon require'mappings'.eval!",      "省Eval" }
-  E: { ":luafile $NVIM_ROOT/init.lua",       "省Eval init file" }
-  c: { ":MoonCompile",                       " Compile" }
+  c: { ":e $NVIM_ROOT/init.moon",            " Edit config file" }
+  e: { ":Moon require'mappings'.compile_and_eval!",       "省Compile and Eval" }
+  E: { ":Moon require'mappings'.compile_and_eval 'init'",       "省Compile and Eval" }
   C: { ":!moonc $NVIM_ROOT/init.moon",       " Compile init file" }
   m: { ":MinimapToggle",                     " Minimap" }
   h: { ":let @/ = ''",                       " No highlight search" }
   n: { ":set invnumber",                     " Line number" }
   r: { ":set invrelativenumber",             " Line number" }
-  v: { ":e $NVIM_ROOT/init.moon",            " Edit config file" }
   z: { ":Goyo",                              " Zen mode" }
 
 -- Git TODO: Still Cannot Commiting Neogit Bug
@@ -240,4 +248,4 @@ nvim_set_var "which_key_map", map
 -- Register WhichKey
 cmd "call which_key#register(' ', 'g:which_key_map')"
 
-return :eval
+return :eval, :compile_and_eval

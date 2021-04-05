@@ -12,7 +12,7 @@ g.dashboard_custom_shortcut   =
   find_history:               "SPC s h"
   find_file:                  "SPC s f"
   new_file:                   "SPC f n"
-  change_colorscheme:         "SPC s ;"
+  change_colorscheme:         "SPC s ,"
   find_word:                  "SPC s ."
   book_marks:                 "SPC s m"
 

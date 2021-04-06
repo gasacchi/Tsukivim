@@ -33,6 +33,10 @@ cmd "autocmd FileType purescript inoremap <buffer> ;t →"
 cmd "autocmd FileType purescript inoremap <buffer> ;c ⇒"
 cmd "autocmd FileType purescript inoremap <buffer> ;i ⇐"
 
+
+-- Map q to exit help
+cmd "autocmd FileType help noremap <buffer> q :close<CR>"
+
 -- Map Leader to space
 which_map_opts = 
   noremap: true,

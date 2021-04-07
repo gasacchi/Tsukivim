@@ -197,6 +197,19 @@ p =
   s: { ":PackerSync",                        "痢Sync" }
   u: { ":PackerUpdate",                      " Update" }
 
+-- Tab Mapping
+t = 
+  name: "ﴵ +Tab"
+  [" "]: { "<Esc>",                          " Close" }
+  ["."]: { ":tab split",                     "麟Open current buffer in new tab" }
+  t: { ":tabnew",                            "ﱚ New tab with empty buffer" }
+  d: { ":tabclose",                          "林Close current tab" }
+  D: { ":tabonly",                           "林Close other tab" }
+  f: { ":tabfirst",                          "﫿First tab" }
+  l: { ":tablast",                           "ﬀ Last tab" }
+  n: { ":tabNext",                           "怜Next tab" }
+  p: { ":tabprevious",                       "玲Previous tab" }
+
 -- Hop / Jump Motions TODO: Use operator Motion
 m =  
   name: "省+Motion"
@@ -220,7 +233,7 @@ w =
   j: { "<C-w>j",                             " Move down" }
   k: { "<C-w>k",                             " Move up" }
   l: { "<C-w>l",                             " Move right" }
-  o: { "<C-w>o",                             " Close other window " }
+  D: { "<C-w>o",                             " Close other window " }
   d: { "<C-w>c",                             " Close current window " }
   n: { "<C-w>w",                             "怜Next window" }
   p: { "<C-w>p",                             "玲Prev window" }
@@ -239,6 +252,7 @@ map =
   :o
   :p
   :s
+  :t
   :w
   [" "]: { "<Esc>",                          " Close" }
   ["."]: { ":Telescope find_files",          " Find File"}

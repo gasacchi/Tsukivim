@@ -36,7 +36,7 @@ packages = (use) ->
   -- use 'lukas-reineke/format.nvim'           -- Format File TODO 
   -- use 'markdown-preview.nvim'               -- Markdown Preview TODO
   -- euclio/vim-markdown-composer
-  -- use 'akinsho/nvim-toggleterm.lua'         -- Terminal TODO
+  use 'akinsho/nvim-toggleterm.lua'         -- Terminal TODO
   -- Telescope extensions
   -- use 'nvim-telescope/telescope-project.nvim' -- Manage project
   -----------------------------------------------------------------------------
@@ -57,8 +57,8 @@ packages = (use) ->
   use 'akinsho/nvim-bufferline.lua'            -- Bufferline 
   use 'norcalli/nvim-colorizer.lua'            -- HEX Colorizer 
   use 'wfxr/minimap.vim'                       -- blazing fast minimap 
-  use 'beauwilliams/focus.nvim'             -- Focus Auto Resize TODO
-  -- use 'camspiers/animate.vim'               -- Animated TODO
+  -- use 'beauwilliams/focus.nvim'             -- Focus Auto Resize TODO
+  use 'camspiers/animate.vim'               -- Animated TODO
   use 'psliwka/vim-smoothie'                      -- Smooth scrolling
   use 'junegunn/goyo.vim'                      -- Zen Mode 
   -- junegunn/limelight.vim

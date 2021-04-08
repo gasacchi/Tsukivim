@@ -23,7 +23,7 @@ o.splitbelow = true
 o.splitright = true
 
 -- Set Default shell
-o.shell='/bin/zsh'
+o.shell='/bin/fish'
 
 -- Searching
 o.hlsearch = true

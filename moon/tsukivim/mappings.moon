@@ -39,7 +39,7 @@ cmd "autocmd FileType help noremap <buffer> q :close<CR>"
 
 -- Map Leader to space
 which_map_opts = 
-  noremap: true,
+  noremap: true
   silent: true
 
 g.mapleader = " "
@@ -128,12 +128,12 @@ o =
   name: "冷+Open"
   [" "]: { "<Esc>",                          " Close" }
   e: { ":NvimTreeToggle",                    "滑Tree" }
-  t: { ":",                    "滑Tree" }
 
 -- Editor
 eval = (file = vim.g.file_to_eval) ->
-  vim.cmd "let g:file_to_eval = substitute(expand('%:p'), 'moon', 'lua', 'g')"
-  vim.cmd "luafile #{file}"
+  cmd "let g:file_to_eval = substitute(expand('%:p'), 'moon', 'lua', 'g')"
+  cmd "luafile #{file}"
+  
 
 compile_and_eval = (file) ->
   unless file == "init"
@@ -197,6 +197,17 @@ p =
   s: { ":PackerSync",                        "痢Sync" }
   u: { ":PackerUpdate",                      " Update" }
 
+
+-- Hop / Jump Motions TODO: Use operator Motion
+m =  
+  name: "省+Motion"
+  [" "]: { "<Esc>",                          " Close" }
+  w: { ":HopWord",                           " Hop word" }
+  p: { ":HopPattern",                        " Hop pattern" }
+  l: { ":HopLine",                           " Hop line" }
+  c: { ":HopChar1",                          " Hop char 1" }
+  C: { ":HopChar2",                          "了Hop char 2" }
+
 -- Tab Mapping
 t = 
   name: "ﴵ +Tab"
@@ -210,36 +221,26 @@ t =
   n: { ":tabNext",                           "怜Next tab" }
   p: { ":tabprevious",                       "玲Previous tab" }
 
--- Hop / Jump Motions TODO: Use operator Motion
-m =  
-  name: "省+Motion"
-  [" "]: { "<Esc>",                          " Close" }
-  w: { ":HopWord",                           " Hop word" }
-  p: { ":HopPattern",                        " Hop pattern" }
-  l: { ":HopLine",                           " Hop line" }
-  c: { ":HopChar1",                          " Hop char 1" }
-  C: { ":HopChar2",                          "了Hop char 2" }
-
-
 -- Window
 w =
   name: " +Window",
-  [" "]: { "<Esc>",                          " Close" }
-  H: { ":vertical resize -2",                " -Resize vertical" }
-  J: { ":resize -2",                         " +Resize horizontal" }
-  K: { ":resize +2",                         " -Resize horizontal" }
-  L: { ":vertical resize +2",                " +Resize vertical" }
-  h: { "<C-w>h",                             " Move left" }
-  j: { "<C-w>j",                             " Move down" }
-  k: { "<C-w>k",                             " Move up" }
-  l: { "<C-w>l",                             " Move right" }
-  D: { "<C-w>o",                             " Close other window " }
-  d: { "<C-w>c",                             " Close current window " }
-  n: { "<C-w>w",                             "怜Next window" }
-  p: { "<C-w>p",                             "玲Prev window" }
-  w: { "<C-w>n",                             " New Window buffer" }
-  s: { ":split",                             "祈Horizontal split" }
-  v: { ":vsplit",                            " Vertical split" }
+  [" "]: { "<Esc>",                                " Close" }
+  H: { ":call animate#window_delta_width(10)",     " Resize vertical" }
+  J: { "call animate#window_delta_height(-10)",    " Resize horizontal" }
+  K: { ":call animate#window_delta_height(10)",    " Resize horizontal" }
+  L: { ":call animate#window_delta_width(-10)",    " Resize vertical" }
+  h: { "<C-w>h",                                   " Move left" }
+  j: { "<C-w>j",                                   " Move down" }
+  k: { "<C-w>k",                                   " Move up" }
+  l: { "<C-w>l",                                   " Move right" }
+  D: { "<C-w>o",                                   " Close other window " }
+  d: { "<C-w>c",                                   " Close current window " }
+  n: { "<C-w>w",                                   "怜Next window" }
+  p: { "<C-w>p",                                   "玲Prev window" }
+  S: { ":new",                                     " New Window buffer" }
+  V: { ":vnew",                                    " New Window buffer" }
+  s: { ":split",                                   "祈Horizontal split" }
+  v: { ":vsplit",                                  " Vertical split" }
 
 -- Single Mapping
 map =
@@ -266,4 +267,4 @@ nvim_set_var "which_key_map", map
 -- Register WhichKey
 cmd "call which_key#register(' ', 'g:which_key_map')"
 
-return :eval, :compile_and_eval
+return :eval, :compile_and_eval, :treeopen

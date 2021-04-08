@@ -1,18 +1,14 @@
--- User Global Configurations
+init = ->
+  -- Configuration
+  require'tsukivim.config'.setup!
+  
+  -- Modules
+  require'tsukivim.modules'.loads!
+  
+  -- LSP Configuration
+  require'tsukivim.lsp'.setup!
 
-custom_mappings = false
+  -- UI
+  require'tsukivim.ui'.render!
 
-
-
--- Editor Settings
-focus =
-  enable: true
-  height: 40
-  width: 120
-
-editor =
-  :focus
-
-
-tsuki =
-  :custom_mappings
+{ :init }

@@ -2,8 +2,6 @@ import cmd from vim
 import nvim_buf_set_keymap, nvim_buf_set_option,nvim_exec from vim.api
 import purescriptls from require "lspconfig"
 
-
-
 cmd 'set completeopt=menuone,noinsert,noselect'
 
 on_attach = (client, bufnr) ->

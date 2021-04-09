@@ -36,7 +36,7 @@ packages = (use) ->
   -- use 'lukas-reineke/format.nvim'           -- Format File TODO 
   -- use 'markdown-preview.nvim'               -- Markdown Preview TODO
   -- euclio/vim-markdown-composer
-  use 'akinsho/nvim-toggleterm.lua'         -- Terminal TODO
+  -- use 'akinsho/nvim-toggleterm.lua'         -- Terminal TODO
   -- Telescope extensions
   -- use 'nvim-telescope/telescope-project.nvim' -- Manage project
   -----------------------------------------------------------------------------

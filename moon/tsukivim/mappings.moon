@@ -147,8 +147,8 @@ e =
   name: " +Editor"
   [" "]: { "<Esc>",                          " Close" }
   c: { ":e $NVIM_ROOT/init.moon",            " Edit config file" }
-  e: { ":Moon require'mappings'.compile_and_eval!",       "省Compile and Eval" }
-  E: { ":Moon require'mappings'.compile_and_eval 'init'",       "省Compile and Eval" }
+  e: { ":Moon require'tsukivim.mappings'.compile_and_eval!",       "省Compile and Eval" }
+  E: { ":Moon require'tsukivim.mappings'.compile_and_eval 'init'",       "省Compile and Eval" }
   C: { ":!moonc $NVIM_ROOT/init.moon",       " Compile init file" }
   m: { ":MinimapToggle",                     " Minimap" }
   h: { ":let @/ = ''",                       " No highlight search" }

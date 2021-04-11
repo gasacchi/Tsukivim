@@ -42,11 +42,8 @@ packages = (use) ->
   -----------------------------------------------------------------------------
   
   -- UI -----------------------------------------------------------------------
-  use {                                        -- Statusline 
-    'hoob3rt/lualine.nvim',
-    requires: {'kyazdani42/nvim-web-devicons', opt: true}
-  } 
-  -- use 'glepnir/galaxyline.nvim'             -- Statusline
+  use 'nvim-web-devicons'
+  use 'glepnir/galaxyline.nvim'             -- Statusline
   use {                                        -- Indent Guide
     'lukas-reineke/indent-blankline.nvim',
     branch: 'lua'

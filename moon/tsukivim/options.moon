@@ -66,6 +66,9 @@ cmd 'filetype on'
 cmd 'filetype plugin indent on'
 cmd 'set shortmess+=c'
 
+-- cmd 'set laststatus=2'
+-- cmd 'set statusline=helo'
+
 -- Jump to file faster
 cmd ':set path+=**'
 

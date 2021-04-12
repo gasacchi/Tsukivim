@@ -91,18 +91,18 @@ left[1] =
 left[2] =
   moon:
     provider: -> ' '
-    highlight: { yuno.red, yuno.bg, 'bold' }
+    highlight: { yuno.red, 'NONE' , 'bold' }
 
 left[3] =
   has:
     provider: -> ':: '
-    highlight: { yuno.green, yuno.bg }
+    highlight: { yuno.green }
 
 
 left[4] =
   mode:
     provider: -> 'Mode '
-    highlight: { yuno.magenta, yuno.bg, 'bold' }
+    highlight: { yuno.magenta, 'NONE', 'bold' }
 
 left[5] =
   viModeMoon:
@@ -114,13 +114,13 @@ left[5] =
 left[6] =
   cons:
     provider: -> '→ '
-    highlight: { yuno.yellow, yuno.bg }
+    highlight: { yuno.yellow }
     condition: buffer_not_empty
 
 left[7] =
   sep1:
     provider: -> '( '
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
     condition: buffer_not_empty
 
 left[8] =
@@ -134,19 +134,19 @@ left[8] =
 left[9] =
   comma:
     provider: -> ', '
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
     condition: buffer_not_empty
 
 left[10] =
   FileName:
     provider: 'FileName'
     condition: buffer_not_empty
-    highlight: { yuno.yellow, yuno.bg }
+    highlight: { yuno.yellow }
 
 left[11] =
   sep2:
     provider: -> ') '
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
     condition: buffer_not_empty
 
 -- ----------------------------------------------------------------------------
@@ -156,75 +156,75 @@ left[11] =
 right[1] =
   rightparent1:
     provider: -> '( '
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
 
 right[2] =
   fileIcon:
     provider: 'FileIcon'
     condition: buffer_not_empty
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
 
 right[3] =
   fileNameType:
     provider: 'FileTypeName'
-    highlight: { yuno.magenta, yuno.bg }
+    highlight: { yuno.magenta }
 
 right[4] =
   space2:
     provider: -> ' '
-    highlight: { yuno.yellow, yuno.bg }
+    highlight: { yuno.yellow }
 
 right[5] =
   cons2:
     provider: -> '⇒ '
-    highlight: { yuno.yellow, yuno.bg }
+    highlight: { yuno.yellow }
     condition: buffer_not_empty
 
 right[6] =
   fileSize:
     provider: 'FileSize'
-    highlight: { yuno.red, yuno.bg }
+    highlight: { yuno.red }
     condition: buffer_not_empty
 
 right[7] =
   rightparent2:
     provider: -> ') '
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
 
 right[8] =
   rightArrow:
     provider: -> '← '
-    highlight: { yuno.yellow, yuno.bg }
+    highlight: { yuno.yellow }
     condition: buffer_not_empty
 
 right[9] =
   linesep1:
     provider: -> '[ '
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
     condition: buffer_not_empty
 
 right[10] =
   lineColumn:
     provider: 'LineColumn'
-    highlight: { yuno.yellow, yuno.bg }
+    highlight: { yuno.yellow }
     condition: buffer_not_empty
 
 right[11] =
   linePercentSep:
     provider: -> ':'
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
     condition: buffer_not_empty
 
 right[12] =
   linePercent:
     provider: 'LinePercent'
-    highlight: { yuno.green, yuno.bg }
+    highlight: { yuno.green }
     condition: buffer_not_empty
 
 right[13] =
   linesep2:
     provider: -> '] '
-    highlight: { yuno.blue, yuno.bg }
+    highlight: { yuno.blue }
     condition: buffer_not_empty
 
 -- ----------------------------------------------------------------------------
@@ -235,26 +235,25 @@ mid[1] =
   DiagnosticError:
     provider: 'DiagnosticError',
     icon: '  ',
-    highlight: {yuno.red,yuno.bg}
+    highlight: { yuno.red }
 
 mid[2] =
   DiagnosticWarn:
     provider: 'DiagnosticWarn',
     icon: '  ',
-    highlight: {yuno.yellow,yuno.bg},
-
+    highlight: { yuno.yellow },
 
 mid[3] =
   DiagnosticHint:
     provider: 'DiagnosticHint',
     icon: '  ',
-    highlight: {yuno.cyan,yuno.bg},
+    highlight: { yuno.cyan },
 
 mid[4] =
   DiagnosticInfo:
     provider: 'DiagnosticInfo',
     icon: '  ',
-    highlight: {yuno.blue,yuno.bg},
+    highlight: { yuno.blue },
 
 -- ----------------------------------------------------------------------------
 -- Inactive & Short Left Bar 
@@ -264,7 +263,7 @@ short_line_left[1] =
     provider: 'FileTypeName',
     separator: ' ',
     separator_highlight: { 'NONE', yuno.bg },
-    highlight: {yuno.red, yuno.bg, 'bold' }
+    highlight: {yuno.red, 'NONE', 'bold' }
 
 short_line_left[2] =
   FileName:
@@ -277,4 +276,4 @@ short_line_left[2] =
 short_line_right[1] =
   BufferIcon:
     provider: 'BufferIcon',
-    highlight: { yuno.fg, yuno.bg }
+    highlight: { yuno.fg }

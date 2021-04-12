@@ -103,11 +103,13 @@ left[6] =
   cons:
     provider: -> '→ '
     highlight: { yuno.yellow, yuno.bg }
+    condition: buffer_not_empty
 
 left[7] =
   sep1:
     provider: -> '( '
     highlight: { yuno.blue, yuno.bg }
+    condition: buffer_not_empty
 
 left[8] =
   viModeName:
@@ -115,6 +117,7 @@ left[8] =
       current_mode = mode[vim.fn.mode!]
       set_hl 'GalaxyviModeName', fg:current_mode.hl
       current_mode.name
+    condition: buffer_not_empty
 
 left[9] =
   comma:
@@ -122,17 +125,17 @@ left[9] =
     highlight: { yuno.blue, yuno.bg }
     condition: buffer_not_empty
 
-left[11] =
+left[10] =
   FileName:
     provider: 'FileName'
     condition: buffer_not_empty
     highlight: { yuno.yellow, yuno.bg }
 
-left[12] =
+left[11] =
   sep2:
     provider: -> ') '
     highlight: { yuno.blue, yuno.bg }
-    separator: ' '
+    condition: buffer_not_empty
 
 -- Right Bar ------------------------------------------------------------------
 right[1] =
@@ -177,29 +180,35 @@ right[8] =
   rightArrow:
     provider: -> '← '
     highlight: { yuno.yellow, yuno.bg }
+    condition: buffer_not_empty
 
 right[9] =
   linesep1:
     provider: -> '[ '
     highlight: { yuno.blue, yuno.bg }
+    condition: buffer_not_empty
 
 right[10] =
   lineColumn:
     provider: 'LineColumn'
     highlight: { yuno.yellow, yuno.bg }
+    condition: buffer_not_empty
 
 right[11] =
   linePercentSep:
     provider: -> ':'
     highlight: { yuno.blue, yuno.bg }
+    condition: buffer_not_empty
 
 right[12] =
   linePercent:
     provider: 'LinePercent'
     highlight: { yuno.green, yuno.bg }
+    condition: buffer_not_empty
 
 right[13] =
   linesep2:
     provider: -> '] '
     highlight: { yuno.blue, yuno.bg }
+    condition: buffer_not_empty
 

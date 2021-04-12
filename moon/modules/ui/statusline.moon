@@ -1,16 +1,24 @@
-import yuno from require'modules.ui.palette'
 import set_hl from require'modules.utility.highlight'
+import yuno from require'modules.ui.palette'
+
+import mode from vim.fn
 
 import short_line_list from require'galaxyline'
-import right, left, mid from require'galaxyline'.section
 import buffer_not_empty from require'galaxyline.condition'
 import define_file_icon from require('galaxyline.provider_fileinfo')
+import right,
+  left,
+  mid,
+  short_line_left,
+  short_line_right 
+  from require'galaxyline'.section
 
 short_line_list = { 'Minimap', 'NvimTree','vista','dbui','packer' }
 my_icons = define_file_icon!
 my_icons['moon'] = { yuno.white, ' '}
+my_icons['purs'] = { yuno.white, '<≡>'}
 
-mode =
+vim_mode =
   n:
     name: 'normal'
     hl: yuno.green,
@@ -72,6 +80,10 @@ mode =
     name: 'terminal'
     hl: yuno.red
 
+-- ----------------------------------------------------------------------------
+-- Left Bar 
+-- ----------------------------------------------------------------------------
+
 left[1] =
   space:
     provider: -> '  '
@@ -95,7 +107,7 @@ left[4] =
 left[5] =
   viModeMoon:
     provider: ->
-      current_mode = mode[vim.fn.mode!]
+      current_mode = vim_mode[mode!]
       set_hl 'GalaxyviModeMoon', fg:current_mode.hl
       '  '
 
@@ -114,7 +126,7 @@ left[7] =
 left[8] =
   viModeName:
     provider: ->
-      current_mode = mode[vim.fn.mode!]
+      current_mode = vim_mode[mode!]
       set_hl 'GalaxyviModeName', fg:current_mode.hl
       current_mode.name
     condition: buffer_not_empty
@@ -137,7 +149,10 @@ left[11] =
     highlight: { yuno.blue, yuno.bg }
     condition: buffer_not_empty
 
--- Right Bar ------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
+-- Right Bar 
+-- ----------------------------------------------------------------------------
+
 right[1] =
   rightparent1:
     provider: -> '( '
@@ -212,3 +227,54 @@ right[13] =
     highlight: { yuno.blue, yuno.bg }
     condition: buffer_not_empty
 
+-- ----------------------------------------------------------------------------
+-- Middle Bar 
+-- ----------------------------------------------------------------------------
+
+mid[1] =
+  DiagnosticError:
+    provider: 'DiagnosticError',
+    icon: '  ',
+    highlight: {yuno.red,yuno.bg}
+
+mid[2] =
+  DiagnosticWarn:
+    provider: 'DiagnosticWarn',
+    icon: '  ',
+    highlight: {yuno.yellow,yuno.bg},
+
+
+mid[3] =
+  DiagnosticHint:
+    provider: 'DiagnosticHint',
+    icon: '  ',
+    highlight: {yuno.cyan,yuno.bg},
+
+mid[4] =
+  DiagnosticInfo:
+    provider: 'DiagnosticInfo',
+    icon: '  ',
+    highlight: {yuno.blue,yuno.bg},
+
+-- ----------------------------------------------------------------------------
+-- Inactive & Short Left Bar 
+-- ----------------------------------------------------------------------------
+short_line_left[1] =
+  BufferType:
+    provider: 'FileTypeName',
+    separator: ' ',
+    separator_highlight: { 'NONE', yuno.bg },
+    highlight: {yuno.red, yuno.bg, 'bold' }
+
+short_line_left[2] =
+  FileName:
+    provider:'SFileName'
+    condition: buffer_not_empty
+
+-- ----------------------------------------------------------------------------
+-- Inactive & Short Right Bar 
+-- ----------------------------------------------------------------------------
+short_line_right[1] =
+  BufferIcon:
+    provider: 'BufferIcon',
+    highlight: { yuno.fg, yuno.bg }

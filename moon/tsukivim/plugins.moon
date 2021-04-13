@@ -42,6 +42,7 @@ packages = (use) ->
   -----------------------------------------------------------------------------
   
   -- UI -----------------------------------------------------------------------
+  use 'rktjmp/lush.nvim'                       -- nvim theme maker
   use 'nvim-web-devicons'
   use {
     'glepnir/galaxyline.nvim',
@@ -66,7 +67,7 @@ packages = (use) ->
   -- Language, etc. -----------------------------------------------------------
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
   -- use 'FrigoEU/psc-ide-vim'                    -- Purescript ide
-
+  
   -----------------------------------------------------------------------------
   
 startup packages

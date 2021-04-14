@@ -10,11 +10,12 @@ packages = (use) ->
   -----------------------------------------------------------------------------
 
   -- LSP & Completion --------------------------------------------------------
-  use 'neovim/nvim-lspconfig'                  -- LSP config quickstart 
-  use 'hrsh7th/nvim-compe'                     -- Completion  
-  use 'onsails/lspkind-nvim' -- LSP kind icons like vscode  TODO: Purescript icon 
+  -- use 'neovim/nvim-lspconfig'                  -- LSP config quickstart 
+  -- use 'hrsh7th/nvim-compe'                     -- Completion  
+  -- use 'onsails/lspkind-nvim' -- LSP kind icons like vscode  TODO: Purescript icon 
   -- use 'kosayoda/nvim-lightbulb' TODO: Fix LSP first 
   -- use 'glepnir/lspsaga.nvim' TODO 
+  use { 'neoclide/coc.nvim', branch: 'release' }
 
   -----------------------------------------------------------------------------
 

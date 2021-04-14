@@ -63,5 +63,5 @@ on_attach = (client, bufnr) ->
       augroup END
     ", false
 
-purescriptls.setup :on_attach
+purescriptls.setup :on_attach, cmd: { 'purescript-language-server', '--stdio', '--config {}' }
 

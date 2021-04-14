@@ -231,30 +231,30 @@ right[13] =
 -- Middle Bar 
 -- ----------------------------------------------------------------------------
 
-mid[1] =
-  DiagnosticError:
-    provider: 'DiagnosticError',
-    icon: '  ',
-    highlight: { yuno.red }
-
-mid[2] =
-  DiagnosticWarn:
-    provider: 'DiagnosticWarn',
-    icon: '  ',
-    highlight: { yuno.yellow },
-
-mid[3] =
-  DiagnosticHint:
-    provider: 'DiagnosticHint',
-    icon: '  ',
-    highlight: { yuno.cyan },
-
-mid[4] =
-  DiagnosticInfo:
-    provider: 'DiagnosticInfo',
-    icon: '  ',
-    highlight: { yuno.blue },
-
+--mid[1] =
+--  DiagnosticError:
+--    provider: 'DiagnosticError',
+--    icon: '  ',
+--    highlight: { yuno.red }
+--
+--mid[2] =
+--  DiagnosticWarn:
+--    provider: 'DiagnosticWarn',
+--    icon: '  ',
+--    highlight: { yuno.yellow },
+--
+--mid[3] =
+--  DiagnosticHint:
+--    provider: 'DiagnosticHint',
+--    icon: '  ',
+--    highlight: { yuno.cyan },
+--
+--mid[4] =
+--  DiagnosticInfo:
+--    provider: 'DiagnosticInfo',
+--    icon: '  ',
+--    highlight: { yuno.blue },
+--
 -- ----------------------------------------------------------------------------
 -- Inactive & Short Left Bar 
 -- ----------------------------------------------------------------------------

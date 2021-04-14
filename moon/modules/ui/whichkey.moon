@@ -1,13 +1,13 @@
-import cmd, g, o from vim
+import let, set, cmd from require'modules.builtin'
 
 -- Not a fan of floating windows for this
-g.which_key_use_floating_win = 0
+let 'which_key_use_floating_win', 0
 
 -- Hide status
 cmd "autocmd! FileType which_key"
 cmd "autocmd  FileType which_key set laststatus=0 noshowmode noruler | autocmd BufLeave <buffer> set laststatus=2 showmode ruler"
 
-o.timeoutlen=500
+set.o 'timeoutlen', 500
 
 -- Change highlight
 -- cmd "highlight default link WhichKey          Operator"

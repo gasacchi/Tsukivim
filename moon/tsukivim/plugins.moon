@@ -1,4 +1,4 @@
-import cmd from vim
+import cmd from require'modules.builtin'
 import startup from require 'packer'
 
 cmd 'packadd packer.nvim'

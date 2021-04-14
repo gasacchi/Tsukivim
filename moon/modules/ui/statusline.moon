@@ -1,7 +1,7 @@
 import set_hl from require'modules.utility.highlight'
 import yuno from require'modules.ui.palette'
 
-import mode from vim.fn
+import mode from require'modules.builtin'.fn
 
 import short_line_list from require'galaxyline'
 import buffer_not_empty from require'galaxyline.condition'

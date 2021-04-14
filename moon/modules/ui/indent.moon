@@ -1,6 +1,6 @@
-import g from vim
+import let from require'modules.builtin'
 
-g.indent_blankline_show_first_indent_level = false
-g.indent_blankline_filetype_exclude = { "dashboard", "help", "packer" } 
-g.indent_blankline_char = "▏"
+let 'indent_blankline_show_first_indent_level', false
+let 'indent_blankline_filetype_exclude', { "dashboard", "help", "packer" } 
+let 'indent_blankline_char', "▏"
  

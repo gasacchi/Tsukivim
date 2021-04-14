@@ -1,9 +1,8 @@
 -- reimport neovim builtin api for lua 
-import o, bo, wo, w, cmd, g from vim
-import nvim_set_keymap, nvim_exec from vim.api
+import o, bo, wo, w, cmd, g, fn from vim
+import nvim_set_keymap, nvim_exec, nvim_set_var from vim.api
 
-command = (c) -> cmd c
-
+cmd = (c) -> vim.cmd c
 
 set =
   o: (opt, val) ->
@@ -15,18 +14,24 @@ set =
   w: (opt, val) ->
     w[opt] = val
 
-let = (name) -> (val) ->
+let = (name, val) ->
   g[name] = val
 
+get = (name) ->
+  g[name]
 
 api =
-  keymap: (...) ->
+  keymap: (mode, from_, to, opts) ->
     -- agrs: mode, from, to, opts
-    nvim_set_keymap ...
+    nvim_set_keymap mode, from_, to, opts
   exec: (chunk, ret) ->
     nvim_exec chunk, ret
+  var: (name, val) ->
+    nvim_set_var name, val
   
 { :set
+  :fn
+  :get
   :api
   :let
   :cmd }

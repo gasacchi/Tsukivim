@@ -2,28 +2,28 @@
 -- Mappings
 -- ----------------------------------------------------------------------------
 
-import cmd,g from vim
-import nvim_set_keymap,nvim_set_var from vim.api
+import cmd, let, get from require'modules.builtin'
+import keymap, var from require'modules.builtin'.api
 
 opts = 
   noremap: true
 
 -- Disable Arrow keys
-nvim_set_keymap "i", "<DOWN>", "<NOP>", opts
-nvim_set_keymap "i", "<LEFT>", "<NOP>", opts
-nvim_set_keymap "i", "<RIGHt>","<NOP>", opts
-nvim_set_keymap "i", "<UP>",   "<NOP>", opts
-nvim_set_keymap "n", "<DOWN>", "<NOP>", opts
-nvim_set_keymap "n", "<LEFT>", "<NOP>", opts
-nvim_set_keymap "n", "<RIGHt>","<NOP>", opts
-nvim_set_keymap "n", "<UP>",   "<NOP>", opts
+keymap "i", "<DOWN>", "<NOP>", opts
+keymap "i", "<LEFT>", "<NOP>", opts
+keymap "i", "<RIGHt>","<NOP>", opts
+keymap "i", "<UP>",   "<NOP>", opts
+keymap "n", "<DOWN>", "<NOP>", opts
+keymap "n", "<LEFT>", "<NOP>", opts
+keymap "n", "<RIGHt>","<NOP>", opts
+keymap "n", "<UP>",   "<NOP>", opts
 
 -- Esc to jk
-nvim_set_keymap "i", "jk",     "<ESC>", opts
+keymap "i", "jk",     "<ESC>", opts
 -- Escape from command mode with jk
-nvim_set_keymap "c", "jk",     "<C-c>", opts
+keymap "c", "jk",     "<C-c>", opts
 -- Map Ctrl + Backspace to delete word
-nvim_set_keymap "i", "<C-H>", "<C-W>", opts 
+keymap "i", "<C-H>", "<C-W>", opts 
 
 -- purescript Unicode shortcut
 cmd "autocmd FileType purescript inoremap <buffer> ;l ∀"
@@ -42,20 +42,20 @@ which_map_opts =
   noremap: true
   silent: true
 
-g.mapleader = " "
+let 'mapleader', ' '
 
-nvim_set_keymap "n",
+keymap "n",
   "<Leader>",
   ":silent WhichKey '<Space>'<CR>",
   which_map_opts
 
-nvim_set_keymap "v",
+keymap "v",
   "<Leader>",
   ":silent <C-u> :silent WhichKeyVisual '<Space>'<CR>",
   which_map_opts
 
 -- Buffers Mappings
-nvim_set_keymap "n",
+keymap "n",
   "<Leader>bD",
   ":bdelete<Space>",
   opts
@@ -130,6 +130,7 @@ o =
   e: { ":NvimTreeToggle",                    "滑Tree" }
 
 -- Editor
+-- TODO: find better approach
 eval = (file = vim.g.file_to_eval) ->
   cmd "let g:file_to_eval = substitute(expand('%:p'), 'moon', 'lua', 'g')"
   cmd "luafile #{file}"
@@ -172,7 +173,7 @@ g =
   n:  "怜Next hunk"
 
 -- File Mapping
-nvim_set_keymap "n" ,
+keymap "n" ,
   "<Leader>fe",
   ":e<SPACE>",
   opts
@@ -262,7 +263,7 @@ map =
   q: { ":q",                                 " Quit" }
 
 -- Set vim global variable
-nvim_set_var "which_key_map", map
+var "which_key_map", map
 
 -- Register WhichKey
 cmd "call which_key#register(' ', 'g:which_key_map')"

@@ -1,13 +1,13 @@
-import cmd, g from vim
+import cmd, let from require'modules.builtin'
 
-g.dashboard_default_executive = "telescope"
-g.dashboard_preview_command = 'cat'
-g.dashboard_preview_pipeline = 'lolcat'
-g.dashboard_preview_file = "~/.config/nvim/assets/tsukivim.cat"
-g.dashboard_preview_file_height = 10
-g.dashboard_preview_file_width = 80
-g.dashboard_custom_footer = {"(code ∘ solve) (problems)"}
-g.dashboard_custom_shortcut   =
+let 'dashboard_default_executive', "telescope"
+let 'dashboard_preview_command', 'cat'
+let 'dashboard_preview_pipeline', 'lolcat'
+let 'dashboard_preview_file', "~/.config/nvim/assets/tsukivim.cat"
+let 'dashboard_preview_file_height', 10
+let 'dashboard_preview_file_width', 80
+let 'dashboard_custom_footer', {"(code ∘ solve) (problems)"}
+let 'dashboard_custom_shortcut',
   last_session:               "SPC f l"
   find_history:               "SPC s h"
   find_file:                  "SPC s f"

@@ -1,2 +1,3 @@
-import g from vim
-g.goyo_width = 120
+import let from require'modules.builtin'
+
+let 'goyo_width', 120

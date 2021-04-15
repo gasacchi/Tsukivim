@@ -3,17 +3,22 @@
     "purescript": {
       "command": "purescript-language-server",
       "args": [
-        "--stdio",
-        "--config {}"
+        "--stdio"
       ],
       "filetypes": [
         "purescript"
       ],
+      "trace.server": "off",
       "rootPatterns": [
         "bower.json",
         "psc-package.json",
         "spago.dhall"
-      ]
+      ],
+      "settings": {
+        "purescript": {
+          "addSpagoSources": true
+        }
+      }
     },
     "haskell": {
       "command": "haskell-language-server-wrapper",
@@ -33,5 +38,9 @@
         "lhaskell"
       ]
     }
-  }
+  },
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "i",
+  "diagnostic.hintSign": ""
 }

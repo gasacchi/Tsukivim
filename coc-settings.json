@@ -14,6 +14,18 @@
         "psc-package.json",
         "spago.dhall"
       ]
+    },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": [
+        "--lsp"
+      ],
+      "filetypes": [
+        "haskell"
+      ],
+      "rootPatterns": [
+        "*.hs"
+      ]
     }
   }
 }

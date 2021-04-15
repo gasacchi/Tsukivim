@@ -77,10 +77,10 @@ cmd 'autocmd CursorHold * silent call CocActionAsync("highlight")'
 cmd 'command! -nargs=0 Format :call CocAction("format")'
 
 -- Add `:Fold` command to fold current buffer.
-cmd 'command! -nargs=? Fold :call     CocAction("fold", <f-args>)'
+cmd 'command! -nargs=? Fold :call CocAction("fold", <f-args>)'
 
 -- Add `:OR` command for organize imports of the current buffer.
-cmd 'command! -nargs=0 OR   :call     CocAction("runCommand", "editor.action.organizeImport")'
+cmd 'command! -nargs=0 OR   :call CocAction("runCommand", "editor.action.organizeImport")'
 
 
 
@@ -92,36 +92,38 @@ lsp_opts =
 keymap 'n', '<leader>lh', ':call g:Show_documentation()<cr>', lsp_opts
 -- " Use `[g` and `]g` to navigate diagnostics
 -- " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-keymap 'n', '<leader>ln', ':<Plug>(coc-diagnostic-next)<cr>', lsp_opts
-keymap 'n', '<leader>lp', ':<Plug>(coc-diagnostic-prev)<cr>', lsp_opts
+keymap 'n', '<leader>ln', '<Plug>(coc-diagnostic-next)', lsp_opts
+keymap 'n', '<leader>lp', '<Plug>(coc-diagnostic-prev)', lsp_opts
 
 -- " GoTo code navigation.
-keymap 'n', '<leader>ld', ':<Plug>(coc-definition)<cr>', lsp_opts
-keymap 'n', '<leader>lt', ':<Plug>(coc-type-definition)<cr>', lsp_opts
-keymap 'n', '<leader>li', ':<Plug>(coc-implementation)<cr>', lsp_opts
-keymap 'n', '<leader>lr', ':<Plug>(coc-references)<cr>', lsp_opts
+keymap 'n', '<leader>ld', '<Plug>(coc-definition)', lsp_opts
+keymap 'n', '<leader>lt', '<Plug>(coc-type-definition)', lsp_opts
+keymap 'n', '<leader>li', '<Plug>(coc-implementation)', lsp_opts
+keymap 'n', '<leader>lr', '<Plug>(coc-references)', lsp_opts
 
 -- Symbol renaming.
-keymap 'n', '<leader>lR', ':<Plug>(coc-rename)<cr>', {}
+keymap 'n', '<leader>lR', '<Plug>(coc-rename)', {}
 
 -- Formatting selected code.
-keymap 'n', '<leader>lf', ':Format', {}
+keymap 'n', '<leader>lf', ':Format<cr>', {}
 
 -- Applying codeAction to the selected region.
 -- Example: `<leader>aap` for current paragraph
-keymap 'n', '<leader>la', ':<Plug>(coc-codeaction-selected)<cr>', {}
+keymap 'n', '<leader>la', '<Plug>(coc-codeaction-selected)', {}
 
 -- Remap keys for applying codeAction to the current buffer.
-keymap 'n', '<leader>lc', ':<Plug>(coc-codeaction)<cr>', {}
+keymap 'n', '<leader>lc', '<Plug>(coc-codeaction)', {}
 
 -- Apply AutoFix to problem on the current line.
-keymap 'n', '<leader>lq', ':<Plug>(coc-fix-current)<cr>', {}
+keymap 'n', '<leader>lq', '<Plug>(coc-fix-current)', {}
 
 
 -- COC List
 coc_list_opts =
   nowait: true
   silent: true
+
+-- keymap 'n', 'gd', '
 
 -- Show all diagnostics
 keymap 'n', '<leader>lla', ':<C-u>CocList diagnostics<cr>', coc_list_opts

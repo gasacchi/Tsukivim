@@ -20,11 +20,17 @@
       "args": [
         "--lsp"
       ],
-      "filetypes": [
-        "haskell"
-      ],
       "rootPatterns": [
-        "*.hs"
+        "*.hs",
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": [
+        "haskell",
+        "lhaskell"
       ]
     }
   }

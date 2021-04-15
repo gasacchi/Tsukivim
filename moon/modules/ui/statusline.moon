@@ -18,6 +18,7 @@ my_icons = define_file_icon!
 my_icons['moon'] = { yuno.white, ' '}
 my_icons['purs'] = { yuno.white, '<≡>'}
 
+-- TODO: Need fix for short line and replace mode broken
 vim_mode =
   n:
     name: 'normal'
@@ -29,10 +30,10 @@ vim_mode =
     name: 'visual'
     hl: yuno.blue,
   [""]:
-    name: 'v-line'
+    name: 'v-block'
     hl: yuno.blue,
   V:
-    name: 'v-block'
+    name: 'v-line'
     hl: yuno.blue,
   c:
     name: 'command'

@@ -5,6 +5,8 @@
 import cmd, let, get from require'modules.builtin'
 import keymap, var from require'modules.builtin'.api
 
+import mappings from require'modules.lsp.coc'
+
 opts = 
   noremap: true
 
@@ -198,6 +200,35 @@ p =
   s: { ":PackerSync",                        "痢Sync" }
   u: { ":PackerUpdate",                      " Update" }
 
+
+-- LSP
+mappings!
+l = 
+  name: " +LSP"
+  [" "]: { "<Esc>",                          " Close" }
+  h:  " Hover documentation"
+  n:  "怜Diagnostics next"
+  p:  "玲Diagnostics prev"
+  d:  " Definitions"
+  t:  " Type definitions"
+  i:  " Implementation"
+  r:  " References"
+  R:  "凜Rename"
+  f:  " Format"
+  a:  " Code action selected"
+  c:  " Code action"
+  q:  " Fix current line"
+  l:
+    name: " +Coc list"
+    [" "]: { "<Esc>",                          " Close" }
+    a:  " Diagnostics"
+    e:  " Extensions"
+    c:  " Commands"
+    o:  " Outline"
+    s:  "$ Symbols"
+    j:  "怜Next item"
+    k:  "玲Previous item"
+    p:  " Resume latest coc list"
 
 -- Hop / Jump Motions TODO: Use operator Motion
 m =  

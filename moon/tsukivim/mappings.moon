@@ -5,8 +5,6 @@
 import cmd, let, get from require'modules.builtin'
 import keymap, var from require'modules.builtin'.api
 
-import mappings from require'modules.lsp.coc'
-
 opts = 
   noremap: true
 
@@ -202,33 +200,32 @@ p =
 
 
 -- LSP
-mappings!
 l = 
   name: " +LSP"
   [" "]: { "<Esc>",                          " Close" }
-  h:  " Hover documentation"
-  n:  "怜Diagnostics next"
-  p:  "玲Diagnostics prev"
-  d:  " Definitions"
-  t:  " Type definitions"
-  i:  " Implementation"
-  r:  " References"
-  R:  "凜Rename"
-  f:  " Format"
-  a:  " Code action selected"
-  c:  " Code action"
-  q:  " Fix current line"
+  h:  { ":call g:Show_documentation()",      " Hover documentation" }
+  n:  { "<Plug>(coc-diagnostic-next)",       "怜Diagnostics next" }
+  p:  { "<Plug>(coc-diagnostic-prev)",       "玲Diagnostics prev" }
+  d:  { "<Plug>(coc-definition)",            " Definitions" }
+  t:  { "<Plug>(coc-type-definition)",       " Type definitions" }
+  i:  { "<Plug>(coc-implementation)",        " Implementation" }
+  r:  { "<Plug>(coc-references)",            " References" }
+  R:  { "<Plug>(coc-rename)",                "凜Rename" }
+  f:  { ":Format",                           " Format" }
+  a:  { "<Plug>(coc-codeaction-selected)",   " Code action selected" }
+  c:  { "<Plug>(coc-codeaction)",            " Code action" }
+  q:  { "<Plug>(coc-fix-current)",           " Fix current line" }
   l:
     name: " +Coc list"
-    [" "]: { "<Esc>",                          " Close" }
-    a:  " Diagnostics"
-    e:  " Extensions"
-    c:  " Commands"
-    o:  " Outline"
-    s:  "$ Symbols"
-    j:  "怜Next item"
-    k:  "玲Previous item"
-    p:  " Resume latest coc list"
+    [" "]: { "<Esc>",                        " Close" }
+    a: { ":<C-u>CocList diagnostics",        " Diagnostics" }
+    e: { ":<C-u>CocList extensions",         " Extensions" }
+    c: { ":<C-u>CocList commands",           " Commands" }
+    o: { ":<C-u>CocList outline",            " Outline" }
+    s: { ":<C-u>CocList -I symbols",         "$ Symbols" }
+    j: { ":<C-u>CocNext",                    "怜Next item" }
+    k: { ":<C-u>CocPrev",                    "玲Previous item" }
+    p: { ":<C-u>CocListResume",              " Resume latest coc list" }
 
 -- Hop / Jump Motions TODO: Use operator Motion
 m =  
@@ -281,6 +278,7 @@ map =
   :f
   :g
   :h
+  :l
   :m
   :o
   :p

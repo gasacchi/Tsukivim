@@ -1,5 +1,6 @@
 render = ->
   require'modules.ui.basic'
+  require'modules.ui.colorscheme'
   require'modules.ui.statusline'
   require'modules.ui.colorizer'
   require'modules.ui.dashboard'

@@ -3,7 +3,7 @@
 yuno =
   background:                            '#0D070D'
   foreground:                            '#A253BD'
-  black:                                 '#0D070D'
+  black:                                 '#1B0E1B'
   red:                                   '#FA9D9D'
   green:                                 '#CCFA9D'
   yellow:                                '#FACC9D'

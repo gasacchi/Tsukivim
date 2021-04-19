@@ -1,6 +1,6 @@
-import set_hl from require'modules.utility.highlight'
 import yuno from require'modules.ui.palette'
 
+import cmd from require'modules.builtin'
 import mode from require'modules.builtin'.fn
 
 import short_line_list from require'galaxyline'
@@ -109,7 +109,7 @@ left[5] =
   viModeMoon:
     provider: ->
       current_mode = vim_mode[mode!]
-      set_hl 'GalaxyviModeMoon', fg:current_mode.hl
+      cmd 'hi GalaxyviModeMoon guifg=' .. current_mode.hl
       '  '
 
 left[6] =
@@ -128,7 +128,7 @@ left[8] =
   viModeName:
     provider: ->
       current_mode = vim_mode[mode!]
-      set_hl 'GalaxyviModeName', fg:current_mode.hl
+      cmd 'hi GalaxyviModeName guifg=' .. current_mode.hl
       current_mode.name
     condition: buffer_not_empty
 

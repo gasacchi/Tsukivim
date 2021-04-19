@@ -44,7 +44,6 @@ packages = (use) ->
   -----------------------------------------------------------------------------
   
   -- UI -----------------------------------------------------------------------
-  use 'rktjmp/lush.nvim'                       -- nvim theme maker
   use 'nvim-web-devicons'
   use {
     'glepnir/galaxyline.nvim',

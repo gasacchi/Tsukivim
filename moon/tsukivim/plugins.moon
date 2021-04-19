@@ -30,6 +30,7 @@ packages = (use) ->
     'nvim-telescope/telescope.nvim',
     requires: {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   } 
+  use 'kdheepak/lazygit.nvim'                  -- Lazygit wrapper
   use 'b3nj5m1n/kommentary'                    -- Code Comment 
   use 'phaazon/hop.nvim'                       -- Jump / Hop Motion 
   use 'tpope/vim-surround'                     -- Surround 

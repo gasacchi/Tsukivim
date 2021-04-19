@@ -128,6 +128,7 @@ o =
   name: "冷+Open"
   [" "]: { "<Esc>",                          " Close" }
   e: { ":NvimTreeToggle",                    "滑Tree" }
+  g: { ":LazyGit",                           " LazyGit" }
 
 -- Editor
 -- TODO: find better approach

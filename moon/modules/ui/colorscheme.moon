@@ -16,6 +16,12 @@ cmd"hi CursorLine guibg=#1B0E1B"
 cmd"hi CursorColumn guibg=#1B0E1B"
 cmd"hi ColorColumn guibg=#1B0E1B"
 cmd"hi VertSplit guifg=#1B0E1B"
+cmd"hi StatusLine guibg=#0D070D"
+cmd"hi PMenu guibg=#1B0E1B"
+cmd"hi PMenuSel guibg=#A253BD"
+cmd"hi PMenuSbar guibg=#A253BD"
+cmd"hi PMenuThumb guibg=#1B0E1B" 
+
 
 
 

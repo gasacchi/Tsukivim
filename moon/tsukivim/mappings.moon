@@ -32,6 +32,7 @@ cmd "autocmd FileType purescript inoremap <buffer> ;d ←"
 cmd "autocmd FileType purescript inoremap <buffer> ;t →"
 cmd "autocmd FileType purescript inoremap <buffer> ;c ⇒"
 cmd "autocmd FileType purescript inoremap <buffer> ;i ⇐"
+cmd "autocmd FileType purescript inoremap <buffer> ;n <Esc>0<Esc>yt o<Esc>pa "
 
 
 -- Map q to exit help

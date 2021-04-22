@@ -13,11 +13,17 @@ cmd 'colorscheme sonokai'
 -- Overide sonokai colorscheme
 
 -- Basic ----------------------------------------------------------------------
+cmd"hi Normal guifg=#FCCCF5"
+cmd"hi Comment guifg=#AD9DFA"
+cmd"hi String guifg=#A253BD"
+cmd"hi Visual guibg=#FB9EF8"
+cmd"hi TabLineSel guibg=#A253BD"
 cmd"hi CursorLine guibg=#1B0E1B"
 cmd"hi CursorColumn guibg=#1B0E1B"
 cmd"hi ColorColumn guibg=#1B0E1B"
 cmd"hi VertSplit guifg=#1B0E1B"
 cmd"hi StatusLine guibg=#0D070D"
+cmd"hi StatusLineNC guibg=#1B0E1B"
 cmd"hi PMenu guibg=#1B0E1B"
 cmd"hi PMenuSel guibg=#A253BD"
 cmd"hi PMenuSbar guibg=#A253BD"
@@ -62,6 +68,4 @@ cmd"hi TelescopeMatching       guibg=#A253BD guifg=#0D070D"
 -- Used for the prompt prefix
 cmd"hi TelescopePromptPrefix   guifg=#FACC9D"
 -------------------------------------------------------------------------------
-
-
 

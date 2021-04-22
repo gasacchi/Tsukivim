@@ -88,40 +88,42 @@ vim_mode =
 left[1] =
   space:
     provider: -> '  '
+    highlight: { 'NONE', yuno.black}
 
 left[2] =
   moon:
     provider: -> ' '
-    highlight: { yuno.red, 'NONE' , 'bold' }
+    highlight: { yuno.red, yuno.black  , 'bold' }
 
 left[3] =
   has:
     provider: -> ':: '
-    highlight: { yuno.green }
+    highlight: { yuno.green, yuno.black }
 
 
 left[4] =
   mode:
     provider: -> 'Mode '
-    highlight: { yuno.magenta, 'NONE', 'bold' }
+    highlight: { yuno.magenta, yuno.black, 'bold' }
 
 left[5] =
   viModeMoon:
     provider: ->
       current_mode = vim_mode[mode!]
-      cmd 'hi GalaxyviModeMoon guifg=' .. current_mode.hl
+      cmd 'hi GalaxyviModeMoon guifg=' .. current_mode.hl 
       '  '
+    highlight: { yuno.magenta, yuno.black }
 
 left[6] =
   cons:
     provider: -> '→ '
-    highlight: { yuno.yellow }
+    highlight: { yuno.yellow, yuno.black }
     condition: buffer_not_empty
 
 left[7] =
   sep1:
     provider: -> '( '
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
     condition: buffer_not_empty
 
 left[8] =
@@ -131,23 +133,24 @@ left[8] =
       cmd 'hi GalaxyviModeName guifg=' .. current_mode.hl
       current_mode.name
     condition: buffer_not_empty
+    highlight: { yuno.blue, yuno.black }
 
 left[9] =
   comma:
     provider: -> ', '
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
     condition: buffer_not_empty
 
 left[10] =
   FileName:
     provider: 'FileName'
     condition: buffer_not_empty
-    highlight: { yuno.yellow }
+    highlight: { yuno.yellow, yuno.black }
 
 left[11] =
   sep2:
     provider: -> ') '
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
     condition: buffer_not_empty
 
 -- ----------------------------------------------------------------------------
@@ -157,75 +160,75 @@ left[11] =
 right[1] =
   rightparent1:
     provider: -> '( '
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
 
 right[2] =
   fileIcon:
     provider: 'FileIcon'
     condition: buffer_not_empty
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
 
 right[3] =
   fileNameType:
     provider: 'FileTypeName'
-    highlight: { yuno.magenta }
+    highlight: { yuno.magenta, yuno.black }
 
 right[4] =
   space2:
     provider: -> ' '
-    highlight: { yuno.yellow }
+    highlight: { yuno.yellow, yuno.black }
 
 right[5] =
   cons2:
     provider: -> '⇒ '
-    highlight: { yuno.yellow }
+    highlight: { yuno.yellow, yuno.black }
     condition: buffer_not_empty
 
 right[6] =
   fileSize:
     provider: 'FileSize'
-    highlight: { yuno.red }
+    highlight: { yuno.red, yuno.black }
     condition: buffer_not_empty
 
 right[7] =
   rightparent2:
     provider: -> ') '
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
 
 right[8] =
   rightArrow:
     provider: -> '← '
-    highlight: { yuno.yellow }
+    highlight: { yuno.yellow, yuno.black }
     condition: buffer_not_empty
 
 right[9] =
   linesep1:
     provider: -> '[ '
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
     condition: buffer_not_empty
 
 right[10] =
   lineColumn:
     provider: 'LineColumn'
-    highlight: { yuno.yellow }
+    highlight: { yuno.yellow, yuno.black }
     condition: buffer_not_empty
 
 right[11] =
   linePercentSep:
     provider: -> ':'
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
     condition: buffer_not_empty
 
 right[12] =
   linePercent:
     provider: 'LinePercent'
-    highlight: { yuno.green }
+    highlight: { yuno.green, yuno.black }
     condition: buffer_not_empty
 
 right[13] =
   linesep2:
     provider: -> '] '
-    highlight: { yuno.blue }
+    highlight: { yuno.blue, yuno.black }
     condition: buffer_not_empty
 
 -- ----------------------------------------------------------------------------
@@ -263,13 +266,14 @@ short_line_left[1] =
   BufferType:
     provider: 'FileTypeName',
     separator: ' ',
-    separator_highlight: { 'NONE', yuno.bg },
-    highlight: {yuno.red, 'NONE', 'bold' }
+    separator_highlight: { 'NONE', yuno.black },
+    highlight: { yuno.red, yuno.black, 'bold' }
 
 short_line_left[2] =
   FileName:
     provider:'SFileName'
     condition: buffer_not_empty
+    highlight: { yuno.red, yuno.black }
 
 -- ----------------------------------------------------------------------------
 -- Inactive & Short Right Bar 
@@ -277,4 +281,4 @@ short_line_left[2] =
 short_line_right[1] =
   BufferIcon:
     provider: 'BufferIcon',
-    highlight: { yuno.fg }
+    highlight: { yuno.fg, yuno.black }

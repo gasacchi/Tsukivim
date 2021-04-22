@@ -31,6 +31,14 @@ cmd"hi GitSignsRemove guifg=#FA9D9D"
 cmd"hi GitSignsChangeDelete guifg=#A253BD" 
 -------------------------------------------------------------------------------
 
+-- Dashboard ------------------------------------------------------------------
+cmd"hi DashboardFooter guifg=#CCFA9D" 
+cmd"hi DashboardCenter guifg=#FACC9D" 
+cmd"hi DashboardShortCut guifg=#FA9D9D" 
+-- handled by lolcat
+-- cmd"hi DashboardHeader guifg=#CCFA9D" 
+-------------------------------------------------------------------------------
+
 -- Coc ------------------------------------------------------------------------
 cmd"hi CocHintFloat guifg=#CCFA9D guibg=#1B0E1B" 
 cmd"hi CocInfoFloat guifg=#6E98D3 guibg=#1B0E1B" 
@@ -43,7 +51,7 @@ cmd"hi CocFloating guibg=#1B0E1B"
 cmd"hi TelescopeSelection      guifg=#FA9D9D gui=bold" --selected item
 cmd"hi TelescopeSelectionCaret guifg=#FACC9D" -- selection caret
 cmd"hi TelescopeMultiSelection guifg=#CCFA9D" --multisections
-cmd"hi TelescopeNormal         guifg=#FB9EF8 guibg=#00000" --floating windows created by telescope.
+cmd"hi TelescopeNormal         guifg=#FB9EF8 guibg=#00000" -- floating windows created by telescope.
  -- Border hi groups.
 cmd"hi TelescopeBorder         guifg=#1B0E1B"
 cmd"hi TelescopePromptBorder   guifg=#1B0E1B"

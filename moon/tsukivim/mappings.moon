@@ -220,14 +220,14 @@ l =
   l:
     name: " +Coc list"
     [" "]: { "<Esc>",                        " Close" }
-    a: { ":<C-u>CocList diagnostics",        " Diagnostics" }
-    e: { ":<C-u>CocList extensions",         " Extensions" }
-    c: { ":<C-u>CocList commands",           " Commands" }
-    o: { ":<C-u>CocList outline",            " Outline" }
-    s: { ":<C-u>CocList -I symbols",         "$ Symbols" }
-    j: { ":<C-u>CocNext",                    "怜Next item" }
-    k: { ":<C-u>CocPrev",                    "玲Previous item" }
-    p: { ":<C-u>CocListResume",              " Resume latest coc list" }
+    a: { ":CocList diagnostics",        " Diagnostics" }
+    e: { ":CocList extensions",         " Extensions" }
+    c: { ":CocList commands",           " Commands" }
+    o: { ":CocList outline",            " Outline" }
+    s: { ":CocList -I symbols",         "$ Symbols" }
+    j: { ":CocNext",                    "怜Next item" }
+    k: { ":CocPrev",                    "玲Previous item" }
+    p: { ":CocListResume",              " Resume latest coc list" }
 
 -- Hop / Jump Motions TODO: Use operator Motion
 m =  

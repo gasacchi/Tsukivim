@@ -11,4 +11,7 @@ setup = ->
   -- COC
   require'modules.lsp.coc'
 
+  -- Purescript spesific config
+  require'modules.lsp.purescript'
+
 { :setup }

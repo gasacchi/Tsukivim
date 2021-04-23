@@ -27,8 +27,8 @@ cmd"hi StatusLine guibg=#1B0E1B"
 cmd"hi StatusLineNC guibg=#1B0E1B"
 cmd"hi PMenu guibg=#1B0E1B"
 cmd"hi PMenuSel guibg=#A253BD"
-cmd"hi PMenuSbar guibg=#A253BD"
-cmd"hi PMenuThumb guibg=#1B0E1B" 
+cmd"hi PMenuThumb guibg=#A253BD"
+cmd"hi PMenuSbar guibg=#1B0E1B" 
 -------------------------------------------------------------------------------
 
 -- GitSingns ------------------------------------------------------------------

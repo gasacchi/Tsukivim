@@ -27,6 +27,8 @@ keymap "i", "<C-H>", "<C-W>", opts
 
 -- Map q to exit help
 cmd "autocmd FileType help noremap <buffer> q :close<CR>"
+-- Map q to exit Dashboard
+cmd "autocmd FileType dashboard noremap <buffer> q :q<CR>"
 
 -- Map Leader to space
 which_map_opts = 

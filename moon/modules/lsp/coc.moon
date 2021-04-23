@@ -7,7 +7,7 @@ import keymap, exec from require'modules.builtin'.api
 -- Set Global Option
 set.o 'backup', false
 set.o 'writebackup', false
-set.o 'cmdheight', 2
+-- set.o 'cmdheight', 1
 set.o 'updatetime', 300
 set.w 'signcolumn', 'number'
 

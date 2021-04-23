@@ -67,8 +67,6 @@ packages = (use) ->
   
   -- Language, etc. -----------------------------------------------------------
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
-  use 'FrigoEU/psc-ide-vim'                    -- Purescript ide
-  
   -----------------------------------------------------------------------------
   
 startup packages

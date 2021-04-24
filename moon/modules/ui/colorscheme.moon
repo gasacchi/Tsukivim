@@ -25,10 +25,15 @@ cmd"hi ColorColumn guibg=#1B0E1B"
 cmd"hi VertSplit guifg=#1B0E1B"
 cmd"hi StatusLine guibg=#1B0E1B"
 cmd"hi StatusLineNC guibg=#1B0E1B"
-cmd"hi PMenu guibg=#1B0E1B"
+cmd"hi PMenu guifg=#FB9EF8 guibg=#1B0E1B"
 cmd"hi PMenuSel guibg=#A253BD"
 cmd"hi PMenuThumb guibg=#A253BD"
 cmd"hi PMenuSbar guibg=#1B0E1B" 
+cmd"hi HintFloat guifg=#CCFA9D guibg=#1B0E1B" 
+cmd"hi InfoFloat guifg=#6E98D3 guibg=#1B0E1B" 
+cmd"hi WarningFloat guifg=#FEEF9A guibg=#1B0E1B" 
+cmd"hi ErrorFloat guifg=#FF334E guibg=#1B0E1B" 
+cmd"hi NormalFloat guibg=#1B0E1B" 
 -------------------------------------------------------------------------------
 
 -- GitSingns ------------------------------------------------------------------
@@ -47,11 +52,11 @@ cmd"hi DashboardShortCut guifg=#FA9D9D"
 -------------------------------------------------------------------------------
 
 -- Coc ------------------------------------------------------------------------
-cmd"hi CocHintFloat guifg=#CCFA9D guibg=#1B0E1B" 
-cmd"hi CocInfoFloat guifg=#6E98D3 guibg=#1B0E1B" 
-cmd"hi CocWarningFloat guifg=#FEEF9A guibg=#1B0E1B" 
-cmd"hi CocErrorFloat guifg=#FF334E guibg=#1B0E1B" 
-cmd"hi CocFloating guibg=#1B0E1B" 
+--cmd"hi CocHintFloat guifg=#CCFA9D guibg=#1B0E1B" 
+--cmd"hi CocInfoFloat guifg=#6E98D3 guibg=#1B0E1B" 
+--cmd"hi CocWarningFloat guifg=#FEEF9A guibg=#1B0E1B" 
+--cmd"hi CocErrorFloat guifg=#FF334E guibg=#1B0E1B" 
+--cmd"hi CocFloating guibg=#1B0E1B" 
 -------------------------------------------------------------------------------
 
 -- Telescope ------------------------------------------------------------------

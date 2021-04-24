@@ -1,10 +1,12 @@
-import cmd from require'modules.builtin'
+import cmd, let from require'modules.builtin'
 
 -- purescript Unicode shortcut
-cmd "autocmd FileType purescript inoremap <buffer> ;l ∀"
-cmd "autocmd FileType purescript inoremap <buffer> ;h ∷"
-cmd "autocmd FileType purescript inoremap <buffer> ;d ←"
-cmd "autocmd FileType purescript inoremap <buffer> ;t →"
-cmd "autocmd FileType purescript inoremap <buffer> ;c ⇒"
-cmd "autocmd FileType purescript inoremap <buffer> ;i ⇐"
+cmd "autocmd FileType purescript inoremap <buffer> ;l ∀<Space>"
+cmd "autocmd FileType purescript inoremap <buffer> ;h <space>∷<Space>"
+cmd "autocmd FileType purescript inoremap <buffer> ;d ←<Space>"
+cmd "autocmd FileType purescript inoremap <buffer> ;t →<Space>"
+cmd "autocmd FileType purescript inoremap <buffer> ;c ⇒<Space>"
+cmd "autocmd FileType purescript inoremap <buffer> ;i ⇐<Space>"
+
+-- auto type
 cmd "autocmd FileType purescript inoremap <buffer> ;n <Esc>0<Esc>yt o<Esc>pa "

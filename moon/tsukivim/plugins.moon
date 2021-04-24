@@ -35,7 +35,6 @@ packages = (use) ->
   use 'phaazon/hop.nvim'                       -- Jump / Hop Motion 
   use 'tpope/vim-surround'                     -- Surround 
   use 'kyazdani42/nvim-tree.lua'               -- File Tree  
-  -- use 'lukas-reineke/format.nvim'           -- Format File TODO 
   -- use 'markdown-preview.nvim'               -- Markdown Preview TODO
   -- euclio/vim-markdown-composer
   -- use 'akinsho/nvim-toggleterm.lua'         -- Terminal TODO

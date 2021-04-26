@@ -8,7 +8,7 @@ import keymap, exec from require'modules.builtin'.api
 set.o 'backup', false
 set.o 'writebackup', false
 -- set.o 'cmdheight', 1
-set.o 'updatetime', 300
+set.o 'updatetime', 200
 set.w 'signcolumn', 'number'
 
 let 'coc_global_extensions', {'coc-json', 'coc-tabnine'}
@@ -32,9 +32,9 @@ keymap 'i', '<c-space>',
   'coc#refresh()',
   { expr: true, silent: true }
 
-keymap 'i', '<cr>',
-  'pumvisible() ? coc#_select_confirm() : "<C-g>u<CR><c-r>=coc#on_enter()<CR>"',
-  { expr: true, silent: true, noremap: true }
+-- keymap 'i', '<cr>',
+  -- 'pumvisible() ? coc#_select_confirm() : "<C-g>u<CR><c-r>=coc#on_enter()<CR>"',
+  -- { expr: true, silent: true, noremap: true }
 
 -- show documentation
 exec [[

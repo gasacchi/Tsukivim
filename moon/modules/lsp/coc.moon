@@ -11,7 +11,7 @@ set.o 'writebackup', false
 set.o 'updatetime', 300
 set.w 'signcolumn', 'number'
 
-let 'coc_global_extensions', {'coc-json'}
+let 'coc_global_extensions', {'coc-json', 'coc-tabnine'}
 
 exec [[
   function! g:Check_back_space() abort

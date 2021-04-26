@@ -1,4 +1,4 @@
-import cmd, let from require'modules.builtin'
+import cmd from require'modules.builtin'
 
 -- purescript Unicode shortcut
 cmd "autocmd FileType purescript inoremap <buffer> ;l ∀<Space>"

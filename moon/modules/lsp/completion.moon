@@ -1,8 +1,11 @@
-import cmd,o from vim
+import cmd,o,g from vim
 import col, getline, pumvisible from vim.fn
 import nvim_set_keymap,nvim_replace_termcodes from vim.api
 
-import setup from require "compe"
+import setup from require"compe"
+o.completeopt = "menuone,noselect"
+
+
 
 -- https://github.com/hrsh7th/nvim-compe/issues/296
 compe_setup =
@@ -24,6 +27,7 @@ compe_setup =
     calc:           true
     nvim_lsp:       true
     nvim_lua:       true
+    tabnine:        true
 
 setup compe_setup
 
@@ -68,5 +72,3 @@ cmd "inoremap <silent><expr> <CR>      compe#confirm('<CR>')"
 cmd "inoremap <silent><expr> <C-e>     compe#close('<C-e>')"
 cmd "inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })"
 cmd "inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })"
-
-o.completeopt = "menuone,noselect"

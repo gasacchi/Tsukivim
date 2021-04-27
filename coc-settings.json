@@ -3,7 +3,8 @@
     "purescript": {
       "command": "purescript-language-server",
       "args": [
-        "--stdio"
+        "--stdio",
+        "--config {}"
       ],
       "filetypes": [
         "purescript"

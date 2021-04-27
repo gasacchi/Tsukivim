@@ -32,8 +32,6 @@ set.o 'ignorecase', true
 set.o 'smartcase', true
 
 -- Visual
--- cmd('set noshowmode')
-set.o 'showmode', false
 
 -- Tabs
 set.bo 'tabstop', 2
@@ -71,6 +69,7 @@ cmd 'set shortmess+=c'
 -- cmd 'set statusline=helo'
 
 -- Jump to file faster
-cmd ':set path+=**'
+cmd 'set noshowmode'
+cmd 'set path+=**'
 
-return
+

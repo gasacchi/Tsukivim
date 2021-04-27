@@ -52,11 +52,15 @@ keymap "n",
   "<Leader>bD",
   ":bdelete<Space>",
   opts
+a =
+  name: "省+Actions"
+  [" "]: { "<Esc>",                          " Close" }
+
 
 b =
   name: "﬘ +Buffers"
-  D: "﫨Delete Buffer(s)"
   [" "]: { "<Esc>",                          " Close" }
+  D: "﫨Delete Buffer(s)"
   b: { ":Telescope buffers",                 " First buffer" }
   d: { ":bdelete %",                         " Delete current buffer" }
   f: { ":bfirst",                            " First buffer" }
@@ -123,7 +127,27 @@ o =
   e: { ":NvimTreeToggle",                    "滑Tree" }
   g: { ":LazyGit",                           " LazyGit" }
 
--- Editor
+-- Coc
+c =
+  name: " +Coc"
+  [" "]: { "<Esc>",                          " Close" }
+  c: { ":CocConfig",                         " Configuration" }
+  d: { ":CocDisable",                        " Disable" }
+  r: { ":CocRestart",                        " Restart" }
+  s: { ":CocStart",                          " Start" }
+  l:
+    name: "  +Coc list"
+    [" "]: { "<Esc>",                        " Close" }
+    a: { ":CocList diagnostics",             " Diagnostics" }
+    e: { ":CocList extensions",              " Extensions" }
+    c: { ":CocList commands",                " Commands" }
+    o: { ":CocList outline",                 " Outline" }
+    s: { ":CocList -I symbols",              "$ Symbols" }
+    j: { ":CocNext",                         "怜Next item" }
+    k: { ":CocPrev",                         "玲Previous item" }
+    p: { ":CocListResume",                   " Resume latest coc list" }
+
+-- Editors
 -- TODO: find better approach
 eval = (file = vim.g.file_to_eval) ->
   cmd "let g:file_to_eval = substitute(expand('%:p'), 'moon', 'lua', 'g')"
@@ -139,11 +163,10 @@ compile_and_eval = (file) ->
     cmd "luafile $NVIM_ROOT/init.lua"
 
 e = 
-  name: " +Editor"
+  name: " +Editors"
   [" "]: { "<Esc>",                          " Close" }
-  c: { ":e $NVIM_ROOT/init.moon",            " Edit config file" }
   e: { ":Moon require'tsukivim.mappings'.compile_and_eval!",       "省Compile and Eval" }
-  E: { ":Moon require'tsukivim.mappings'.compile_and_eval 'init'",       "省Compile and Eval" }
+  E: { ":Moon require'tsukivim.mappings'.compile_and_eval 'init'", "省Compile and Eval" }
   C: { ":!moonc $NVIM_ROOT/init.moon",       " Compile init file" }
   m: { ":MinimapToggle",                     " Minimap" }
   h: { ":let @/ = ''",                       " No highlight search" }
@@ -206,20 +229,8 @@ l =
   r:  { "<Plug>(coc-references)",            " References" }
   R:  { "<Plug>(coc-rename)",                "凜Rename" }
   f:  { ":Format",                           " Format" }
-  a:  { "<Plug>(coc-codeaction-selected)",   " Code action selected" }
-  c:  { "<Plug>(coc-codeaction)",            " Code action" }
+  a:  { "<Plug>(coc-codeaction)",            " Code action" }
   q:  { "<Plug>(coc-fix-current)",           " Fix current line" }
-  l:
-    name: " +Coc list"
-    [" "]: { "<Esc>",                        " Close" }
-    a: { ":CocList diagnostics",        " Diagnostics" }
-    e: { ":CocList extensions",         " Extensions" }
-    c: { ":CocList commands",           " Commands" }
-    o: { ":CocList outline",            " Outline" }
-    s: { ":CocList -I symbols",         "$ Symbols" }
-    j: { ":CocNext",                    "怜Next item" }
-    k: { ":CocPrev",                    "玲Previous item" }
-    p: { ":CocListResume",              " Resume latest coc list" }
 
 -- Hop / Jump Motions TODO: Use operator Motion
 m =  
@@ -267,7 +278,9 @@ w =
 
 -- Single Mapping
 map =
+  :a
   :b
+  :c
   :e
   :f
   :g

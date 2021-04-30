@@ -9,4 +9,4 @@ cmd "autocmd FileType purescript inoremap <buffer> ;c ⇒<Space>"
 cmd "autocmd FileType purescript inoremap <buffer> ;i ⇐<Space>"
 
 -- auto type
-cmd "autocmd FileType purescript inoremap <buffer> ;n <Esc>0<Esc>yt o<Esc>pa "
+cmd "autocmd FileType purescript inoremap <buffer> ;n <Esc>^<Esc>yt o<Esc>pa "

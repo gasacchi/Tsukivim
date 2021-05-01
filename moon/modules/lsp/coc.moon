@@ -32,9 +32,9 @@ keymap 'i', '<c-space>',
   'coc#refresh()',
   { expr: true, silent: true }
 
--- keymap 'i', '<cr>',
-  -- 'pumvisible() ? coc#_select_confirm() : "<C-g>u<CR><c-r>=coc#on_enter()<CR>"',
-  -- { expr: true, silent: true, noremap: true }
+keymap 'i', '<cr>',
+  'pumvisible() ? coc#_select_confirm() : "<C-g>u<CR><c-r>=coc#on_enter()<CR>"',
+  { expr: true, silent: true, noremap: true }
 
 -- show documentation
 exec [[

@@ -2,6 +2,8 @@
 -- Mappings
 -- ----------------------------------------------------------------------------
 
+-- TODO: create mapping for mark and use insert `m` to use motion
+
 import cmd, let, get from require'modules.builtin'
 import keymap, var from require'modules.builtin'.api
 

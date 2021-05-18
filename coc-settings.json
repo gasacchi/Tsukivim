@@ -40,6 +40,9 @@
       ]
     }
   },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "svelte"
+  ],
   "diagnostic.errorSign": "",
   "diagnostic.warningSign": "",
   "diagnostic.infoSign": "i",

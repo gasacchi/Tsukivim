@@ -163,13 +163,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
-  sonokai = {
-    loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/sonokai"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
   },
   ["vim-polyglot"] = {
     loaded = true,

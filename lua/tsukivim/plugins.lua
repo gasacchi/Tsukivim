@@ -54,7 +54,8 @@ return require'packer'.startup(function(use)
     'lukas-reineke/indent-blankline.nvim',
     branch = 'lua'
   }
-  use 'sainnhe/sonokai'                        -- Themes
+  -- use 'sainnhe/sonokai'                        -- Themes
+  use 'folke/tokyonight.nvim'
   use 'liuchengxu/vim-which-key'               -- WhichKey
   use 'glepnir/dashboard-nvim'                 -- Fancy Dashboard
   use 'akinsho/nvim-bufferline.lua'            -- Bufferline 

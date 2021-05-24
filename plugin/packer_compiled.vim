@@ -71,6 +71,10 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
+  ["animate.vim"] = {
+    loaded = true,
+    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/animate.vim"
+  },
   ["compe-tabnine"] = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/compe-tabnine"
@@ -147,6 +151,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
@@ -186,6 +194,10 @@ _G.packer_plugins = {
   ["vim-which-key"] = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/vim-which-key"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/which-key.nvim"
   }
 }
 

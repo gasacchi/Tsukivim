@@ -11,6 +11,7 @@ function M.init ()
   require'modules.lsp.completion'
   require'modules.lsp.lspkindicons'
   require'modules.lsp.trouble'
+  require'modules.lsp.saga'
 
   -- utils
   require'modules.utils.hop'

@@ -8,7 +8,11 @@ return require'packer'.startup(function(use)
   -- LSP & Completion --------------------------------------------------------
   use 'neovim/nvim-lspconfig'                  -- LSP config quickstart 
   use 'hrsh7th/nvim-compe'                     -- Completion  
-  use {'tzachar/compe-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-compe'}
+  use {
+  'tzachar/compe-tabnine',
+  run = './install.sh',
+  requires = 'hrsh7th/nvim-compe'
+  }
   use 'onsails/lspkind-nvim'                   -- LSP kind icons like vscode
   use 'kosayoda/nvim-lightbulb'                -- add lightbulb
   use 'folke/trouble.nvim'                     -- Pretty Diagnostics
@@ -38,7 +42,6 @@ return require'packer'.startup(function(use)
   use 'folke/todo-comments.nvim'               -- PERF utile
   -- use 'markdown-preview.nvim'               -- Markdown Preview
   -- euclio/vim-markdown-composer
-  -- use 'akinsho/nvim-toggleterm.lua'         -- Terminal TODO
   -- Telescope extensions
   -- use 'nvim-telescope/telescope-project.nvim' -- Manage project
   -----------------------------------------------------------------------------

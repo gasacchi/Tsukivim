@@ -190,6 +190,57 @@ section.left[11]         = {
 }
 
 -- ----------------------------------------------------------------------------
+-- Middle Bar 
+-- ----------------------------------------------------------------------------
+
+section.mid[1] = {
+  ShowLspClient = {
+    provider = 'GetLspClient',
+    condition = function ()
+      local tbl = {['dashboard'] = true,['']=true}
+      if tbl[vim.bo.filetype] then
+        return false
+      end
+      return true
+    end,
+    icon = ' :: ',
+    highlight = {yuno.cyan, yuno.black, 'bold'}
+  }
+}
+
+section.mid[2]           = {
+  DiagnosticError        = {
+    provider             = 'DiagnosticError',
+    icon                 = '   ',
+    highlight            = { yuno.red, yuno.black }
+  }
+}
+
+section.mid[3]           = {
+  DiagnosticWarn         = {
+    provider             = 'DiagnosticWarn',
+    icon                 = '   ',
+    highlight            = { yuno.yellow, yuno.black },
+  }
+}
+
+section.mid[4]           = {
+  DiagnosticHint         = {
+    provider             = 'DiagnosticHint',
+    icon                 = '   ',
+    highlight            = { yuno.cyan, yuno.black },
+  }
+}
+
+section.mid[5]           = {
+  DiagnosticInfo         = {
+    provider             = 'DiagnosticInfo',
+    icon                 = '   ',
+    highlight            = { yuno.blue, yuno.black },
+  }
+}
+
+-- ----------------------------------------------------------------------------
 -- Right Bar 
 -- ----------------------------------------------------------------------------
 
@@ -293,34 +344,7 @@ section.right[13]        = {
   }
 }
 
--- ----------------------------------------------------------------------------
--- Middle Bar 
--- ----------------------------------------------------------------------------
 
---mid[1]                 =
---  DiagnosticError      =
---    provider           = 'DiagnosticError',
---    icon               = '  ',
---    highlight          = { yuno.red }
---
---mid[2]                 =
---  DiagnosticWarn       =
---    provider           = 'DiagnosticWarn',
---    icon               = '  ',
---    highlight          = { yuno.yellow },
---
---mid[3]                 =
---  DiagnosticHint       =
---    provider           = 'DiagnosticHint',
---    icon               = '  ',
---    highlight          = { yuno.cyan },
---
---mid[4]                 =
---  DiagnosticInfo       =
---    provider           = 'DiagnosticInfo',
---    icon               = '  ',
---    highlight          = { yuno.blue },
---
 -- ----------------------------------------------------------------------------
 -- Inactive & Short Left Bar 
 -- ----------------------------------------------------------------------------
@@ -350,3 +374,7 @@ section.short_line_right[1]   = {
     highlight                 = { yuno.fg, yuno.black },
   },
 }
+
+-- override status line bg to fix issue where middle statusline not match
+vim.cmd 'highlight! Statusline guibg=#25253c'
+vim.cmd 'highlight! StatuslineNC guibg=#25253c'

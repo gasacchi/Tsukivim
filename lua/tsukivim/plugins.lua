@@ -11,10 +11,8 @@ return require'packer'.startup(function(use)
   use {'tzachar/compe-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-compe'}
   use 'onsails/lspkind-nvim'                   -- LSP kind icons like vscode
   use 'kosayoda/nvim-lightbulb'                -- TODO: Fix LSP first 
-
-  -- use {'tzachar/compe-tabnine', run:'./install.sh', requires: 'hrsh7th/nvim-compe'}
+  use 'folke/trouble.nvim'                     -- Pretty Diagnostics
   -- use 'glepnir/lspsaga.nvim' TODO 
-  -- use { 'neoclide/coc.nvim', branch: 'release' }
 
   -----------------------------------------------------------------------------
 
@@ -37,7 +35,8 @@ return require'packer'.startup(function(use)
   use 'phaazon/hop.nvim'                       -- Jump / Hop Motion 
   use 'tpope/vim-surround'                     -- Surround 
   use 'kyazdani42/nvim-tree.lua'               -- File Tree  
-  -- use 'markdown-preview.nvim'               -- Markdown Preview TODO
+  use 'folke/todo-comments.nvim'               -- PERF utile
+  -- use 'markdown-preview.nvim'               -- Markdown Preview
   -- euclio/vim-markdown-composer
   -- use 'akinsho/nvim-toggleterm.lua'         -- Terminal TODO
   -- Telescope extensions
@@ -45,7 +44,10 @@ return require'packer'.startup(function(use)
   -----------------------------------------------------------------------------
   
   -- UI -----------------------------------------------------------------------
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'folke/which-key.nvim'                   -- alt whichkey
   use 'kyazdani42/nvim-web-devicons'
+  -- use 'yamatsum/nvim-cursorline'               -- cursorline
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main'
@@ -54,15 +56,15 @@ return require'packer'.startup(function(use)
     'lukas-reineke/indent-blankline.nvim',
     branch = 'lua'
   }
-  -- use 'sainnhe/sonokai'                        -- Themes
   use 'folke/tokyonight.nvim'
   use 'liuchengxu/vim-which-key'               -- WhichKey
   use 'glepnir/dashboard-nvim'                 -- Fancy Dashboard
   use 'akinsho/nvim-bufferline.lua'            -- Bufferline 
   use 'norcalli/nvim-colorizer.lua'            -- HEX Colorizer 
   use 'wfxr/minimap.vim'                       -- blazing fast minimap 
-  --use 'camspiers/animate.vim'                  -- Animated TODO
-  use 'psliwka/vim-smoothie'                      -- Smooth scrolling
+  use 'camspiers/animate.vim'                  -- Animated TODO
+  use 'psliwka/vim-smoothie'                   -- Smooth scrolling
+  -- use 'karb94/neoscroll.nvim'                  -- smooth scrolling in lua
   use 'junegunn/goyo.vim'                      -- Zen Mode 
   -- junegunn/limelight.vim
   -----------------------------------------------------------------------------

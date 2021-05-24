@@ -54,13 +54,13 @@ map.q    = { ":q<cr>",                         " Quit"                       
 
 -- Action TODO
 map.a    = {
-  name   =                                     "省+Actions",
+  name   =                                     "省Actions",
   [" "]  = { "<Esc>",                          " Close"                     },
 }
 
 -- Buffers Mappings
 map.b    = {
-  name   =                                     " +Buffers",
+  name   =                                     " Buffers",
   [" "]  = { "<Esc>",                          " Close"                 },
   D      = { ":bdelete ",                      "﫨Delete Buffer(s)"      },
   b      = { ":Telescope buffers<cr>",         " First buffer"          },
@@ -73,7 +73,7 @@ map.b    = {
 
 -- Editors
 map.e    =  {
-  name   =                                     " +Editors",
+  name   =                                     " Editors",
   [" "]  = { "<Esc>",                          " Close"              },
   e      = { ":luafile %<cr>",                 "省Eval current file"  },
   E      = { ":luafile $MYVIMRC<cr>",          "省Eval init.lua"      },
@@ -86,7 +86,7 @@ map.e    =  {
 
 -- Files
 map.f    = {
-  name   =                                            " +Files",
+  name   =                                            " Files",
   [" "]  = { "<Esc>",                                 " Close" },
   e      = { ":e ",                                   " Edit file(s)" },
   S      = { ":wq<cr>",                               " Save and exit" },
@@ -98,7 +98,7 @@ map.f    = {
 
 -- Git TODO = Still Cannot Commiting Neogit Bug
 map.g    = {
-  name   =                                                   " +Git",
+  name   =                                                   " Git",
   [" "]  = { "<Esc>",                                        " Close"          },
   g      = { ":lua require'neogit'.open{kind='split'}<cr>",  " Neogit"         },
   c      = { ":Neogit commit<cr>",                           " Commit"         },
@@ -114,7 +114,7 @@ map.g    = {
 
 -- Help
 map.h    = {
-  name   =                                            " +Help",
+  name   =                                            " Help",
   [" "]  = { "<Esc>",                                 " Close"              },
   H      = { ":Telescope highlights<cr>",             " Highlights"         },
   h      = { ":Telescope help_tags<cr>",              " Help tags"          },
@@ -123,7 +123,7 @@ map.h    = {
 
 -- LSP
 map.l    = {
-  name   =                                        " +LSP",
+  name   =                                        " LSP",
   [" "]  = { "<Esc>",                             " Close"                  },
   h      =                                        " Hover documentation",
   H      =                                        " Help",
@@ -137,10 +137,14 @@ map.l    = {
   R      =                                        "凜Rename",
   f      =                                        " Format",
   a      =                                        " Code action",
+  l      =                                        " Loclist",
+  s      =                                        " Lsp finder",
   q      =                                        " Quickfix", -- FIX
+  E      =                                        " Show line diagnostics",
   e      =                                        " Show line diagnostics",
+  X      =                                        "_ Show line diagnostics",
   w      = {
-    name   =                                      "華+Workspace",
+    name   =                                      "華Workspace",
     [" "]  = { "<Esc>",                           " Close"                  },
     a    =                                        " Add workspace folder",
     r    =                                        "凜Remove workspace folder",
@@ -151,7 +155,7 @@ map.l    = {
 
 -- Hop / Jump Motions TODO = Use operator Motion
 map.m    = {
-  name   =                                        "省+Motion",
+  name   =                                        "省Motion",
   [" "]  = { "<Esc>",                             " Close"                  },
   w      = { ":HopWord<cr>",                      " Hop word"               },
   p      = { ":HopPattern<cr>",                   " Hop pattern"            },
@@ -162,15 +166,15 @@ map.m    = {
 
 -- Open
 map.o    = {
-  name   =                                            "冷+Open",
+  name   =                                            "冷Open",
   [" "]  = { "<Esc>",                                 " Close"              },
-  e      = { ":NvimTreeToggle<cr>",                       "滑Tree"               },
-  g      = { ":LazyGit<cr>",                              " LazyGit"            },
+  e      = { ":NvimTreeToggle<cr>",                   "滑Tree"               },
+  g      = { ":LazyGit<cr>",                          " LazyGit"            },
 }
 
 -- packer plugin manager
 map.p    = {
-  name   =                                            " +Plugin",
+  name   =                                            " Plugin",
   [" "]  = { "<Esc>",                                 " Close" },
   C      = { ":PackerClean<cr>",                      "﯊ Clean" },
   c      = { ":PackerCompile<cr>",                    " Compile" },
@@ -181,7 +185,7 @@ map.p    = {
 
 -- Search with Telescope
 map.s    = {
-  name   = " +Search",
+  name   = " Search",
   [" "]  = { "<Esc>",                              " Close"                     },
   ["."]  = { ":Telescope live_grep<cr>",           " Grep in current directory" },
   ["'"]  = { ":Telescope grep_string<cr>",         " Grep string ."             },
@@ -196,7 +200,7 @@ map.s    = {
   F      = { ":Telescope file_browser<cr>",        " File browser"              },
   g      = {
     [" "]= { "<Esc>",                              " Close"                     },
-    name = " +Git",
+    name = " Git",
     g    = { ":Telescope git_files<cr>",           " Files"                     },
     c    = { ":Telescope git_commits<cr>",         " Commits"                   },
     C    = { ":Telescope git_bcommits<cr>",        " Buffer commits"            },
@@ -206,7 +210,7 @@ map.s    = {
   h      = { ":Telescope oldfiles<cr>",            " History"                   },
   k      = { ":Telescope keymaps<cr>",             " Keymaps"                   },
   l      = {
-    name = " +LSP",
+    name = " LSP",
     [" "]= { "<Esc>",                                     " Close"              },
     ["."]= { ":Telescope lsp_definitions<cr>",            " Definitions"        },
     r    = { ":Telescope lsp_references<cr>",             " References"         },
@@ -229,7 +233,7 @@ map.s    = {
 
 -- Todos
 map.t    = {
-  name   =                                            " +Todo",
+  name   =                                            " Todo",
   [" "]  = { "<Esc>",                                 " Close" },
   s      = { ":TodoTelescope<cr>",                    " Telescope" },
   t      = { ":TodoTrouble<cr>",                      "陼Trouble" },
@@ -238,7 +242,7 @@ map.t    = {
 }
 -- Window FIXME window resize
 map.w    = {
-  name   =                                            " +Window",
+  name   =                                            " Window",
   [" "]  = { "<Esc>",                                 " Close"              },
   H      = { ":call animate#window_delta_width(-10)<cr>",  " Resize vertical"    },
   L      = { ":call animate#window_delta_width(10)<cr>",  " Resize vertical"    },

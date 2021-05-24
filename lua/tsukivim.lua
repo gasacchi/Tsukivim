@@ -10,6 +10,7 @@ function M.init ()
   require'modules.lsp' -- neovim lsp config
   require'modules.lsp.completion'
   require'modules.lsp.lspkindicons'
+  require'modules.lsp.trouble'
 
   -- utils
   require'modules.utils.hop'
@@ -17,6 +18,7 @@ function M.init ()
   require'modules.utils.neogit'
   require'modules.utils.nvimtree'
   require'modules.utils.telescope'
+  require'modules.utils.todo-comments'
 
   -- ui
   require'modules.ui.colorscheme'
@@ -29,6 +31,7 @@ function M.init ()
   require'modules.ui.minimap'
   require'modules.ui.whichkey'
   require'modules.ui.statusline'
+  require'modules.ui.treesitter'
 end
 
 return M

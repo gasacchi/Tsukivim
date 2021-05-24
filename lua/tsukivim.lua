@@ -19,9 +19,9 @@ function M.init ()
   require'modules.utils.telescope'
 
   -- ui
+  require'modules.ui.colorscheme'
   require'modules.ui.bufferline'
   require'modules.ui.colorizer'
-  require'modules.ui.colorscheme'
   require'modules.ui.dashboard'
   require'modules.ui.gitsigns'
   require'modules.ui.goyo'

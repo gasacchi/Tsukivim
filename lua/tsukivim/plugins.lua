@@ -7,6 +7,7 @@ return require'packer'.startup(function(use)
 
   -- LSP & Completion --------------------------------------------------------
   use 'neovim/nvim-lspconfig'                  -- LSP config quickstart 
+  use 'kabouzeid/nvim-lspinstall'              -- LSP installer
   use 'hrsh7th/nvim-compe'                     -- Completion  
   use {
   'tzachar/compe-tabnine',

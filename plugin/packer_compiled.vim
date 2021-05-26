@@ -119,6 +119,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
   ["minimap.vim"] = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/minimap.vim"
@@ -175,9 +179,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
+  ["todo-comments.nvim"] = {
+    loaded = true,
+    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
+  },
   ["tokyonight.nvim"] = {
     loaded = true,
     path = "/home/gsc/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
+  },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/trouble.nvim"
   },
   ["vim-polyglot"] = {
     loaded = true,

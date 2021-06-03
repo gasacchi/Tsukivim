@@ -8,7 +8,7 @@ return require'packer'.startup(function(use)
   -- LSP & Completion --------------------------------------------------------
   use 'neovim/nvim-lspconfig'                  -- LSP config quickstart 
   use 'kabouzeid/nvim-lspinstall'              -- LSP installer
-  use 'hrsh7th/nvim-compe'                     -- Completion  
+  use 'hrsh7th/nvim-compe'                     -- Completion 
   use {
   'tzachar/compe-tabnine',
   run = './install.sh',
@@ -18,6 +18,8 @@ return require'packer'.startup(function(use)
   use 'kosayoda/nvim-lightbulb'                -- add lightbulb
   use 'folke/trouble.nvim'                     -- Pretty Diagnostics
   use 'glepnir/lspsaga.nvim'                   -- LSP UI
+
+
 
   -----------------------------------------------------------------------------
 
@@ -34,11 +36,11 @@ return require'packer'.startup(function(use)
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'}
     }
-  } 
+  }
   use 'kdheepak/lazygit.nvim'                  -- Lazygit wrapper
   use 'b3nj5m1n/kommentary'                    -- Code Comment 
   use 'phaazon/hop.nvim'                       -- Jump / Hop Motion 
-  use 'tpope/vim-surround'                     -- Surround 
+  use 'tpope/vim-surround'                     -- Surround
   use 'kyazdani42/nvim-tree.lua'               -- File Tree  
   use 'folke/todo-comments.nvim'               -- PERF utile
   -- use 'markdown-preview.nvim'               -- Markdown Preview
@@ -46,12 +48,12 @@ return require'packer'.startup(function(use)
   -- Telescope extensions
   -- use 'nvim-telescope/telescope-project.nvim' -- Manage project
   -----------------------------------------------------------------------------
-  
+
   -- UI -----------------------------------------------------------------------
   use 'nvim-treesitter/nvim-treesitter'
   use 'folke/which-key.nvim'                   -- alt whichkey
   use 'kyazdani42/nvim-web-devicons'
-  -- use 'yamatsum/nvim-cursorline'               -- cursorline
+  use 'yamatsum/nvim-cursorline'               -- cursorline
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main'
@@ -65,14 +67,14 @@ return require'packer'.startup(function(use)
   use 'glepnir/dashboard-nvim'                 -- Fancy Dashboard
   use 'akinsho/nvim-bufferline.lua'            -- Bufferline 
   use 'norcalli/nvim-colorizer.lua'            -- HEX Colorizer 
-  use 'wfxr/minimap.vim'                       -- blazing fast minimap 
-  use 'camspiers/animate.vim'                  -- Animated TODO
+  use 'wfxr/minimap.vim'                       -- blazing fast minimap
+  use 'camspiers/animate.vim'                  -- Animated
   use 'psliwka/vim-smoothie'                   -- Smooth scrolling
   -- use 'karb94/neoscroll.nvim'                  -- smooth scrolling in lua
-  use 'junegunn/goyo.vim'                      -- Zen Mode 
+  use 'junegunn/goyo.vim'                      -- Zen Mode
   -- junegunn/limelight.vim
   -----------------------------------------------------------------------------
-  
+
   -- Language, etc. -----------------------------------------------------------
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
   -----------------------------------------------------------------------------

@@ -78,7 +78,7 @@
 --vim.cmd 'set termguicolors'
 
 
-vim.g.tokyonight_transparent = true
+-- vim.g.tokyonight_transparent = true
 
 vim.cmd[[colorscheme tokyonight]]
 

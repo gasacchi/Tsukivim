@@ -74,7 +74,19 @@ local function make_config()
   }
 end
 
+local config = make_config()
 
+local function rescript_server()
+  require'lspconfig'.rescriptls.setup{
+    on_attach = on_attach,
+    cmd = {
+      'node',
+      '/home/gsc/.local/share/nvim/site/pack/packer/start/vim-rescript/server/out/server.js',
+      '--stdio'
+    }
+  }
+
+end
 local function setup_servers()
   require'lspinstall'.setup()
 
@@ -82,7 +94,6 @@ local function setup_servers()
   local servers = require'lspinstall'.installed_servers()
 
   for _, server in pairs(servers) do
-    local config = make_config()
 
     -- language specific config
     if server == "lua" then
@@ -91,7 +102,10 @@ local function setup_servers()
 
     require'lspconfig'[server].setup(config)
   end
+  rescript_server()
+
 end
+
 
 setup_servers()
 

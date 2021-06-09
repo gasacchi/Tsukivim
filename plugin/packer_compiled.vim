@@ -47,8 +47,8 @@ local function save_profiles(threshold)
 end
 
 time("Luarocks path setup", true)
-local package_path_str = "/home/gsc/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/gsc/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/gsc/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/gsc/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/gsc/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/gasacchi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/gasacchi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/gasacchi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/gasacchi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/gasacchi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -62,8 +62,9 @@ time("try_loadstring definition", true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
-    print('Error running ' .. component .. ' for ' .. name)
-    error(result)
+    vim.schedule(function()
+      vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
+    end)
   end
   return result
 end
@@ -73,147 +74,151 @@ time("Defining packer_plugins", true)
 _G.packer_plugins = {
   ["animate.vim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/animate.vim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/animate.vim"
   },
   ["compe-tabnine"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/compe-tabnine"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/compe-tabnine"
   },
   ["dashboard-nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
   },
   ["galaxyline.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["git-blame.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/git-blame.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/git-blame.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   ["goyo.vim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/goyo.vim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/goyo.vim"
   },
   ["hop.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/hop.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/hop.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
   kommentary = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/kommentary"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/kommentary"
   },
   ["lazygit.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
   ["minimap.vim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/minimap.vim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/minimap.vim"
   },
   neogit = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/neogit"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/neogit"
   },
   ["nvim-bufferline.lua"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-compe"
+  },
+  ["nvim-cursorline"] = {
+    loaded = true,
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-cursorline"
   },
   ["nvim-lightbulb"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["todo-comments.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
   },
   ["trouble.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/trouble.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/trouble.nvim"
   },
   ["vim-polyglot"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/vim-polyglot"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-polyglot"
   },
   ["vim-smoothie"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/vim-smoothie"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-smoothie"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-which-key"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/vim-which-key"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-which-key"
   },
   ["which-key.nvim"] = {
     loaded = true,
-    path = "/home/gsc/.local/share/nvim/site/pack/packer/start/which-key.nvim"
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/which-key.nvim"
   }
 }
 

@@ -76,10 +76,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/animate.vim"
   },
-  ["compe-tabnine"] = {
-    loaded = true,
-    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/compe-tabnine"
-  },
   ["dashboard-nvim"] = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
@@ -203,6 +199,10 @@ _G.packer_plugins = {
   ["vim-polyglot"] = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-polyglot"
+  },
+  ["vim-rescript"] = {
+    loaded = true,
+    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-rescript"
   },
   ["vim-smoothie"] = {
     loaded = true,

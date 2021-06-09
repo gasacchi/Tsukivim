@@ -70,5 +70,6 @@ return require'packer'.startup(function(use)
 
   -- Language, etc. -----------------------------------------------------------
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
+  use 'rescript-lang/vim-rescript'             -- rescript and lsp
   -----------------------------------------------------------------------------
   end)

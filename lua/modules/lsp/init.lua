@@ -81,7 +81,7 @@ local function rescript_server()
     on_attach = on_attach,
     cmd = {
       'node',
-      '/home/gsc/.local/share/nvim/site/pack/packer/start/vim-rescript/server/out/server.js',
+      '/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-rescript/server/out/server.js',
       '--stdio'
     }
   }

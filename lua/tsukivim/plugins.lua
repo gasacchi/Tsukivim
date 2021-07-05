@@ -53,7 +53,7 @@ return require'packer'.startup(function(use)
   }
   use {                                        -- Indent Guide
     'lukas-reineke/indent-blankline.nvim',
-    branch = 'lua'
+    -- branch = 'lua'
   }
   use 'folke/tokyonight.nvim'
   use 'liuchengxu/vim-which-key'               -- WhichKey

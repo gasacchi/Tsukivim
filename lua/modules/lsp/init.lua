@@ -12,32 +12,32 @@ local on_attach = function(_, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', '<leader>ld', '<cmd>Lspsaga preview_definition<CR>', opts)
-  buf_set_keymap('n', '<leader>lh', '<cmd>Lspsaga hover_doc<CR>', opts)
-  buf_set_keymap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<leader>lH', '<cmd>Lspsaga signature_help<CR>', opts)
-  buf_set_keymap('n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>lR', '<cmd>Lspsaga rename<CR>', opts)
-  buf_set_keymap('n', '<leader>lx', '<cmd>Lspsaga show_line_diagnostics<CR>', opts)
-  buf_set_keymap('n', '<leader>lX', '<cmd>Lspsaga show_cursor_diagnostics<CR>', opts)
-  buf_set_keymap('n', '<leader>la', '<cmd>Lspsaga code_action<CR>', opts)
-  buf_set_keymap('v', '<leader>la', '<cmd>Lspsaga range_code_action<CR>', opts)
-  buf_set_keymap('n', '<leader>ls', '<cmd>Lspsaga lsp_finder<CR>', opts)
-  buf_set_keymap('n', '<leader>lr', '<cmd>Trouble lsp_references<CR>', opts)
-  buf_set_keymap('n', '<leader>le', '<cmd>Trouble lsp_document_diagnostics<CR>', opts)
-  buf_set_keymap('n', '<leader>lp', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
-  buf_set_keymap('n', '<leader>ln', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
-  buf_set_keymap('n', '<leader>lq', '<cmd>Trouble quikfix<CR>', opts)
-  buf_set_keymap('n', '<leader>ll', '<cmd>Trouble loclist<CR>', opts)
-  buf_set_keymap('n', '<leader>lW', '<cmd>Trouble lsp_workspace_diagnostics<CR>', opts)
-  buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap('n', '<leader>lD', ':lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<leader>ld', ':Lspsaga preview_definition<CR>', opts)
+  buf_set_keymap('n', '<leader>lh', ':Lspsaga hover_doc<CR>', opts)
+  buf_set_keymap('n', '<leader>li', ':lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<leader>lH', ':Lspsaga signature_help<CR>', opts)
+  buf_set_keymap('n', '<leader>lwa', ':lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<leader>lwr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<leader>lwl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>lR', ':Lspsaga rename<CR>', opts)
+  buf_set_keymap('n', '<leader>lx', ':Lspsaga show_line_diagnostics<CR>', opts)
+  buf_set_keymap('n', '<leader>lX', ':Lspsaga show_cursor_diagnostics<CR>', opts)
+  buf_set_keymap('n', '<leader>la', ':Lspsaga code_action<CR>', opts)
+  buf_set_keymap('v', '<leader>la', ':Lspsaga range_code_action<CR>', opts)
+  buf_set_keymap('n', '<leader>ls', ':Lspsaga lsp_finder<CR>', opts)
+  buf_set_keymap('n', '<leader>lr', ':Trouble lsp_references<CR>', opts)
+  buf_set_keymap('n', '<leader>le', ':Trouble lsp_document_diagnostics<CR>', opts)
+  buf_set_keymap('n', '<leader>lp', ':Lspsaga diagnostic_jump_prev<CR>', opts)
+  buf_set_keymap('n', '<leader>ln', ':Lspsaga diagnostic_jump_next<CR>', opts)
+  buf_set_keymap('n', '<leader>lq', ':Trouble quikfix<CR>', opts)
+  buf_set_keymap('n', '<leader>ll', ':Trouble loclist<CR>', opts)
+  buf_set_keymap('n', '<leader>lW', ':Trouble lsp_workspace_diagnostics<CR>', opts)
+  buf_set_keymap("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<CR>", opts)
 
-  buf_set_keymap("n", "<C-f>", "<cmd>lua require'lspsaga.action'.smart_scroll_with_saga(1)<CR>", opts)
-  buf_set_keymap("n", "<C-b>", "<cmd>lua require'lspsaga.action'.smart_scroll_with_saga(-1)<CR>", opts)
+  buf_set_keymap("n", "<C-f>", ":lua require'lspsaga.action'.smart_scroll_with_saga(1)<CR>", opts)
+  buf_set_keymap("n", "<C-b>", ":lua require'lspsaga.action'.smart_scroll_with_saga(-1)<CR>", opts)
 end
 
 
@@ -92,7 +92,7 @@ local function setup_servers()
     require'lspconfig'[server].setup(config)
   end
 
-require'lspconfig'.fsautocomplete.setup{}
+require'lspconfig'.fsautocomplete.setup(config)
 
 end
 

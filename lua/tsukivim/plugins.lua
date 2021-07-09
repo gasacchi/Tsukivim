@@ -13,7 +13,7 @@ return require'packer'.startup(function(use)
   use 'kosayoda/nvim-lightbulb'                -- add lightbulb
   use 'folke/trouble.nvim'                     -- Pretty Diagnostics
   use 'glepnir/lspsaga.nvim'                   -- LSP UI
-
+  -- use 'tamago324/nlsp-settings.nvim'           -- Lsp setting with json
   -----------------------------------------------------------------------------
 
   -- Git ----------------------------------------------------------------------
@@ -31,11 +31,12 @@ return require'packer'.startup(function(use)
     }
   }
   use 'kdheepak/lazygit.nvim'                  -- Lazygit wrapper
-  use 'b3nj5m1n/kommentary'                    -- Code Comment 
+  use 'b3nj5m1n/kommentary'                    -- Code Comment  TODO: mappings
   use 'phaazon/hop.nvim'                       -- Jump / Hop Motion 
   use 'tpope/vim-surround'                     -- Surround
   use 'kyazdani42/nvim-tree.lua'               -- File Tree  
   use 'folke/todo-comments.nvim'               -- PERF utile
+  -- use 'vhyrro/neorg'                           -- Org mode in neovim
   -- use 'markdown-preview.nvim'               -- Markdown Preview
   -- euclio/vim-markdown-composer
   -- Telescope extensions
@@ -65,11 +66,13 @@ return require'packer'.startup(function(use)
   use 'psliwka/vim-smoothie'                   -- Smooth scrolling
   -- use 'karb94/neoscroll.nvim'                  -- smooth scrolling in lua
   use 'junegunn/goyo.vim'                      -- Zen Mode
+  -- use 'Pocco81/TrueZen.nvim'                   -- Zen Mode written in lua
   -- junegunn/limelight.vim
   -----------------------------------------------------------------------------
 
   -- Language, etc. -----------------------------------------------------------
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
-  use 'rescript-lang/vim-rescript'             -- rescript and lsp
+  -- fsharp
+  -- use 'fsharp/vim-fsharp'                      -- Fsharp tooling
   -----------------------------------------------------------------------------
   end)

@@ -1,7 +1,6 @@
 local M = {}
 
 function M.init ()
-  require'modules.utils.polyglot'
   -- core
   require'tsukivim.plugins'
   require'tsukivim.mappings'

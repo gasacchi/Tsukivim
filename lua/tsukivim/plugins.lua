@@ -71,9 +71,7 @@ return require'packer'.startup(function(use)
   -----------------------------------------------------------------------------
 
   -- Language, etc. -----------------------------------------------------------
-  use 'adelarsq/neofsharp.vim'                 -- fsharp syntax
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
-  -- fsharp
-  -- use 'fsharp/vim-fsharp'                      -- Fsharp tooling
+  -- use 'frigoeu/psc-ide-vim'
   -----------------------------------------------------------------------------
   end)

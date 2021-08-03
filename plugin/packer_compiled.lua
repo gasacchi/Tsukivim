@@ -121,10 +121,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/minimap.vim"
   },
-  ["neofsharp.vim"] = {
-    loaded = true,
-    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/neofsharp.vim"
-  },
   neogit = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/neogit"

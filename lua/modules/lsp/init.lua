@@ -92,7 +92,8 @@ local function setup_servers()
     require'lspconfig'[server].setup(config)
   end
 
-require'lspconfig'.fsautocomplete.setup(config)
+require'lspconfig'.hls.setup(config)
+require'lspconfig'.purescriptls.setup(config)
 
 end
 

@@ -1,8 +1,8 @@
-----------------------------------------------------------------------------
+---------------------------------------------------------------------------
 -- Mappings
 -- ----------------------------------------------------------------------------
 
--- TODO = create mapping for mark and use insert `m` to use motion
+-- TODO: create mapping for mark and use insert `m` to use motion
 
 local keymap = vim.api.nvim_set_keymap 
 local setvar = vim.api.nvim_set_var
@@ -26,8 +26,11 @@ keymap("n", "<UP>",   "<NOP>", opts)
 keymap("i", "jk","<ESC>", opts)
 -- Escape from command mode with jk
 keymap("c", "jk","<C-c>", opts)
--- Map Ctrl + Backspace to delete word
-keymap("i", "<C-H>", "<C-W>", opts )
+-- Use Y to yank from current cursor to end of a line
+keymap("n", "Y", "y$", opts )
+-- consistent jump in middle
+keymap("n", "n", "nzz", opts )
+keymap("n", "N", "Nzz", opts )
 
 -- Map q to exit help
 cmd "autocmd FileType help noremap <buffer> q :close<CR>"
@@ -41,6 +44,12 @@ vim.g.timeoutlen = 500
 keymap("n", " ", ":WhichKey <leader><cr>", opts )
 require'modules.ui.whichkey'
 
+
+-- print function
+local function cmdp(c,message)
+  return string.format("%s<cr>:echohl Error | echon '  ' | echohl String | echon '::' | echohl Boolean | echon ' %s' | echohl None<cr>", c, message)
+end
+
 -- set keybind
 local wk = require'which-key'
 
@@ -52,7 +61,7 @@ map["."] = { ":Telescope find_files<cr>",      " Find File"                  
 map.Q    = { ":q!<cr>",                        " Quit Without Saving"        }
 map.q    = { ":q<cr>",                         " Quit"                       }
 
--- Action TODO
+-- Action TODO: add action keymap
 map.a    = {
   name   =                                     "省Actions",
   [" "]  = { "<Esc>",                          " Close"                     },
@@ -62,26 +71,35 @@ map.a    = {
 map.b    = {
   name   =                                     " Buffers",
   [" "]  = { "<Esc>",                          " Close"                 },
-  D      = { ":bdelete ",                      "﫨Delete Buffer(s)"      },
   b      = { ":Telescope buffers<cr>",         " First buffer"          },
-  d      = { ":bdelete %<cr>",                 " Delete current buffer" },
-  f      = { ":bfirst<cr>",                    " First buffer"          },
-  l      = { ":blast<cr>",                     " Last buffer"           },
-  n      = { ":BufferLineCycleNext<cr>",       " Next buffer"           },
-  p      = { ":BufferLineCyclePrev<cr>",       " Previous buffer"       },
+  d      = { cmdp(":bdelete %", "Buffer deleted"),
+             " Delete current buffer"                                   },
+  f      = { cmdp(":bfirst", "Move to first buffer"),
+             " First buffer"                                            },
+  l      = { cmdp(":blast", "Move to last buffer"),
+             " Last buffer"                                             },
+  n      = { cmdp(":BufferLineCycleNext", "Move to next buffer"),
+             " Next buffer"                                             },
+  p      = { cmdp(":BufferLineCyclePrev", "Move to previous buffer"),
+             " Previous buffer"                                         },
 }
 
 -- Editors
 map.e    =  {
   name   =                                     " Editors",
   [" "]  = { "<Esc>",                          " Close"              },
-  e      = { ":luafile %<cr>",                 "省Eval current file"  },
-  E      = { ":luafile $MYVIMRC<cr>",          "省Eval init.lua"      },
-  m      = { ":MinimapToggle<cr>",             " Minimap"            },
-  h      = { ":let @/ = ''<cr>",               " No highlight search"},
-  n      = { ":set invnumber<cr>",             " Line number"        },
-  r      = { ":set invrelativenumber<cr>",     " Line number"        },
-  z      = { ":Goyo<cr>",                      " Zen mode"           },
+  e      = { cmdp(":luafile %", "Current file evaluated"),
+             "省Eval current file"  },
+  E      = { cmdp(":luafile $MYVIMRC", "Init.lua evaluated"),
+             "省Eval init.lua"      },
+  h      = { cmdp(":let @/ = ''", "highlight search off"),
+             " No highlight search"},
+  n      = { cmdp(":set invnumber", "Toggle number line"),
+             " Line number"        },
+  r      = { cmdp(":set invrelativenumber", "Toggle relative line"),
+             " Line number"        },
+  z      = { cmdp(":Goyo", "Toggle zen mode"),
+             " Zen mode"           },
 }
 
 -- Files
@@ -91,12 +109,12 @@ map.f    = {
   e      = { ":e ",                                   " Edit file(s)" },
   S      = { ":wq<cr>",                               " Save and exit" },
   n      = { ":DashboardNewFile<cr>",                 " New file" },
-  s      = { ":w<cr>",                                " Save file" },
-  k      = { ":SessionSave<cr>",                      " Keep session" },
-  l      = { ":SessionLoad<cr>",                      " Last session" },
+  s      = { cmdp(":w", vim.fn.expand('%') .. " saved"),                                " Save file" },
+  k      = { cmdp(":SessionSave", "Session saved"),                      " Keep session" },
+  l      = { cmdp(":SessionLoad", "Session loaded"),                      " Last session" },
 }
 
--- Git TODO = Still Cannot Commiting Neogit Bug
+-- Git TODO:Still Cannot Commiting Neogit Bug
 map.g    = {
   name   =                                                   " Git",
   [" "]  = { "<Esc>",                                        " Close"          },
@@ -153,7 +171,7 @@ map.l    = {
 }
 
 
--- Hop / Jump Motions TODO = Use operator Motion
+-- Hop / Jump Motions TODO:Use operator Motion
 map.m    = {
   name   =                                        "省Motion",
   [" "]  = { "<Esc>",                             " Close"                  },
@@ -168,19 +186,27 @@ map.m    = {
 map.o    = {
   name   =                                            "冷Open",
   [" "]  = { "<Esc>",                                 " Close"              },
-  e      = { ":NvimTreeToggle<cr>",                   "滑Tree"               },
   g      = { ":LazyGit<cr>",                          " LazyGit"            },
+  e      = { cmdp(":NvimTreeToggle", "Toggle nvimtree"),
+             "滑Tree"               },
+  m      = { cmdp(":MinimapToggle", "Toggle minimap"),
+             " Minimap"            },
 }
 
 -- packer plugin manager
 map.p    = {
   name   =                                            " Plugin",
   [" "]  = { "<Esc>",                                 " Close" },
-  C      = { ":PackerClean<cr>",                      "﯊ Clean" },
-  c      = { ":PackerCompile<cr>",                    " Compile" },
-  i      = { ":PackerInstall<cr>",                    " Install" },
-  s      = { ":PackerSync<cr>",                       "痢Sync" },
-  u      = { ":PackerUpdate<cr>",                     " Update" },
+  C      = { cmdp(":PackerClean", "Plugin cleaned"),
+             "﯊Clean" },
+  c      = { cmdp(":PackerCompile", "Plugin compiled"),
+             " Compile" },
+  i      = { cmdp(":PackerInstall", "Plugin install"),
+             " Install" },
+  s      = { cmdp(":PackerSync", "Sync Plugin"),
+             "痢Sync" },
+  u      = { cmdp(":PackerUpdate", "Update Plugin"),
+             " Update" },
 }
 
 -- Search with Telescope
@@ -234,16 +260,15 @@ map.s    = {
 -- Todos
 map.t    = {
   name   =                                            " Todo",
-  [" "]  = { "<Esc>",                                 " Close" },
+  [" "]  = { "<Esc>",                                 " Close"              },
   s      = { ":TodoTelescope<cr>",                    " Telescope" },
   t      = { ":TodoTrouble<cr>",                      "陼Trouble" },
   -- use trouble instead
   -- q      = { ":TodoQuickFix<cr>",                     " Quickfix" },
 }
--- Window FIXME window resize
+-- Window FIXME: window resize
 map.w    = {
   name   =                                            " Window",
-  [" "]  = { "<Esc>",                                 " Close"              },
   H      = { ":call animate#window_delta_width(-10)<cr>",  " Resize vertical"    },
   L      = { ":call animate#window_delta_width(10)<cr>",  " Resize vertical"    },
   J      = { ":call animate#window_delta_height(-10)<cr>", " Resize horizontal"  },
@@ -261,8 +286,6 @@ map.w    = {
   s      = { ":split<cr>",                                "祈Horizontal split"   },
   v      = { ":vsplit<cr>",                               " Vertical split"    },
 }
-
-
 
 
 wk.register(map, { prefix = '<leader>' })

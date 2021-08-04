@@ -1,18 +1,20 @@
 vim.cmd'packadd packer.nvim'
 
+
+-- (): already using lua
 return require'packer'.startup(function(use)
   -- Package Manager ----------------------------------------------------------
-  use 'wbthomason/packer.nvim'                 -- Packer 
+  use 'wbthomason/packer.nvim'                 -- Plugin Manager 
   -----------------------------------------------------------------------------
 
   -- LSP & Completion --------------------------------------------------------
-  use 'neovim/nvim-lspconfig'                  -- LSP config quickstart 
-  use 'kabouzeid/nvim-lspinstall'              -- LSP installer
+  use 'neovim/nvim-lspconfig'                  -- Config quickstart 
+  use 'kabouzeid/nvim-lspinstall'              -- Installer 
   use 'hrsh7th/nvim-compe'                     -- Completion 
-  use 'onsails/lspkind-nvim'                   -- LSP kind icons like vscode
-  use 'kosayoda/nvim-lightbulb'                -- add lightbulb
+  use 'onsails/lspkind-nvim'                   -- LSP kind icons like vscode 
+  use 'kosayoda/nvim-lightbulb'                -- Lightbulb 
   use 'folke/trouble.nvim'                     -- Pretty Diagnostics
-  use 'glepnir/lspsaga.nvim'                   -- LSP UI
+  use 'glepnir/lspsaga.nvim'                   -- LSP UI 
   -- use 'tamago324/nlsp-settings.nvim'           -- Lsp setting with json
   -----------------------------------------------------------------------------
 
@@ -36,6 +38,7 @@ return require'packer'.startup(function(use)
   use 'tpope/vim-surround'                     -- Surround
   use 'kyazdani42/nvim-tree.lua'               -- File Tree  
   use 'folke/todo-comments.nvim'               -- PERF utile
+  -- use ''                           -- neovim snippet
   -- use 'vhyrro/neorg'                           -- Org mode in neovim
   -- use 'markdown-preview.nvim'               -- Markdown Preview
   -- euclio/vim-markdown-composer

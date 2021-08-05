@@ -109,7 +109,7 @@ map.f    = {
   e      = { ":e ",                                   " Edit file(s)" },
   S      = { ":wq<cr>",                               " Save and exit" },
   n      = { ":DashboardNewFile<cr>",                 " New file" },
-  s      = { cmdp(":w", vim.fn.expand('%') .. " saved"),                                " Save file" },
+  s      = { cmdp(":w", "File saved"),                                " Save file" },
   k      = { cmdp(":SessionSave", "Session saved"),                      " Keep session" },
   l      = { cmdp(":SessionLoad", "Session loaded"),                      " Last session" },
 }
@@ -139,10 +139,12 @@ map.h    = {
   m      = { ":Telescope man_pages<cr>",              "龎 Manual pages"      },
 }
 
+
 -- LSP
 map.l    = {
   name   =                                        " LSP",
   [" "]  = { "<Esc>",                             " Close"                  },
+  ["."]  =                                        " Lsp finder Ref & Def",
   h      =                                        " Hover documentation",
   H      =                                        " Help",
   n      =                                        "怜Diagnostics next",
@@ -151,18 +153,13 @@ map.l    = {
   D      =                                        " Declaration",
   t      =                                        " Type definitions",
   i      =                                        " Implementation",
-  r      =                                        " References",
   R      =                                        "凜Rename",
   f      =                                        " Format",
   a      =                                        " Code action",
-  l      =                                        " Loclist",
-  s      =                                        " Lsp finder",
-  q      =                                        " Quickfix", -- FIX
-  E      =                                        " Show line diagnostics",
-  e      =                                        " Show line diagnostics",
-  X      =                                        "_ Show line diagnostics",
+  x      =                                        " Show line diagnostics",
+  X      =                                        "_ Show cursor diagnostics",
   w      = {
-    name   =                                      "華Workspace",
+    name   =                                      "華Workspace action",
     [" "]  = { "<Esc>",                           " Close"                  },
     a    =                                        " Add workspace folder",
     r    =                                        "凜Remove workspace folder",
@@ -217,6 +214,7 @@ map.s    = {
   ["'"]  = { ":Telescope grep_string<cr>",         " Grep string ."             },
   [";"]  = { ":Telescope filetypes<cr>",           " Filetypes"                 },
   [","]  = { ":Telescope colorscheme<cr>",         " Colorschemes"              },
+  ["?"]  = { ":TodoTelescope<cr>",                 " TODO"                      },
   b      = { ":Telescope buffers<cr>",             "﬘ Buffers"                   },
   B      = { ":Telescope builtin<cr>",             " Builtins"                  },
   c      = { ":Telescope commands<cr>",            " Commands"                  },
@@ -259,13 +257,15 @@ map.s    = {
 
 -- Todos
 map.t    = {
-  name   =                                            " Todo",
+  name   =                                            " Trouble Lsp",
   [" "]  = { "<Esc>",                                 " Close"              },
-  s      = { ":TodoTelescope<cr>",                    " Telescope" },
-  t      = { ":TodoTrouble<cr>",                      "陼Trouble" },
-  -- use trouble instead
-  -- q      = { ":TodoQuickFix<cr>",                     " Quickfix" },
+  r      =                                            " References",
+  q      =                                            " Quickfix",
+  l      =                                            " Loclist",
+  w      =                                            "華Workspace diagnostics",
+  d      =                                            " Document diagnostics",
 }
+
 -- Window FIXME: window resize
 map.w    = {
   name   =                                            " Window",

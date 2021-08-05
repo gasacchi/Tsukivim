@@ -1,5 +1,9 @@
 -- Use an on_attach function to only map the following keys 
 -- after the language server attaches to the current buffer
+
+-- Purescript psc-ide-config
+vim.g.psc_ide_syntastic_mode = 0
+
 local on_attach = function(_, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -37,6 +41,22 @@ local on_attach = function(_, bufnr)
   buf_set_keymap('n', '<leader>lwl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<CR>", opts)
+
+  -- Purescript ide
+  buf_set_keymap("n", "<leader>a/", ":Pcwd<cr>", opts)
+  buf_set_keymap("n", "<leader>al", ":Plist<cr>", opts)
+  buf_set_keymap("n", "<leader>aL", ":Pload!<cr>", opts)
+  buf_set_keymap("n", "<leader>ab", ":Prebuild!<cr>", opts)
+  buf_set_keymap("n", "<leader>ag", ":PaddClause<cr>", opts)
+  buf_set_keymap("n", "<leader>aT", ":PaddType<cr>", opts)
+  buf_set_keymap("n", "<leader>at", ":Ptype<cr>", opts)
+  buf_set_keymap("n", "<leader>aa", ":Papply<cr>", opts)
+  buf_set_keymap("n", "<leader>aA", ":Papply!<cr>", opts)
+  buf_set_keymap("n", "<leader>ac", ":Pcase! ", {noremap = true})
+  buf_set_keymap("n", "<leader>ai", ":Pimport<cr>", opts)
+  buf_set_keymap("n", "<leader>aq", ":PaddImportQualifications<cr>", opts)
+  buf_set_keymap("n", "<leader>ag", ":Pgoto<cr>", opts)
+  buf_set_keymap("n", "<leader>ap", ":Pursuit<cr>", opts)
 
 end
 
@@ -92,7 +112,6 @@ local function setup_servers()
     require'lspconfig'[server].setup(config)
   end
 
-require'lspconfig'.hls.setup(config)
 require'lspconfig'.purescriptls.setup(config)
 
 end

@@ -80,6 +80,6 @@ return require'packer'.startup(function(use)
 
   -- Language, etc. -----------------------------------------------------------
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
-  use 'frigoeu/psc-ide-vim'
+  -- use 'frigoeu/psc-ide-vim'
   -----------------------------------------------------------------------------
   end)

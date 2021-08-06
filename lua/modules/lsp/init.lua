@@ -2,7 +2,7 @@
 -- after the language server attaches to the current buffer
 
 -- Purescript psc-ide-config
-vim.g.psc_ide_syntastic_mode = 0
+-- vim.g.psc_ide_syntastic_mode = 0
 
 local on_attach = function(_, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -42,7 +42,7 @@ local on_attach = function(_, bufnr)
   buf_set_keymap('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<CR>", opts)
 
-  -- Purescript ide
+  --[[ -- Purescript ide
   buf_set_keymap("n", "<leader>a/", ":Pcwd<cr>", opts)
   buf_set_keymap("n", "<leader>al", ":Plist<cr>", opts)
   buf_set_keymap("n", "<leader>aL", ":Pload!<cr>", opts)
@@ -56,7 +56,7 @@ local on_attach = function(_, bufnr)
   buf_set_keymap("n", "<leader>ai", ":Pimport<cr>", opts)
   buf_set_keymap("n", "<leader>aq", ":PaddImportQualifications<cr>", opts)
   buf_set_keymap("n", "<leader>aG", ":Pgoto<cr>", opts)
-  buf_set_keymap("n", "<leader>ap", ":Pursuit<cr>", opts)
+  buf_set_keymap("n", "<leader>ap", ":Pursuit<cr>", opts) ]]
 
 end
 

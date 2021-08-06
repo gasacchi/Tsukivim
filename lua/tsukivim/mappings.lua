@@ -66,10 +66,10 @@ map.q    = { ":q<cr>",                         " Quit"                       
 map.a    = {
   name   =                                     "省Actions",
   [" "]  = { "<Esc>",                          " Close"                     },
-  ["/"]  = "Show current working directory",
   r      = { cmdp(":LspRestart", "Lsp Restarted"),
+  -- ["/"]  = "Show current working directory",
              "Restart Lsp"          },
-  s      = { cmdp(":Pstart", "Psc-ide started"),
+  --[[ s      = { cmdp(":Pstart", "Psc-ide started"),
              "Strat psc-ide"          },
   S      = { cmdp(":Pstart", "Psc-ide started"),
              "Strat psc-ide"          },
@@ -79,7 +79,7 @@ map.a    = {
   g      = "Generate Template",
   t      = "Peek type",
   T      = "Add type",
-  b      = "Rebuild",
+  b      = "Rebuild", ]]
 }
 
 -- Buffers Mappings

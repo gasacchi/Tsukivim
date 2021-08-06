@@ -1,4 +1,4 @@
-vim.o.guicursor = ''
+-- vim.o.guicursor = ''
 
 -- Encoding
 -- The encoding displayed

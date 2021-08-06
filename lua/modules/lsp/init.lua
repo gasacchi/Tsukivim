@@ -55,7 +55,7 @@ local on_attach = function(_, bufnr)
   buf_set_keymap("n", "<leader>ac", ":Pcase! ", {noremap = true})
   buf_set_keymap("n", "<leader>ai", ":Pimport<cr>", opts)
   buf_set_keymap("n", "<leader>aq", ":PaddImportQualifications<cr>", opts)
-  buf_set_keymap("n", "<leader>ag", ":Pgoto<cr>", opts)
+  buf_set_keymap("n", "<leader>aG", ":Pgoto<cr>", opts)
   buf_set_keymap("n", "<leader>ap", ":Pursuit<cr>", opts)
 
 end

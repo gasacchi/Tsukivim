@@ -12,6 +12,7 @@ local opts = {
   noremap = true,
 }
 
+
 -- Disable Arrow keys
 keymap("i", "<DOWN>", "<NOP>", opts)
 keymap("i", "<LEFT>", "<NOP>", opts)

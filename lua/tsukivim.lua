@@ -21,6 +21,7 @@ function M.init ()
   require'modules.utils.telescope'
   require'modules.utils.todo-comments'
   require'modules.utils.kommentary'
+  -- require'modules.utils.tabout'
 
   -- ui
   require'modules.ui.colorscheme'

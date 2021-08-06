@@ -37,7 +37,11 @@ return require'packer'.startup(function(use)
   use 'tpope/vim-surround'                     -- Surround
   use 'kyazdani42/nvim-tree.lua'               -- File Tree  
   use 'folke/todo-comments.nvim'               -- PERF utile
-  -- use 'abecodes/tabout.nvim'                   -- tab escape from () etc
+  --[[ use {
+    'abecodes/tabout.nvim',
+    wants = {'nvim-treesitter'}, -- or require if not used so far
+    after = {'nvim-compe'} -- if a completion plugin is using tabs load it before
+  }                   -- tab escape from () etc ]]
   -- use 'kevinhwang91/nvim-hlslens'              -- extends search (/)
   -- use ''                           -- neovim snippet
   -- use 'vhyrro/neorg'                           -- Org mode in neovim

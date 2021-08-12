@@ -40,6 +40,17 @@ cmd "autocmd FileType dashboard noremap <buffer> q :q<CR>"
 -- for quikfix
 cmd "autocmd FileType qf noremap <buffer> q :q<CR>"
 
+-- purescript mapping shortcut 
+cmd "autocmd FileType purescript inoremap <buffer> hh <esc>yyp^WC"
+cmd "autocmd FileType purescript inoremap <buffer> ;f ∀ "
+cmd "autocmd FileType purescript inoremap <buffer> ;h ∷ "
+cmd "autocmd FileType purescript inoremap <buffer> ;t → "
+cmd "autocmd FileType purescript inoremap <buffer> ;n ~> "
+cmd "autocmd FileType purescript inoremap <buffer> ;b ← "
+cmd "autocmd FileType purescript inoremap <buffer> ;c ⇒ "
+cmd "autocmd FileType purescript inoremap <buffer> ;i ⇐ "
+
+
 -- require which-key default config
 vim.g.timeoutlen = 500
 keymap("n", " ", ":WhichKey <leader><cr>", opts )
@@ -66,9 +77,13 @@ map.q    = { ":q<cr>",                         " Quit"                       
 map.a    = {
   name   =                                     "省Actions",
   [" "]  = { "<Esc>",                          " Close"                     },
-  r      = { cmdp(":LspRestart", "Lsp Restarted"),
-  -- ["/"]  = "Show current working directory",
+  r      = { cmdp(":LspRestart",               "Lsp Restarted"),
              "Restart Lsp"          },
+  s      = { cmdp(":LspStart",               "Lsp Started"),
+             "Start Lsp"          },
+  S      = { cmdp(":LspStop",               "Lsp Stoped"),
+             "Stop Lsp"          },
+  -- ["/"]  = "Show current working directory",
   --[[ s      = { cmdp(":Pstart", "Psc-ide started"),
              "Strat psc-ide"          },
   S      = { cmdp(":Pstart", "Psc-ide started"),

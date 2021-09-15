@@ -8,4 +8,3 @@ vim.g.lazygit_floating_window_corner_chars = {'╭', '╮', '╰', '╯'}
 vim.g.lazygit_floating_window_use_plenary = 0
 --fallback to 0 if neovim-remote is not installed
 vim.g.lazygit_use_neovim_remote = 1 
-

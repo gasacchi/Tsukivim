@@ -109,10 +109,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
   },
-  ["lspkind-nvim"] = {
-    loaded = true,
-    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
-  },
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
@@ -133,10 +129,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
-  ["nvim-compe"] = {
-    loaded = true,
-    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-compe"
-  },
   ["nvim-cursorline"] = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-cursorline"
@@ -144,10 +136,6 @@ _G.packer_plugins = {
   ["nvim-lightbulb"] = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
-  },
-  ["nvim-lspconfig"] = {
-    loaded = true,
-    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
@@ -204,10 +192,6 @@ _G.packer_plugins = {
   ["vim-surround"] = {
     loaded = true,
     path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-surround"
-  },
-  ["vim-which-key"] = {
-    loaded = true,
-    path = "/home/gasacchi/.local/share/nvim/site/pack/packer/start/vim-which-key"
   },
   ["which-key.nvim"] = {
     loaded = true,

@@ -1,5 +1,6 @@
 local M = {}
 
+
 function M.init ()
   -- core
   require'tsukivim.plugins'
@@ -9,18 +10,25 @@ function M.init ()
   -- LSP
   require'modules.lsp' -- neovim lsp config
   require'modules.lsp.completion'
-  require'modules.lsp.lspkindicons'
+  -- NOTE: disable until coq_nvim support 
+  -- require'modules.lsp.lspkindicons'
   require'modules.lsp.trouble'
   require'modules.lsp.saga'
 
+  -- Git Utils
+  require'modules.git.neogit'
+  require'modules.git.gitsigns'
+  require'modules.git.gitblame'
+  require'modules.git.lazygit'
+
+  -- Editing
+  require'modules.editing.kommentary'
+  require'modules.editing.hop'
+
   -- utils
-  require'modules.utils.hop'
-  require'modules.utils.lazygit'
-  require'modules.utils.neogit'
   require'modules.utils.nvimtree'
   require'modules.utils.telescope'
   require'modules.utils.todo-comments'
-  require'modules.utils.kommentary'
   -- require'modules.utils.tabout'
 
   -- ui
@@ -28,7 +36,6 @@ function M.init ()
   require'modules.ui.bufferline'
   require'modules.ui.colorizer'
   require'modules.ui.dashboard'
-  require'modules.ui.gitsigns'
   require'modules.ui.goyo'
   require'modules.ui.indentblankline'
   require'modules.ui.minimap'

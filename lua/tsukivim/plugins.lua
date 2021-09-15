@@ -1,6 +1,5 @@
 vim.cmd'packadd packer.nvim'
 
-
 -- (): already using lua
 return require'packer'.startup(function(use)
   -- Package Manager ----------------------------------------------------------
@@ -9,18 +8,39 @@ return require'packer'.startup(function(use)
 
   -- LSP & Completion --------------------------------------------------------
   use 'neovim/nvim-lspconfig'                  -- Config quickstart 
-  use 'kabouzeid/nvim-lspinstall'              -- Installer 
-  use 'hrsh7th/nvim-compe'                     -- Completion 
+  --[[ use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
+  use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets ]]
+
+
   use 'onsails/lspkind-nvim'                   -- LSP kind icons like vscode 
+  use {                                        -- nvim cmp
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-buffer",
+    }
+  }
+
+  use 'kabouzeid/nvim-lspinstall'              -- Installer 
   use 'kosayoda/nvim-lightbulb'                -- Lightbulb 
   use 'folke/trouble.nvim'                     -- Pretty Diagnostics
   use 'glepnir/lspsaga.nvim'                   -- LSP UI 
+  -- NOTE: not work for coq_nvim
   -----------------------------------------------------------------------------
 
   -- Git ----------------------------------------------------------------------
   use 'TimUntersberger/neogit'                 -- Magit for Neovim 
   use 'lewis6991/gitsigns.nvim'                -- Git Sign 
   use 'f-person/git-blame.nvim'                -- Show Git Blame 
+  use 'kdheepak/lazygit.nvim'                  -- Lazygit wrapper
+  -----------------------------------------------------------------------------
+  
+  -- Editing ------------------------------------------------------------------
+  use 'b3nj5m1n/kommentary'                    -- Code Comment 
+  use 'tpope/vim-surround'                     -- Surround
+  use 'phaazon/hop.nvim'                       -- Jump / Hop Motion 
+  -- use 'vhyrro/neorg'                           -- Org mode in neovim
   -----------------------------------------------------------------------------
 
   -- Utility ------------------------------------------------------------------
@@ -31,24 +51,11 @@ return require'packer'.startup(function(use)
       {'nvim-lua/plenary.nvim'}
     }
   }
-  use 'kdheepak/lazygit.nvim'                  -- Lazygit wrapper
-  use 'b3nj5m1n/kommentary'                    -- Code Comment 
-  use 'phaazon/hop.nvim'                       -- Jump / Hop Motion 
-  use 'tpope/vim-surround'                     -- Surround
-  use 'kyazdani42/nvim-tree.lua'               -- File Tree  
+  use {                                        -- file explorer
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
   use 'folke/todo-comments.nvim'               -- PERF utile
-  --[[ use {
-    'abecodes/tabout.nvim',
-    wants = {'nvim-treesitter'}, -- or require if not used so far
-    after = {'nvim-compe'} -- if a completion plugin is using tabs load it before
-  }                   -- tab escape from () etc ]]
-  -- use 'kevinhwang91/nvim-hlslens'              -- extends search (/)
-  -- use ''                           -- neovim snippet
-  -- use 'vhyrro/neorg'                           -- Org mode in neovim
-  -- use 'markdown-preview.nvim'               -- Markdown Preview
-  -- euclio/vim-markdown-composer
-  -- Telescope extensions
-  -- use 'nvim-telescope/telescope-project.nvim' -- Manage project
   -----------------------------------------------------------------------------
 
   -- UI -----------------------------------------------------------------------
@@ -65,17 +72,13 @@ return require'packer'.startup(function(use)
     -- branch = 'lua'
   }
   use 'folke/tokyonight.nvim'
-  use 'liuchengxu/vim-which-key'               -- WhichKey
   use 'glepnir/dashboard-nvim'                 -- Fancy Dashboard
   use 'akinsho/nvim-bufferline.lua'            -- Bufferline 
   use 'norcalli/nvim-colorizer.lua'            -- HEX Colorizer 
   use 'wfxr/minimap.vim'                       -- blazing fast minimap
   use 'camspiers/animate.vim'                  -- Animated
   use 'psliwka/vim-smoothie'                   -- Smooth scrolling
-  -- use 'karb94/neoscroll.nvim'                  -- smooth scrolling in lua
   use 'junegunn/goyo.vim'                      -- Zen Mode
-  -- use 'Pocco81/TrueZen.nvim'                   -- Zen Mode written in lua
-  -- junegunn/limelight.vim
   -----------------------------------------------------------------------------
 
   -- Language, etc. -----------------------------------------------------------

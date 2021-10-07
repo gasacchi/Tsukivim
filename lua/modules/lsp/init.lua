@@ -3,6 +3,8 @@
 
 -- Purescript psc-ide-config
 -- vim.g.psc_ide_syntastic_mode = 0
+--
+
 
 local on_attach = function(_, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end

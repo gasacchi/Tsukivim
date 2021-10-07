@@ -1,15 +1,25 @@
 local cmp = require'cmp'
 local lspkind = require'lspkind'
 
+vim.g.completeopt = 'menu,menuone,noselect'
+
 cmp.setup({
+   snippet = {
+      expand = function(args)
+        -- For `vsnip` user.
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
+      end,
+   },
    formatting = {
-    format = function(entry, vim_item)
+     format = lspkind.cmp_format()
+    --[[ format = function(entry, vim_item)
       vim_item.kind = lspkind.presets.default[vim_item.kind]
       return vim_item
-    end
+    end ]]
   },
   sources = {
     {name = 'nvim_lsp'},
+    {name = 'vsnip'},
     {name = 'buffer'}
   },
   mapping = {
@@ -25,3 +35,5 @@ cmp.setup({
     }
   }
 })
+
+

@@ -23,11 +23,9 @@ return require'packer'.startup(function(use)
     }
   }
 
-  use 'kabouzeid/nvim-lspinstall'              -- Installer 
   use 'kosayoda/nvim-lightbulb'                -- Lightbulb 
   use 'folke/trouble.nvim'                     -- Pretty Diagnostics
   use 'glepnir/lspsaga.nvim'                   -- LSP UI 
-  -- NOTE: not work for coq_nvim
   -----------------------------------------------------------------------------
 
   -- Git ----------------------------------------------------------------------

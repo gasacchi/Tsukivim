@@ -11,11 +11,13 @@ cmp.setup({
       end,
    },
    formatting = {
-     format = lspkind.cmp_format()
-    --[[ format = function(entry, vim_item)
-      vim_item.kind = lspkind.presets.default[vim_item.kind]
-      return vim_item
-    end ]]
+      format = require("lspkind").cmp_format({with_text = true, menu = ({
+      buffer = "[Buffer]",
+      nvim_lsp = "[LSP]",
+      luasnip = "[LuaSnip]",
+      nvim_lua = "[Lua]",
+      latex_symbols = "[Latex]",
+    })}),
   },
   sources = {
     {name = 'nvim_lsp'},
@@ -29,10 +31,11 @@ cmp.setup({
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm {
+    --[[ ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
-    }
+    },]]
+    ["<CR>"] = cmp.mapping.confirm()
   }
 })
 

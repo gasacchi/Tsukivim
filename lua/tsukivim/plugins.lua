@@ -25,7 +25,9 @@ return require'packer'.startup(function(use)
 
   use 'kosayoda/nvim-lightbulb'                -- Lightbulb 
   use 'folke/trouble.nvim'                     -- Pretty Diagnostics
-  use 'glepnir/lspsaga.nvim'                   -- LSP UI 
+  -- NOTE: will use for until glepnir come back
+  -- use 'glepnir/lspsaga.nvim'                   -- LSP UI 
+  use { 'tami5/lspsaga.nvim', branch = 'nvim51' }
   -----------------------------------------------------------------------------
 
   -- Git ----------------------------------------------------------------------
@@ -78,10 +80,10 @@ return require'packer'.startup(function(use)
   use 'camspiers/animate.vim'                  -- Animated
   use 'psliwka/vim-smoothie'                   -- Smooth scrolling
   use 'junegunn/goyo.vim'                      -- Zen Mode
+  use 'jubnzv/virtual-types.nvim'             -- virtual type for fsharp
   -----------------------------------------------------------------------------
 
   -- Language, etc. -----------------------------------------------------------
   use 'sheerun/vim-polyglot'                   -- Polyglot Syntax Highlight
-  -- use 'frigoeu/psc-ide-vim'
   -----------------------------------------------------------------------------
   end)

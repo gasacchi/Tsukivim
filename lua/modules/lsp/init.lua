@@ -100,5 +100,5 @@ end
 
 local config = make_config()
 require'lspconfig'.svelte.setup(config)
-require'lspconfig'.fsautocomplete.setup(config)
+require'lspconfig'.elmls.setup(config)
 

@@ -1,1 +1,2 @@
-require'neogit'.setup()
+-- until it fixed highlight bug
+-- require'neogit'.setup()

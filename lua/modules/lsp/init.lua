@@ -99,6 +99,9 @@ local function make_config()
 end
 
 local config = make_config()
-require'lspconfig'.svelte.setup(config)
-require'lspconfig'.elmls.setup(config)
+local servers = { 'svelte', 'elmls', 'cssls', 'html' }
+local nvim_lsp = require'lspconfig'
 
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup(config)
+end

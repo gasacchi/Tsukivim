@@ -80,7 +80,7 @@ return require'packer'.startup(function(use)
   use 'camspiers/animate.vim'                  -- Animated
   use 'psliwka/vim-smoothie'                   -- Smooth scrolling
   use 'junegunn/goyo.vim'                      -- Zen Mode
-  use 'jubnzv/virtual-types.nvim'             -- virtual type for fsharp
+  -- use 'jubnzv/virtual-types.nvim'             -- virtual type for fsharp
   -----------------------------------------------------------------------------
 
   -- Language, etc. -----------------------------------------------------------

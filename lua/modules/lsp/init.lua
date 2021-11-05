@@ -10,6 +10,7 @@ local on_attach = function(_, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+
   -- Mappings.
   local opts = { noremap=true, silent=true }
 
@@ -105,3 +106,30 @@ local nvim_lsp = require'lspconfig'
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup(config)
 end
+
+nvim_lsp.tailwindcss.setup({
+  capabilities = config.capabilities,
+  on_attach = on_attach,
+  filetypes = { "elm", "ejs", "html", "markdown", "mdx", "css", "less", "postcss", "sass", "scss", "stylus", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte" },
+  --[[ init_options = {
+    userLanguages = {
+      elm = "html"
+    }
+  }, ]]
+  on_new_config = function(new_config)
+    if not new_config.settings then
+      new_config.settings = {
+      }
+    end
+    if not new_config.settings.editor then
+      new_config.settings.editor = {
+      }
+    end
+    if not new_config.settings.editor.tabSize then
+      -- set tab size for hover
+      new_config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
+    end
+  end,
+})
+
+

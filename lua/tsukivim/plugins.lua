@@ -8,9 +8,6 @@ return require'packer'.startup(function(use)
 
   -- LSP & Completion --------------------------------------------------------
   use 'neovim/nvim-lspconfig'                  -- Config quickstart 
-  --[[ use { 'ms-jpq/coq_nvim', branch = 'coq'} -- main one
-  use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets ]]
-
 
   use 'onsails/lspkind-nvim'                   -- LSP kind icons like vscode 
   use {                                        -- nvim cmp
@@ -80,7 +77,6 @@ return require'packer'.startup(function(use)
   use 'camspiers/animate.vim'                  -- Animated
   use 'psliwka/vim-smoothie'                   -- Smooth scrolling
   use 'junegunn/goyo.vim'                      -- Zen Mode
-  -- use 'jubnzv/virtual-types.nvim'             -- virtual type for fsharp
   -----------------------------------------------------------------------------
 
   -- Language, etc. -----------------------------------------------------------

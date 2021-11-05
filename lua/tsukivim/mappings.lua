@@ -301,13 +301,13 @@ map.t    = {
 -- Window FIXME: window resize
 map.w    = {
   name   =                                            " Window",
-  H      = { cmdp(":call animate#window_delta_width(-10)", ""),
+  H      = { cmdp(":vertical resize -5", ""),
              " Resize vertical"    },
-  L      = { cmdp(":call animate#window_delta_width(10)", ""),
+  L      = { cmdp(":vertical resize +5", ""),
              " Resize vertical"    },
-  J      = { cmdp(":call animate#window_delta_height(-10)", ""),
+  J      = { cmdp(":resize -5", ""),
              " Resize horizontal"  },
-  K      = { cmdp(":call animate#window_delta_height(10)", ""),
+  K      = { cmdp(":resize +5", ""),
              " Resize horizontal"  },
   h      = { cmdp("<C-w>h", "Move to left window"),
              " Move left"          },

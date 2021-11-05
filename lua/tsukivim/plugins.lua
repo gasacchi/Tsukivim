@@ -33,7 +33,7 @@ return require'packer'.startup(function(use)
   use 'f-person/git-blame.nvim'                -- Show Git Blame 
   use 'kdheepak/lazygit.nvim'                  -- Lazygit wrapper
   -----------------------------------------------------------------------------
-  
+
   -- Editing ------------------------------------------------------------------
   use 'b3nj5m1n/kommentary'                    -- Code Comment 
   use 'tpope/vim-surround'                     -- Surround
@@ -74,7 +74,6 @@ return require'packer'.startup(function(use)
   use 'akinsho/nvim-bufferline.lua'            -- Bufferline 
   use 'norcalli/nvim-colorizer.lua'            -- HEX Colorizer 
   use 'wfxr/minimap.vim'                       -- blazing fast minimap
-  use 'camspiers/animate.vim'                  -- Animated
   use 'psliwka/vim-smoothie'                   -- Smooth scrolling
   use 'junegunn/goyo.vim'                      -- Zen Mode
   -----------------------------------------------------------------------------

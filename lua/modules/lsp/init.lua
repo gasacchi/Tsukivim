@@ -37,22 +37,6 @@ local on_attach = function(_, bufnr)
   buf_set_keymap('n', '<leader>lt', ':lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<CR>", opts)
 
-  --[[ -- Purescript ide
-  buf_set_keymap("n", "<leader>a/", ":Pcwd<cr>", opts)
-  buf_set_keymap("n", "<leader>al", ":Plist<cr>", opts)
-  buf_set_keymap("n", "<leader>aL", ":Pload!<cr>", opts)
-  buf_set_keymap("n", "<leader>ab", ":Prebuild!<cr>", opts)
-  buf_set_keymap("n", "<leader>ag", ":PaddClause<cr>", opts)
-  buf_set_keymap("n", "<leader>aT", ":PaddType<cr>", opts)
-  buf_set_keymap("n", "<leader>at", ":Ptype<cr>", opts)
-  buf_set_keymap("n", "<leader>aa", ":Papply<cr>", opts)
-  buf_set_keymap("n", "<leader>aA", ":Papply!<cr>", opts)
-  buf_set_keymap("n", "<leader>ac", ":Pcase! ", {noremap = true})
-  buf_set_keymap("n", "<leader>ai", ":Pimport<cr>", opts)
-  buf_set_keymap("n", "<leader>aq", ":PaddImportQualifications<cr>", opts)
-  buf_set_keymap("n", "<leader>aG", ":Pgoto<cr>", opts)
-  buf_set_keymap("n", "<leader>ap", ":Pursuit<cr>", opts) ]]
-
 end
 
 

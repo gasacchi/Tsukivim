@@ -2,8 +2,6 @@
 -- Mappings
 -- ----------------------------------------------------------------------------
 
--- TODO: create mapping for mark and use insert `m` to use motion
-
 local keymap = vim.api.nvim_set_keymap 
 local setvar = vim.api.nvim_set_var
 local cmd = vim.cmd
@@ -33,6 +31,26 @@ keymap("n", "Y", "y$", opts )
 keymap("n", "n", "nzz", opts )
 keymap("n", "N", "Nzz", opts )
 
+
+-- Terminal map
+function _G.set_terminal_keymaps()
+  local opts = {noremap = true}
+  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-t>n', [[<C-\><C-n>:tabnext<cr>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-t>p', [[<C-\><C-n>:tabnext<cr>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-t>p', [[<C-\><C-n>:tabnext<cr>]], opts)
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+
 -- Map q to exit help
 cmd "autocmd FileType help noremap <buffer> q :close<CR>"
 -- Map q to exit Dashboard
@@ -40,26 +58,14 @@ cmd "autocmd FileType dashboard noremap <buffer> q :q<CR>"
 -- for quikfix
 cmd "autocmd FileType qf noremap <buffer> q :q<CR>"
 
--- purescript mapping shortcut 
-cmd "autocmd FileType purescript inoremap <buffer> hh <esc>yyp^WC"
-cmd "autocmd FileType purescript inoremap <buffer> ;f ∀ "
-cmd "autocmd FileType purescript inoremap <buffer> ;h ∷ "
-cmd "autocmd FileType purescript inoremap <buffer> ;t → "
-cmd "autocmd FileType purescript inoremap <buffer> ;n ~> "
-cmd "autocmd FileType purescript inoremap <buffer> ;b ← "
-cmd "autocmd FileType purescript inoremap <buffer> ;c ⇒ "
-cmd "autocmd FileType purescript inoremap <buffer> ;i ⇐ "
-
-
 -- require which-key default config
 vim.g.timeoutlen = 500
 keymap("n", " ", ":WhichKey <leader><cr>", opts )
 require'modules.ui.whichkey'
 
-
 -- print function
 local function cmdp(c,message)
-  return string.format("%s<cr>:echohl Error | echon '  ' | echohl String | echon '::' | echohl Boolean | echon ' %s' | echohl None<cr>", c, message)
+  return string.format("%s<cr>:echohl Error | echon '  ' | echohl String | echon '|>' | echohl Boolean | echon ' %s' | echohl None<cr>", c, message)
 end
 
 -- set keybind
@@ -77,26 +83,16 @@ map.q    = { ":q<cr>",                         " Quit"                       
 map.a    = {
   name   =                                     "省Actions",
   [" "]  = { "<Esc>",                          " Close"                     },
-  c      = { cmdp(":COQnow",               "Coq started"),
-  "Restart Lsp"          },
   r      = { cmdp(":LspRestart",               "Lsp Restarted"),
   "Restart Lsp"          },
-  s      = { cmdp(":LspStart",               "Lsp Started"),
+  s      = { cmdp(":LspStart",                 "Lsp Started"),
   "Start Lsp"          },
-  S      = { cmdp(":LspStop",               "Lsp Stoped"),
+  S      = { cmdp(":LspStop",                  "Lsp Stoped"),
   "Stop Lsp"          },
-  -- ["/"]  = "Show current working directory",
-  --[[ s      = { cmdp(":Pstart", "Psc-ide started"),
-             "Strat psc-ide"          },
-  S      = { cmdp(":Pstart", "Psc-ide started"),
-             "Strat psc-ide"          },
-  l      = "List loaded module",
-  L      = "Load exteral module",
-  c      = "Add case",
-  g      = "Generate Template",
-  t      = "Peek type",
-  T      = "Add type",
-  b      = "Rebuild", ]]
+  p      = { cmdp('"+p',                       "Paste.."),
+  "Paste from clipboard"          },
+  c      = { cmdp('"+y',                       "Copy.."),
+  "Copy to clipboard"          },
 }
 
 -- Buffers Mappings
@@ -130,8 +126,6 @@ map.e    =  {
   " Line number"        },
   r      = { cmdp(":set invrelativenumber", "Toggle relative line"),
   " Line number"        },
-  z      = { cmdp(":Goyo", "Toggle zen mode"),
-  " Zen mode"           },
 }
 
 -- Files
@@ -142,16 +136,15 @@ map.f    = {
   S      = { ":wq<cr>",                               " Save and exit" },
   n      = { ":DashboardNewFile<cr>",                 " New file" },
   s      = { cmdp(":w", "File saved"),                                " Save file" },
-  k      = { cmdp(":SessionSave", "Session saved"),                      " Keep session" },
-  l      = { cmdp(":SessionLoad", "Session loaded"),                      " Last session" },
 }
 
--- Git TODO:Still Cannot Commiting Neogit Bug
 map.g    = {
   name   =                                                   " Git",
   [" "]  = { "<Esc>",                                        " Close"          },
   g      = { ":lua require'neogit'.open{kind='split'}<cr>",  " Neogit"         },
   c      = { ":Neogit commit<cr>",                           " Commit"         },
+
+  -- Mapping from gitsigns
   s      =                                                   " Stage hunk",
   u      =                                                   " Unstage hunk",
   R      =                                                   "﬘ Reset buffer",
@@ -200,7 +193,6 @@ map.l    = {
 }
 
 
--- Hop / Jump Motions TODO:Use operator Motion
 map.m    = {
   name   =                                        "省Motion",
   [" "]  = { "<Esc>",                             " Close"                  },
@@ -215,11 +207,14 @@ map.m    = {
 map.o    = {
   name   =                                            "冷Open",
   [" "]  = { "<Esc>",                                 " Close"              },
-  g      = { ":LazyGit<cr>",                          " LazyGit"            },
-  e      = { cmdp(":NvimTreeToggle", "Toggle nvimtree"),
+  e      = { cmdp(":NvimTreeToggle", "Open file explorer"),
              "滑Tree"               },
-  m      = { cmdp(":MinimapToggle", "Toggle minimap"),
+  m      = { cmdp(":GonvimMiniMap", "Open minimap"),
              " Minimap"            },
+  M      = { cmdp(":GonvimMarkdown", "Open markdown"),
+             " Markdown"            },
+  t      = { ":ToggleTerm dir=git_dir<cr>", " Terminal"            },
+  T      = { ":ToggleTerm dir=git_dir direction=tab <cr>", " Terminal"            },
 }
 
 -- packer plugin manager
@@ -298,7 +293,6 @@ map.t    = {
   d      =                                            " Document diagnostics",
 }
 
--- Window FIXME: window resize
 map.w    = {
   name   =                                            " Window",
   H      = { cmdp(":vertical resize -5", ""),

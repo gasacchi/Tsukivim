@@ -1,24 +1,28 @@
 vim.cmd'packadd packer.nvim'
 
--- (): already using lua
 return require'packer'.startup(function(use)
   -- Package Manager ----------------------------------------------------------
-  use 'wbthomason/packer.nvim'                 -- Plugin Manager 
+  use 'wbthomason/packer.nvim'                 -- Plugin Manager
   -----------------------------------------------------------------------------
 
   -- LSP & Completion --------------------------------------------------------
-  use 'neovim/nvim-lspconfig'                  -- Config quickstart 
+  use 'neovim/nvim-lspconfig'                  -- Config quickstart
 
-  use 'onsails/lspkind-nvim'                   -- LSP kind icons like vscode 
-  use {                                        -- nvim cmp
+  use 'onsails/lspkind-nvim'                   -- LSP kind icons like vscode
+  use {                                        -- nvim completion
     "hrsh7th/nvim-cmp",
     requires = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-vsnip",
       "hrsh7th/vim-vsnip",
       "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua"
     }
   }
+
+
+
 
   use 'kosayoda/nvim-lightbulb'                -- Lightbulb 
   use 'folke/trouble.nvim'                     -- Pretty Diagnostics
@@ -74,7 +78,7 @@ return require'packer'.startup(function(use)
   use 'akinsho/nvim-bufferline.lua'            -- Bufferline 
   use 'norcalli/nvim-colorizer.lua'            -- HEX Colorizer 
   use 'wfxr/minimap.vim'                       -- blazing fast minimap
-  use 'psliwka/vim-smoothie'                   -- Smooth scrolling
+  -- use 'psliwka/vim-smoothie'                   -- Smooth scrolling
   use 'junegunn/goyo.vim'                      -- Zen Mode
   -----------------------------------------------------------------------------
 

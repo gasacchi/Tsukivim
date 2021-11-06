@@ -12,17 +12,19 @@ cmp.setup({
    },
    formatting = {
       format = require("lspkind").cmp_format({with_text = true, menu = ({
-      buffer = "[Buffer]",
-      nvim_lsp = "[LSP]",
-      luasnip = "[LuaSnip]",
-      nvim_lua = "[Lua]",
-      latex_symbols = "[Latex]",
+      buffer = "|> Buffer",
+      nvim_lsp = "|> LSP",
+      luasnip = "|> LuaSnip",
+      nvim_lua = "|> Lua",
+      latex_symbols = "|> Latex",
     })}),
   },
   sources = {
     {name = 'nvim_lsp'},
     {name = 'vsnip'},
-    {name = 'buffer'}
+    {name = 'buffer'},
+    {name = 'path'},
+    {name = 'nvim_lua'}
   },
   mapping = {
     ["<S-Tab>"] = cmp.mapping.select_prev_item(),

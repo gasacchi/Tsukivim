@@ -6,12 +6,9 @@ function M.init ()
   require'tsukivim.plugins'
   require'tsukivim.mappings'
 	require'tsukivim.options'
-
   -- LSP
   require'modules.lsp' -- neovim lsp config
   require'modules.lsp.completion'
-  -- NOTE: disable until coq_nvim support 
-  -- require'modules.lsp.lspkindicons'
   require'modules.lsp.trouble'
   require'modules.lsp.saga'
 
@@ -42,6 +39,7 @@ function M.init ()
   require'modules.ui.whichkey'
   require'modules.ui.statusline'
   require'modules.ui.treesitter'
+  require'modules.ui.gui'
 end
 
 return M

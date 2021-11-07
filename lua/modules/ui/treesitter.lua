@@ -1,3 +1,3 @@
 require'nvim-treesitter.configs'.setup{
-  ensure_installed = { "html", "javascript", "json", "lua", "svelte", "tsx", "typescript" }, 
+  ensure_installed = { "html", "elm", "javascript", "json", "lua", "svelte", "tsx", "typescript" }, 
 }

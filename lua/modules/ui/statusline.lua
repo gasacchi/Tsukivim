@@ -9,7 +9,7 @@ gl.short_line_list       = { 'Minimap', 'NvimTree','vista','dbui','packer' }
 my_icons                 = provider_fileinfo.define_file_icon()
 my_icons['purs']         = { yuno.white, '<≡>'}
 
-yuno.black = '#25253c'
+yuno.black = '#0a1719'
 
 -- TODO                  = Need fix for short line and replace mode broken
 local vim_mode           = {
@@ -376,5 +376,5 @@ section.short_line_right[1]   = {
 }
 
 -- override status line bg to fix issue where middle statusline not match
-vim.cmd 'highlight! Statusline guibg=#25253c'
-vim.cmd 'highlight! StatuslineNC guibg=#25253c'
+vim.cmd 'highlight! Statusline guibg=#0a1719'
+vim.cmd 'highlight! StatuslineNC guibg=#0a1719'

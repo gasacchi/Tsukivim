@@ -75,7 +75,7 @@ local map = {}
 
 -- Single Mappings
 map[" "] = { "<Esc>",                          " Close"                      }
-map["."] = { ":Telescope find_files<cr>",      " Find File"                  }
+map["."] = { ":Telescope file_browser<cr>",      " Find File"                  }
 map.Q    = { ":q!<cr>",                        " Quit Without Saving"        }
 map.q    = { ":q<cr>",                         " Quit"                       }
 

@@ -45,9 +45,7 @@ vim.o.swapfile = false
 
 -- Set colorcolumn
 vim.wo.colorcolumn = '80'
--- Set relative number
--- wo relativenumber, true
--- wo number, true
+
 -- Visual Settings
 vim.wo.cursorline = true
 vim.wo.cursorcolumn = true
@@ -61,12 +59,3 @@ vim.wo.scrolloff = 8
 vim.cmd'syntax on'
 vim.cmd'filetype on'
 vim.cmd'filetype plugin indent on'
--- vim.cmd'shortmess+=c'
-
--- cmd'laststatus=2'
--- cmd'statusline=helo'
-
--- Jump to file faster
---vim.cmd'noshowmode'
--- vim.cmd'path+=**'
-

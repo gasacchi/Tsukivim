@@ -3,9 +3,9 @@ local M = {}
 
 function M.init ()
   -- core
+	require'tsukivim.options'
   require'tsukivim.plugins'
   require'tsukivim.mappings'
-	require'tsukivim.options'
   -- LSP
   require'modules.lsp' -- neovim lsp config
   require'modules.lsp.completion'
@@ -15,7 +15,6 @@ function M.init ()
   -- Git Utils
   require'modules.git.neogit'
   require'modules.git.gitsigns'
-  require'modules.git.gitblame'
   require'modules.git.lazygit'
 
   -- Editing
@@ -40,6 +39,7 @@ function M.init ()
   require'modules.ui.statusline'
   require'modules.ui.treesitter'
   require'modules.ui.gui'
+  require'modules.ui.notify'
 end
 
 return M

@@ -14,6 +14,7 @@ vim.o.hidden = true
 
 -- Fix backspace indent
 vim.o.backspace = 'indent,eol,start'
+-- vim.o.backspace = 2
 
 -- Fix split to bottom and right
 -- Fix split to bottom and right
@@ -34,8 +35,8 @@ vim.o.smartcase = true
 -- Tabs
 vim.bo.tabstop = 2
 vim.o.tabstop = 2
-vim.bo.softtabstop = 0
-vim.o.softtabstop = 0
+vim.bo.softtabstop = 2 -- 0
+vim.o.softtabstop = 2 -- 0
 vim.bo.shiftwidth = 2
 vim.o.shiftwidth = 2
 vim.bo.expandtab = true
@@ -50,12 +51,16 @@ vim.wo.colorcolumn = '80'
 vim.wo.cursorline = true
 vim.wo.cursorcolumn = true
 vim.wo.wrap = false
-vim.wo.scrolloff = 8
+vim.wo.scrolloff = 8888
 
 
 -- ----------------------------------------------------------------------------
 -- Commands
 -- ----------------------------------------------------------------------------
-vim.cmd'syntax on'
-vim.cmd'filetype on'
+-- vim.cmd'syntax on'
+-- vim.cmd'filetype on'
 vim.cmd'filetype plugin indent on'
+vim.cmd'syntax enable'
+
+-- Polyglot config
+vim.g.polyglot_disable = {'fsharp', 'forth'}

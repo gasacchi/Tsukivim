@@ -1,0 +1,6 @@
+- [] Configure mapping with different telescope theme
+- [] Map to Code Action map.a
+- [] Install Ocaml related plugin
+- [] Configure Snippet
+- [] Configure Mark
+- [] Configure Gitsigns

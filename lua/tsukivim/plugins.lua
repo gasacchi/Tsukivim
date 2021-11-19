@@ -48,6 +48,7 @@ return require'packer'.startup(function(use)
       {'nvim-lua/plenary.nvim'}
     }
   }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {                                        -- file explorer
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'

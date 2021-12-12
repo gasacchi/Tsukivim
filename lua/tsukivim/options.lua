@@ -1,3 +1,5 @@
+-- local notify = require'notify'
+
 -- vim.o.guicursor = ''
 
 -- Encoding
@@ -61,6 +63,3 @@ vim.wo.scrolloff = 8888
 -- vim.cmd'filetype on'
 vim.cmd'filetype plugin indent on'
 vim.cmd'syntax enable'
-
--- Polyglot config
-vim.g.polyglot_disable = {'fsharp', 'forth'}

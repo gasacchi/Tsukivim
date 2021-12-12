@@ -4,3 +4,4 @@
 - [] Configure Snippet
 - [] Configure Mark
 - [] Configure Gitsigns
+- [] Change galaxyline to alternative

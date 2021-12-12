@@ -1,10 +1,12 @@
 ---------------------------------------------------------------------------
 -- Mappings
 -- ----------------------------------------------------------------------------
-
+   
 local keymap = vim.api.nvim_set_keymap 
+local keymap_buff = vim.api.nvim_buf_set_keymap 
 local setvar = vim.api.nvim_set_var
 local cmd = vim.cmd
+local gui = vim.g.nvui
 
 local opts = {
   noremap = true,
@@ -21,30 +23,30 @@ keymap("n", "<LEFT>", "<NOP>", opts)
 keymap("n", "<RIGHt>","<NOP>", opts)
 keymap("n", "<UP>",   "<NOP>", opts)
 
+
 -- Esc to jk
 keymap("i", "jk","<ESC>", opts)
 -- Escape from command mode with jk
 keymap("c", "jk","<C-c>", opts)
 -- Use Y to yank from current cursor to end of a line
-keymap("n", "Y", "y$", opts )
+-- keymap("n", "Y", "y$", opts)
 -- consistent jump in middle
-keymap("n", "n", "nzz", opts )
-keymap("n", "N", "Nzz", opts )
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
 
 
 -- Terminal map
 function _G.set_terminal_keymaps()
-  local opts = {noremap = true}
-  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-t>n', [[<C-\><C-n>:tabnext<cr>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-t>p', [[<C-\><C-n>:tabnext<cr>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-t>p', [[<C-\><C-n>:tabnext<cr>]], opts)
+  keymap_buff(0, 't', '<esc>',  [[<C-\><C-n>]], opts)
+  keymap_buff(0, 't', 'jk',     [[<C-\><C-n>]], opts)
+  keymap_buff(0, 't', '<C-h>',  [[<C-\><C-n><C-W>h]], opts)
+  keymap_buff(0, 't', '<C-j>',  [[<C-\><C-n><C-W>j]], opts)
+  keymap_buff(0, 't', '<C-k>',  [[<C-\><C-n><C-W>k]], opts)
+  keymap_buff(0, 't', '<C-l>',  [[<C-\><C-n><C-W>l]], opts)
+  keymap_buff(0, 't', '<C-l>',  [[<C-\><C-n><C-W>l]], opts)
+  keymap_buff(0, 't', '<C-t>n', [[<C-\><C-n>:tabnext<cr>]], opts)
+  keymap_buff(0, 't', '<C-t>p', [[<C-\><C-n>:tabnext<cr>]], opts)
+  keymap_buff(0, 't', '<C-t>p', [[<C-\><C-n>:tabnext<cr>]], opts)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
@@ -58,278 +60,311 @@ cmd "autocmd FileType dashboard noremap <buffer> q :q<CR>"
 -- for quikfix
 cmd "autocmd FileType qf noremap <buffer> q :q<CR>"
 
+-- TODO: temporary file type
+cmd "autocmd FileType qf noremap <buffer> q :q<CR>"
+
 -- require which-key default config
 vim.g.timeoutlen = 500
 keymap("n", " ", ":WhichKey <leader><cr>", opts )
 require'modules.ui.whichkey'
 
--- print function
-local function cmdp(c,message)
-  return string.format("%s<cr>:echohl Error | echon '  ' | echohl String | echon '|>' | echohl Boolean | echon ' %s' | echohl None<cr>", c, message)
+
+-- execute command without printing message
+local function exec(c, desc)
+  return { 
+    c .. "<cr>",
+    desc
+    }
 end
 
--- set keybind
+-- execute command and print message
+local function execm(c,message, desc)
+  return { 
+    string.format("%s<cr>:lua require'modules.ui.notify'.info('%s')<cr>", c, message),
+    desc
+    }
+end
+
+
 local wk = require'which-key'
 
 local map = {}
 
+
+-- ----------------------------------------------------------------------------
 -- Single Mappings
-map[" "] = { "<Esc>",                          " Close"                      }
-map["."] = { ":Telescope file_browser<cr>",      " Find File"                  }
-map.Q    = { ":q!<cr>",                        " Quit Without Saving"        }
-map.q    = { ":q<cr>",                         " Quit"                       }
+-- ----------------------------------------------------------------------------
+map[" "] = exec("<Esc>", "Close")
+map["."] = exec(":Telescope file_browser", "Browse files")
+map[","] = exec(":lua require'telescope.builtin'.buffers(require'telescope.themes'.get_dropdown({}))",  "Switch buffer")
+map.Q    = exec(":q!", "Quit without saving")
+map.q    = exec(":q", "Quit")
+-- TODO: check if there is tab use tab(next) / s-tab(prev) otherwise use buffer instead
+map["<tab>"] = execm(":tabnext", "Move to next tab", "Next tab")
 
--- Action TODO: add action keymap
+
+-- ----------------------------------------------------------------------------
+-- Action Mappings
+-- ----------------------------------------------------------------------------
 map.a    = {
-  name   =                                     "省Actions",
-  [" "]  = { "<Esc>",                          " Close"                     },
-  r      = { cmdp(":LspRestart",               "Lsp Restarted"),
-  "Restart Lsp"          },
-  s      = { cmdp(":LspStart",                 "Lsp Started"),
-  "Start Lsp"          },
-  S      = { cmdp(":LspStop",                  "Lsp Stoped"),
-  "Stop Lsp"          },
-  p      = { cmdp('"+p',                       "Paste.."),
-  "Paste from clipboard"          },
-  c      = { cmdp('"+y',                       "Copy.."),
-  "Copy to clipboard"          },
+  name   = "Actions",
+  [" "]  = exec("<Esc>", "Close"),
+  p      = execm('"+p', "Paste..", "Paste from clipboard"),
+  y      = execm('"+y', "Yank..", "Yank to clipboard"),
 }
 
--- Buffers Mappings
+
+-- ----------------------------------------------------------------------------
+-- Buffer Mappings
+-- ----------------------------------------------------------------------------
 map.b    = {
-  name   =                                     " Buffers",
-  [" "]  = { "<Esc>",                          " Close"                 },
-  b      = { ":Telescope buffers<cr>",         " First buffer"          },
-  d      = { cmdp(":bdelete %", "Buffer deleted"),
-  " Delete current buffer"                                   },
-  f      = { cmdp(":bfirst", "Move to first buffer"),
-  " First buffer"                                            },
-  l      = { cmdp(":blast", "Move to last buffer"),
-  " Last buffer"                                             },
-  n      = { cmdp(":BufferLineCycleNext", "Move to next buffer"),
-  " Next buffer"                                             },
-  p      = { cmdp(":BufferLineCyclePrev", "Move to previous buffer"),
-  " Previous buffer"                                         },
+  name   = "Buffers",
+  [" "]  = exec("<Esc>", "Close"),
+  s      = exec(":lua require'telescope.builtin'.buffers(require'telescope.themes'.get_dropdown({}))",  "Switch buffer"),
+  d      = exec(":bdelete %", "Delete buffer"),
+  D      = exec(":BufferLinePickClose", "Pick and delete buffer"),
+  b      = exec(":BufferLinePick", "Pick and go to buffer"),
+  f      = execm(":bfirst", "Move to first buffer", "First buffer"),
+  l      = execm(":blast", "Move to last buffer", "Last buffer"),
+  n      = execm(":BufferLineCycleNext", "Move to next buffer", "Next buffer"),
+  p      = execm(":BufferLineCyclePrev", "Move to previous buffer", "Previous buffer"),
+  ["1"]  = execm(":BufferLineGoToBuffer 1", "Switch to buffer 1", "Buffer 1"),
+  ["2"]  = execm(":BufferLineGoToBuffer 2", "Switch to buffer 2", "Buffer 2"),
+  ["3"]  = execm(":BufferLineGoToBuffer 3", "Switch to buffer 3", "Buffer 3"),
+  ["4"]  = execm(":BufferLineGoToBuffer 4", "Switch to buffer 4", "Buffer 4"),
+  ["5"]  = execm(":BufferLineGoToBuffer 5", "Switch to buffer 5", "Buffer 5"),
+  ["6"]  = execm(":BufferLineGoToBuffer 6", "Switch to buffer 6", "Buffer 6"),
+  ["7"]  = execm(":BufferLineGoToBuffer 7", "Switch to buffer 7", "Buffer 7"),
+  ["8"]  = execm(":BufferLineGoToBuffer 8", "Switch to buffer 8", "Buffer 8"),
+  ["9"]  = execm(":BufferLineGoToBuffer 9", "Switch to buffer 9", "Buffer 9"),
+  --[[ ["<tab>"]    = execm(":BufferLineCycleNext", "Switch to buffer 9", "Buffer 9"),
+  ["<S-tab>"]  = execm(":BufferLineCyclePrev", "Switch to buffer 9", "Buffer 9"), ]]
 }
 
--- Editors
-map.e    =  {
-  name   =                                     " Editors",
-  [" "]  = { "<Esc>",                          " Close"              },
-  e      = { cmdp(":luafile %", "Current file evaluated"),
-  "省Eval current file"  },
-  E      = { cmdp(":luafile $MYVIMRC", "Init.lua evaluated"),
-  "省Eval init.lua"      },
-  h      = { cmdp(":let @/ = ''", "highlight search off"),
-  " No highlight search"},
-  n      = { cmdp(":set invnumber", "Toggle number line"),
-  " Line number"        },
-  r      = { cmdp(":set invrelativenumber", "Toggle relative line"),
-  " Line number"        },
+-- ----------------------------------------------------------------------------
+-- Code Mappings
+-- ----------------------------------------------------------------------------
+map.c    = {
+  name   = "Code",
+  [" "]  = exec("<Esc>", "Close"),
+  r      = exec(":TermExec dir=git_dir cmd='dotnet fsi' go_back=0", "Repl")
 }
 
+
+-- ----------------------------------------------------------------------------
+-- Editor Mappings
+-- ----------------------------------------------------------------------------
+map.e    = {
+  name   = "Editors",
+  [" "]  = exec("<Esc>", "Close"),
+  c      = exec(":e /home/gasacchi/.config/nvim", "Tsukivim config"),
+  C      = execm(":checkhealth", "Checking health", "Check Health"),
+  -- e      = execm(":luafile %", "Current file evaluated", "Eval current file"),
+  e      = execm(":", "Current file evaluated", "Eval current file"),
+  f      = exec(":NvuiToggleFullscreen", "Toggle fullscreen"),
+  E      = execm(":luafile $MYVIMRC", "Init.lua evaluated", "Eval init.lua"),
+  h      = execm(":let @/ = ''", "highlight search off", "No hl search"),
+  n      = execm(":set invnumber", "Toggle number line","Toggle line number"),
+  r      = execm(":set invrelativenumber", "Toggle relative number","Toggle relative number"),
+}
+
+-- ----------------------------------------------------------------------------
+-- Files Mappings
+-- ----------------------------------------------------------------------------
 -- Files
 map.f    = {
-  name   =                                            " Files",
-  [" "]  = { "<Esc>",                                 " Close" },
-  e      = { ":e ",                                   " Edit file(s)" },
-  S      = { ":wq<cr>",                               " Save and exit" },
-  n      = { ":DashboardNewFile<cr>",                 " New file" },
-  s      = { cmdp(":w", "File saved"),                                " Save file" },
+  name   = "Files",
+  [" "]  = exec("<Esc>", "Close"),
+  s      = execm(":w", "File saved", "Save file"),           
+  e      = { ":e ",                                   "Edit file(s)" },
+  n      = exec(":DashboardNewFile", "Open blank file","New blank file" ),
+  S      = exec(":wq", "Save & exit" ),
+  f      = exec(":Telescope find_files", "Find files" ),
+  b      = exec(":Telescope file_browser", "Browse files" ),
+  h      = exec(":Telescope oldfiles", "Recently opened files" ),
 }
 
+-- ----------------------------------------------------------------------------
+-- Git Mappings
+-- ----------------------------------------------------------------------------
 map.g    = {
-  name   =                                                   " Git",
-  [" "]  = { "<Esc>",                                        " Close"          },
-  g      = { ":lua require'neogit'.open{kind='split'}<cr>",  " Neogit"         },
-  c      = { ":Neogit commit<cr>",                           " Commit"         },
+  name   =                                                   "Git",
+  [" "]  = exec("<Esc>", "Close"),
+  g      = exec(":lua require'neogit'.open{kind='split'}", "Neogit"),
+  c      = execm(":Neogit commit", "Open git commit", "Commit"),
 
-  -- Mapping from gitsigns
-  s      =                                                   " Stage hunk",
-  u      =                                                   " Unstage hunk",
-  R      =                                                   "﬘ Reset buffer",
-  r      =                                                   "痢Reset hunk",
-  P      =                                                   " Preview hunk",
-  b      =                                                   " Blame line",
-  p      =                                                   "玲Previous hunk",
-  n      =                                                   "怜Next hunk",
+  -- Mapping from gitsigns: ../modules/git/gitsigns.lua
+  s      = "Stage hunk",
+  u      = "Unstage hunk",
+  R      = "Reset buffer",
+  r      = "Reset hunk",
+  P      = "Preview hunk",
+  b      = "Blame line",
+  p      = "Previous hunk",
+  n      = "Next hunk",
 }
 
--- Help
+-- ----------------------------------------------------------------------------
+-- Help Mappings
+-- ----------------------------------------------------------------------------
 map.h    = {
-  name   =                                            " Help",
-  [" "]  = { "<Esc>",                                 " Close"              },
-  H      = { ":Telescope highlights<cr>",             " Highlights"         },
-  h      = { ":Telescope help_tags<cr>",              " Help tags"          },
-  m      = { ":Telescope man_pages<cr>",              "龎 Manual pages"      },
+  name   = "Help",
+  [" "]  = exec("<Esc>", "Close"),
+  H      = exec(":Telescope highlights", "Highlights"),
+  h      = exec(":Telescope help_tags", "Help tags"),
+  m      = exec(":Telescope man_pages", "Manual pages"),
 }
 
 
--- LSP
+-- ----------------------------------------------------------------------------
+-- LSP Mappings
+-- ----------------------------------------------------------------------------
+-- TODO: set map for lsp
 map.l    = {
-  name   =                                        " LSP",
-  [" "]  = { "<Esc>",                             " Close"                  },
-  ["."]  =                                        " Lsp finder Ref & Def",
-  h      =                                        " Hover documentation",
-  H      =                                        " Help",
-  n      =                                        "怜Diagnostics next",
-  p      =                                        "玲Diagnostics prev",
-  d      =                                        " Definitions",
-  D      =                                        " Declaration",
-  t      =                                        " Type definitions",
-  i      =                                        " Implementation",
-  R      =                                        "凜Rename",
-  f      =                                        " Format",
-  a      =                                        " Code action",
-  x      =                                        " Show line diagnostics",
-  X      =                                        "_ Show cursor diagnostics",
+  name   = "LSP",
+  [" "]  = exec("<Esc>", "Close"),
+  ["."]  = "Lsp finder Ref & Def",
+  h      = "Hover documentation",
+  H      = "Help",
+  n      = "Diagnostics next",
+  p      = "Diagnostics prev",
+  d      = "Definitions",
+  D      = "Declaration",
+  t      = "Type definitions",
+  i      = "Implementation",
+  R      = "Rename",
+  f      = "Format",
+  a      = "Code action",
+  x      = "Show line diagnostics",
+  X      = "Show cursor diagnostics",
   w      = {
-    name   =                                      "華Workspace action",
-    [" "]  = { "<Esc>",                           " Close"                  },
-    a    =                                        " Add workspace folder",
-    r    =                                        "凜Remove workspace folder",
-    l    =                                        " List workspace",
+    name   =                                      "Workspace action",
+    [" "]  = { "<Esc>",                           "Close"                  },
+    a    =                                        "Add workspace folder",
+    r    =                                        "Remove workspace folder",
+    l    =                                        "List workspace",
   },
 }
 
 
+-- ----------------------------------------------------------------------------
+-- Motion Mappings
+-- ----------------------------------------------------------------------------
 map.m    = {
-  name   =                                        "省Motion",
-  [" "]  = { "<Esc>",                             " Close"                  },
-  w      = { ":HopWord<cr>",                      " Hop word"               },
-  p      = { ":HopPattern<cr>",                   " Hop pattern"            },
-  l      = { ":HopLine<cr>",                      " Hop line"               },
-  c      = { ":HopChar1<cr>",                     " Hop char 1"             },
-  C      = { ":HopChar2<cr>",                     "了Hop char 2"             },
+  name   = "Motion",
+  [" "]  = exec("<Esc>", "Close"),
+  w      = exec(":HopWord", "Hop word" ),
+  p      = exec(":HopPattern", "Hop pattern" ),
+  l      = exec(":HopLine", "Hop line" ),
+  c      = exec(":HopChar1",  "Hop char 1" ),
+  C      = exec(":HopChar2",  "Hop char 2" ),
 }
 
--- Open
+
+-- ----------------------------------------------------------------------------
+-- Open Mappings
+-- ----------------------------------------------------------------------------
 map.o    = {
-  name   =                                            "冷Open",
-  [" "]  = { "<Esc>",                                 " Close"              },
-  e      = { cmdp(":NvimTreeToggle", "Open file explorer"),
-             "滑Tree"               },
-  m      = { cmdp(":GonvimMiniMap", "Open minimap"),
-             " Minimap"            },
-  M      = { cmdp(":GonvimMarkdown", "Open markdown"),
-             " Markdown"            },
-  t      = { ":ToggleTerm dir=git_dir<cr>", " Terminal"            },
-  T      = { ":ToggleTerm dir=git_dir direction=tab <cr>", " Terminal"            },
+  name   = "Open",
+  [" "]  = exec("<Esc>", "Close"),
+  e      = exec(":NvimTreeToggle", "File explorer" ),
+  m      = execm(":MinimapToggle", "Open minimap", "Minimap" ),
+  -- M      = execm(":GonvimMarkdown", "Open markdown", "Markdown preview" ),
+  t      = exec(":ToggleTerm dir=git_dir<cr>", "Terminal" ),
+  T      = exec(":ToggleTerm dir=git_dir direction=tab <cr>", "Terminal in new tab" ),
+  d      = execm(":Dashboard<cr>", "Open dashboard", "Dasboard" ),
 }
 
--- packer plugin manager
+
+-- ----------------------------------------------------------------------------
+-- Plugin Mappings
+-- ----------------------------------------------------------------------------
 map.p    = {
-  name   =                                            " Plugin",
-  [" "]  = { "<Esc>",                                 " Close" },
-  C      = { cmdp(":PackerClean", "Plugin cleaned"),
-             "﯊Clean" },
-  c      = { cmdp(":PackerCompile", "Plugin compiled"),
-             " Compile" },
-  i      = { cmdp(":PackerInstall", "Plugin install"),
-             " Install" },
-  s      = { cmdp(":PackerSync", "Sync Plugin"),
-             "痢Sync" },
-  u      = { cmdp(":PackerUpdate", "Update Plugin"),
-             " Update" },
+  name   = "Plugin",
+  [" "]  = exec("<Esc>", "Close"),
+  C      = exec(":PackerClean",  "Clean" ),
+  c      = execm(":PackerCompile", "Plugin compiled", "Compile" ),
+  i      = execm(":PackerInstall", "Plugin install", "Install" ),
+  s      = execm(":PackerSync", "Sync Plugin", "Sync" ),
+  u      = execm(":PackerUpdate", "Update Plugin", "Update" ),
 }
 
--- Search with Telescope
+
+-- ----------------------------------------------------------------------------
+-- Search Mappings
+-- ----------------------------------------------------------------------------
+-- Skip lsp picker use lsp saga instead
 map.s    = {
-  name   = " Search",
-  [" "]  = { "<Esc>",                              " Close"                     },
-  ["."]  = { ":Telescope live_grep<cr>",           " Grep in current directory" },
-  ["'"]  = { ":Telescope grep_string<cr>",         " Grep string ."             },
-  [";"]  = { ":Telescope filetypes<cr>",           " Filetypes"                 },
-  [","]  = { ":Telescope colorscheme<cr>",         " Colorschemes"              },
-  ["?"]  = { ":TodoTelescope<cr>",                 " TODO"                      },
-  b      = { ":Telescope buffers<cr>",             "﬘ Buffers"                   },
-  B      = { ":Telescope builtin<cr>",             " Builtins"                  },
-  c      = { ":Telescope commands<cr>",            " Commands"                  },
-  C      = { ":Telescope command_history<cr>",     " Commands history"          },
-  a      = { ":Telescope autocommands<cr>",        " Autocommands"              },
-  f      = { ":Telescope find_files<cr>",          " Find file"                 },
-  F      = { ":Telescope file_browser<cr>",        " File browser"              },
-  g      = {
-    [" "]= { "<Esc>",                              " Close"                     },
-    name = " Git",
-    g    = { ":Telescope git_files<cr>",           " Files"                     },
-    c    = { ":Telescope git_commits<cr>",         " Commits"                   },
-    C    = { ":Telescope git_bcommits<cr>",        " Buffer commits"            },
-    b    = { ":Telescope git_branches<cr>",        " Branches"                  },
-    s    = { ":Telescope git_status<cr>",          " Status"                    },
-  },
-  h      = { ":Telescope oldfiles<cr>",            " History"                   },
-  k      = { ":Telescope keymaps<cr>",             " Keymaps"                   },
-  l      = {
-    name = " LSP",
-    [" "]= { "<Esc>",                                     " Close"              },
-    ["."]= { ":Telescope lsp_definitions<cr>",            " Definitions"        },
-    r    = { ":Telescope lsp_references<cr>",             " References"         },
-    d    = { ":Telescope lsp_document_symbols<cr>",       " Document symbols"   },
-    w    = { ":Telescope lsp_workspace_symbols<cr>",      "華Workspace symbols"  },
-    a    = { ":Telescope lsp_code_actions<cr>",           " Code actions"       },
-    R    = { ":Telescope lsp_range_code_actions<cr>",     " Range actions"      },
-    D    = { ":Telescope lsp_document_diagnostics<cr>",   " Document diagnostics" },
-    W    = { ":Telescope lsp_workspace_diagnostics<cr>",  " Workspace diagnostics"},
-  },
-  m      = { ":Telescope marks<cr>",                      " Marks"              },
-  o      = { ":Telescope vim_options<cr>",                " Vim options"        },
-  q      = { ":Telescope quikfix<cr>",                    " Quickfix"           },
-  r      = { ":Telescope registers<cr>",                  " Registers"          },
-  s      = { ":Telescope current_buffer_fuzzy_find<cr>",  " Fuzzy in current buffer" },
-  S      = { ":Telescope spell_suggest<cr>",              "暈Spell suggest"      },
-  t      = { ":Telescope current_buffer_tags<cr>",        " Current buffer tags"},
-  T      = { ":Telescope tags<cr>",                       " Tags"               },
+  name   = "Search",
+  [" "]  = exec("<Esc>", "Close"),
+
+  -- File pickers
+  ["."]  = exec(":Telescope live_grep", "String in current directory" ),
+  ["'"]  = exec(":Telescope grep_string", "String under the cursor" ),
+  f      = exec(":Telescope find_files", "Find files" ),
+  F      = exec(":Telescope file_browser", "File browser" ),
+  g      = exec(":Telescope git_files","Git files" ),
+
+  -- Vim Pickers
+  b      = exec(":Telescope buffers", "Buffers" ),
+  h      = exec(":Telescope oldfiles", "Previously open files" ),
+  c      = exec(":Telescope commands", "Commands" ),
+  C      = exec(":Telescope command_history", "Commands history" ),
+  s      = exec(":Telescope current_buffer_fuzzy_find", "Current buffer fuzzy find" ),
+  S      = exec(":Telescope search_history", "Search history" ),
+  m      = exec(":Telescope marks", "Marks" ),
+  j      = exec(":Telescope jumplist", "Jumplist" ),
+  o      = exec(":Telescope vim_options", "Vim Options" ),
+  r      = exec(":Telescope registers", "Registers" ),
+  k      = exec(":Telescope keymaps", "Keymaps" ),
+  [";"]  = exec(":Telescope filetypes", "Filetypes" ),
+
+  -- Treesitter
+  T      = exec(":Telescope treesitter", "TODOs" ),
+
+  -- Custom Search and External Plugin
+  t      = exec(":TodoTelescope", "TODOs" ),
 }
 
--- Todos
+
+-- ----------------------------------------------------------------------------
+-- Trouble Mappings
+-- ----------------------------------------------------------------------------
 map.t    = {
-  name   =                                            " Trouble Lsp",
-  [" "]  = { "<Esc>",                                 " Close"              },
-  r      =                                            " References",
-  q      =                                            " Quickfix",
-  l      =                                            " Loclist",
-  w      =                                            "華Workspace diagnostics",
-  d      =                                            " Document diagnostics",
+  name   = "Trouble Lsp",
+  [" "]  = exec("<Esc>", "Close"),
+  r      = "References",
+  q      = "Quickfix",
+  l      = "Loclist",
+  w      = "Workspace diagnostics",
+  d      = "Document diagnostics",
 }
 
+
+-- ----------------------------------------------------------------------------
+-- Window Mappings
+-- ----------------------------------------------------------------------------
 map.w    = {
-  name   =                                            " Window",
-  H      = { cmdp(":vertical resize -5", ""),
-             " Resize vertical"    },
-  L      = { cmdp(":vertical resize +5", ""),
-             " Resize vertical"    },
-  J      = { cmdp(":resize -5", ""),
-             " Resize horizontal"  },
-  K      = { cmdp(":resize +5", ""),
-             " Resize horizontal"  },
-  h      = { cmdp("<C-w>h", "Move to left window"),
-             " Move left"          },
-  j      = { cmdp("<C-w>j", "Move to bottom window"),
-             " Move down"          },
-  k      = { cmdp("<C-w>k", "Move to top window"),
-             " Move up"            },
-  l      = { cmdp("<C-w>l", "Move to right window"),
-             " Move right"         },
-  D      = { cmdp("<C-w>o", "Other window closed"),
-             " Close other window" },
-  d      = { cmdp("<C-w>c", "Window closed"),
-             " Close current window" },
-  n      = { cmdp("<C-w>w", "Move to next window"),
-             "怜Next window"        },
-  p      = { cmdp("<C-w>p", "Move to previous window"),
-             "玲Prev window"        },
-  S      = { cmdp(":new", "New window buffer"),
-             " New window buffer"  },
-  V      = { cmdp(":vnew", "New vertical window buffer"),
-             " New vertical window buffer"  },
-  s      = { cmdp(":split", "Split horizontal"),
-             "祈Horizontal split"   },
-  v      = { cmdp(":vsplit", "Split vertical"),
-             " Vertical split"    },
+  name   = "Window",
+  [" "]  = exec("<Esc>", "Close"),
+  H      = execm(":vertical resize -5", "", "Resize vertical"),
+  L      = execm(":vertical resize +5", "", "Resize vertical"),
+  J      = execm(":resize -5", "", "Resize horizontal"),
+  K      = execm(":resize +5", "", "Resize horizontal"),
+  h      = execm("<C-w>h", "Move to left window", "Move left"),
+  j      = execm("<C-w>j", "Move to bottom window", "Move down"),
+  k      = execm("<C-w>k", "Move to top window", "Move up"),
+  l      = execm("<C-w>l", "Move to right window", "Move right"),
+  D      = execm("<C-w>o", "Other window closed", "Close other window"),
+  d      = execm("<C-w>c", "Window closed", "Close current window"),
+  n      = execm("<C-w>w", "Move to next window", "Next window"),
+  p      = execm("<C-w>p", "Move to previous window", "Prev window"),
+  S      = execm(":new", "New window buffer", "New window buffer"),
+  V      = execm(":vnew", "New vertical window buffer", "New vertical window buffer"),
+  s      = execm(":split", "Split horizontal", "Horizontal split"),
+  v      = execm(":vsplit", "Split vertical", "Vertical split"),
 }
 
 
 wk.register(map, { prefix = '<leader>' })
-
 

@@ -1,12 +1,14 @@
 ;; module for configure Neovim gui
-(import-macros {: run!} :lib.macro.vim)
+(import-macros {: run! : let-global!} :lib.macro.vim)
 
-(local goneovim? vim.g.gonvim_running)
+(local neovide? vim.g.neovide)
 
 (fn config []
-    (when goneovim?
-        (print "Running on Gui")))
+    (when neovide?
+     (let-global! :neovide_transparency 0.3)
+     (run! "set guifont=Iosevka\\ Nerd\\ Font:h9")))
+        
 
 
 {: config 
- :gui? goneovim?}
+ :gui? neovide?}

@@ -21,10 +21,14 @@
   "Accept string and run as vim command" 
 	`(vim.cmd ,cmd))
 
+(fn set-keymap! [mode key cmd opts]
+	`(vim.api.nvim_set_keymap ,mode ,key ,cmd ,opts))
+
 
 { : set!
   : set-global!
   : set-buffer!
   : set-window!
   : let-global!
+	: set-keymap!
 	: run!}

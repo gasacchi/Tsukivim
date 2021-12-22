@@ -16,6 +16,7 @@
           {:config nvim-tree-config} (require :modules.utils.nvim-tree)
           {:config todo-comments-config} (require 
                                            :modules.utils.todo-comments)
+          {:config marks-config} (require :modules.utils.marks)
           {:config nvim-treesitter-config} (require 
                                              :modules.ui.nvim-treesitter)
           {:setup indent-blankline-setup} (require 
@@ -25,7 +26,9 @@
                                                         :modules.ui.themes)
           {:config bufferline-config} (require :modules.ui.bufferline)
           {:config colorizer-config} (require :modules.ui.colorizer)
-          {:config kommentary-config} (require :modules.editing.kommentary)]
+          {:config kommentary-config} (require :modules.editing.kommentary)
+          {:config better-escape-config} (require :modules.editing.better-escape)
+          {:config keymaps-config :setup keymaps-setup} (require :keymaps)]
 
     ;; Core plugins for managing plugin and fennel in Tsukivim ;;;;;;;;;;;;;;;;;
     ;; Packer plugin manager
@@ -81,8 +84,10 @@
        :config (neogit-config)})
 
     ;; Git signs
+    ;; see: modules/git/gitsigns.fnl for configure gitsigns
     (use 
       {1 :lewis6991/gitsigns.nvim 
+       :requires [:nvim-lua/plenary.nvim]
        :config (gitsigns-config)})
 
     ;; Utility related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -110,6 +115,11 @@
     (use 
       {1 :folke/todo-comments.nvim
        :config (todo-comments-config)})
+    
+    ;; Marks viewer
+    ;; (use 
+    ;;   {1 :chentau/marks.nvim
+    ;;    :config (marks-config)})
     
     ;; UI related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Treesitter
@@ -158,11 +168,29 @@
        :config (colorizer-config)})
 
     ;; Editing related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; buffer delete without losting window layout
+    (use :famiu/bufdelete.nvim)
+
     ;; auto comment
     ;; see: modules/editing/kommentary.fnl for configue kommentary
     (use 
       {1 :b3nj5m1n/kommentary
        :config (kommentary-config)})
+
+    ;; better escape with fast jk
+    ;; see: modules/editing/better-escape.fnl
+    (use
+      {1 :max397574/better-escape.nvim
+       :config (better-escape-config)})
+
+    ;; Mapping related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    ;; which-key for documenting keymaps
+    ;; see: keymaps.fnl
+    (use 
+      {1 :folke/which-key.nvim
+       :setup (keymaps-setup)
+       :config (keymaps-config)})
 
     ;; sync plugin when first time install tsukivim
     (if packer_bootstrap 

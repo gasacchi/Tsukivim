@@ -12,7 +12,7 @@
       (opt.listchars:append "eol:↴")
       (indent.setup 
         {:space_char_blankline " "
-         :filetype_exclude [:alpha :help :packer]
+         :filetype_exclude [:alpha :help :packer :whichkey] 
          :show_current_context true
          :show_current_context_start true}))))
 

@@ -1,10 +1,8 @@
 ;; Module for configure better-escape
 
-(local {: plugin-exist?} (require :lib.tsukivim))
+(local {: require-plugin} (require :lib.tsukivim))
 
-(fn config []
-  (when (plugin-exist? :better-escape.nvim)
-    (let [better-escape (require :better_escape)]
-      (better-escape.setup))))
+(let [(ok? better-escape) (require-plugin :better_escape)]
+  (when ok?
+    (better-escape.setup)))
 
-{: config}

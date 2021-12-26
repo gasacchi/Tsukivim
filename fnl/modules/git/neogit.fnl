@@ -1,10 +1,10 @@
 ;; Module for configure neogit
-(local {: plugin-exist?} (require :lib.tsukivim))
+(local {: require-plugin} (require :lib.tsukivim))
 
 (fn config []
-  "Function that run after neogit is loaded"
-  (when (plugin-exist? :neogit)
-   (let [neogit (require :neogit)]
-    (neogit.setup))))
+  "Run after neogit is loaded"
+   (let [(ok? neogit) (require-plugin :neogit)]
+    (when ok?
+      (neogit.setup))))
 
 {: config}

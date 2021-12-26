@@ -1,10 +1,7 @@
 ;; Module for configure todo-comments
-(local {: plugin-exist?} (require :lib.tsukivim))
+(local {: require-plugin} (require :lib.tsukivim))
 
-(fn config []
-  "Function that run after todo-comments is loaded"
-  (when (plugin-exist? :todo-comments.nvim)
-     (let [todo-comments (require :todo-comments)]
-        (todo-comments.setup))))
+(let [(ok? todo-comments) (require-plugin :todo-comments)]
+   (when ok? 
+     (todo-comments.setup)))
 
-{: config}

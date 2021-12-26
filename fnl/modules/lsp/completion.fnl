@@ -1,41 +1,34 @@
 ;; Module for configure nvim-cmp & lspkind.nvim
-(import-macros {: let-global!} :lib.macro.vim )
-(local {: plugin-exist?} (require :lib.tsukivim))
-
-
-
-(fn setup []
-    "Function that run before nvim-cmp loaded"
-    ;; preselect when completion popup
-    (let-global! :completeopt "menu,menuone,noselect"))
+(import-macros {: let-global!} :lib.macro.vim)
+(local {: require-plugin} (require :lib.tsukivim))
 
 ;; Set icons for lspkind.nvim
 (local kind-icons 
        {:Text "ﭨ"
-       :Method ""
-       :Function ""
-       :Constructor ""
-       :Field ""
-       :Variable ""
-       :Class "ﴰ"
-       :Interface ""
-       :Module ""
-       :Property "ﰠ"
-       :Unit ""
-       :Value ""
-       :Enum ""
-       :Keyword ""
-       :Snippet ""
-       :Color ""
-       :File ""
-       :Reference ""
-       :Folder ""
-       :EnumMember ""
-       :Constant ""
-       :Struct " "
-       :Event ""
-       :Operator ""
-       :TypeParameter ""})
+        :Method ""
+        :Function ""
+        :Constructor ""
+        :Field ""
+        :Variable ""
+        :Class "ﴰ"
+        :Interface ""
+        :Module ""
+        :Property "ﰠ"
+        :Unit ""
+        :Value ""
+        :Enum ""
+        :Keyword ""
+        :Snippet ""
+        :Color ""
+        :File ""
+        :Reference ""
+        :Folder ""
+        :EnumMember ""
+        :Constant ""
+        :Struct " "
+        :Event ""
+        :Operator ""
+        :TypeParameter ""})
 
 ;; Snippet configuration
 (local snippet 
@@ -59,15 +52,13 @@
 (local sources 
      [{:name :nvim_lsp}
       {:name :vsnip}
-      ;; {:name :path}
+      {:name :path}
       {:name :nvim_lua}
       {:name :buffer}])
 
-
-;; Set mapping for nvim-cmp
 (fn mapping []
-    (when (plugin-exist? :nvim-cmp)
-        (let [cmp (require :cmp)]
+    (let [(ok? cmp) (require-plugin :cmp)]
+        (if ok?
             {:<Tab> (cmp.mapping.select_next_item)
                   :<S-Tab> (cmp.mapping.select_prev_item)
                   :<C-Space> (cmp.mapping.complete)
@@ -80,18 +71,13 @@
 (local experimental 
      {:ghost_text true})
 
-;; TODO: set config when plugin-exist?
-(fn config [] 
-    "Function that run when nvim-cmp is loaded"
-    (when (plugin-exist? :nvim-cmp)
-        (let [cmp (require :cmp)]
-            (cmp.setup 
-                {: snippet 
-                 : formatting
-                 : sources
-                 :mapping (mapping)
-                 : experimental}))))
-
-{: setup
- : config}
+(let [(ok? cmp) (require-plugin :cmp)]
+    (when ok?
+        (let-global! :completeopt "menu,menuone,noselect")
+        (cmp.setup 
+            {: snippet 
+             : formatting
+             : sources
+             :mapping (mapping)
+             : experimental})))
 

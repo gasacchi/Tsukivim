@@ -1,3 +1,6 @@
+;; Module for configure gitsigns
+(local {: require-plugin} (require :lib.tsukivim))
+
 (local keymaps 
   {:noremap true :buffer true 
    "n <leader>gn" {1 "&diff ? ']c' : ':lua require\"gitsigns\".next_hunk()<CR>'" 
@@ -13,9 +16,7 @@
    "o ih" ":<C-U>lua require'gitsigns'.select_hunk()<CR>"
    "x ih" ":<C-U>lua require'gitsigns'.select_hunk()<CR>"})
 
-(fn config []
- (let [gitsigns (require :gitsigns)]
-   (gitsigns.setup 
-     {: keymaps})))
+(let [(ok gitsigns) (require-plugin :gitsigns)]
+  (if ok
+    (gitsigns.setup {: keymaps})))
 
-{: config}

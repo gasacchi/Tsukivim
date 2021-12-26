@@ -1,12 +1,12 @@
 ;; Module for configure built-in Neovim LSP
-(local {: plugin-exist?} (require :lib.tsukivim))
+(local {: require-plugin} (require :lib.tsukivim))
 
 ;; TODO: configure mappings for lsp
 (fn on-attach [_ bufnr]
   "Function that run when lsp server attach on buffer"
-  (let [set-keymap (fn [...] (vim.api.nvim_buf_set_keymap bufnr ...))
+  (let [set-keymap (fn [...] (vim.api.nvim_buf_set_keymap bufnr ...))]
        set-option (fn [...] (vim.api.nvim_buf_set_option bufnr ...))
-       opts {:noremap true :silent true}]
+       opts {:noremap true :silent true}
 
       ;; Trouble lsp mappings
       ;; see: ./trouble.fnl for trouble.nvim configuration
@@ -53,21 +53,16 @@
       (set-keymap :n :<leader>lf ":lua vim.lsp.buf.formatting()<CR>" opts)))
 
 (fn make-config []
-  "Function that return table for lspconfig setup with cmp
-   capabilities attached"
-  (when (plugin-exist? :cmp-nvim-lsp)
-    (let [cmp_nvim_lsp (require :cmp_nvim_lsp)
-        capabilities (cmp_nvim_lsp.update_capabilities 
-                       (vim.lsp.protocol.make_client_capabilities))]
-        {: capabilities :on_attach on-attach})))
+  "Returen table for lsp config setup with cmp capabilities attached"
+  (let [(ok? cmp-nvim-lsp) (require-plugin :cmp_nvim_lsp)]
+    (if ok?
+      {:capabilities (cmp-nvim-lsp.update_capabilities (vim.lsp.protocol.make_client_capabilities))
+       :on_attach on-attach})))
 
-(fn config []
-  "Function that run after nvim-lspconfig loaded"
-  (when (plugin-exist? :nvim-lspconfig)
-   (let [conf (make_config)
-        servers [:svelte :cssls :html]
-        nvim_lsp (require :lspconfig)]
-    (each [_ lsp (ipairs servers)]
-      (tset (. nvim_lsp lsp) :setup conf)))))
+(let [(ok? lsp-config) (require-plugin :lspconfig)
+         conf (make-config)
+         servers [:svelte :cssls :html]]
+     (when ok?
+       (each [_ lsp (ipairs servers)]
+         (tset (. lsp-config lsp) :setup conf))))
 
-{: config}

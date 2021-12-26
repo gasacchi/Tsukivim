@@ -1,12 +1,9 @@
 ;; Module for configure statusline
-(local {: plugin-exist?} (require :lib.tsukivim))
+(local {: require-plugin} (require :lib.tsukivim))
 
-(fn config []
-  "Function that run after lualine.nvim loaded"
-  (when (plugin-exist? :lualine.nvim)
-   (let [lualine (require :lualine)]
-    (lualine.setup 
-      {:options 
-       {:theme :tokyonight}}))))
+(let [(ok? lualine) (require-plugin :lualine)]
+  (when ok?
+   (lualine.setup 
+     {:options 
+      {:theme :tokyonight}})))
 
-{: config}

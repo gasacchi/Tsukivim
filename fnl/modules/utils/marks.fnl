@@ -1,11 +1,10 @@
-(local {: plugin-exist?} (require :lib.tsukivim))
+(local {: require-plugin} (require :lib.tsukivim))
 ;; Module for configure marks
 (fn config []
-  "Function that run after marks.nvim is loaded"
-  (when (plugin-exist? :marks.nvim)
-    (let [marks (require :marks)]
-      (marks.setup 
-        {:default_mappings false
-         }))))
+  "Run after marks.nvim is loaded"
+  (let [(ok? marks) (require-plugin :marks)]
+    (when ok?
+      (marks.setup) 
+      {:default_mappings false})))
 
 {: config}

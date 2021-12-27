@@ -52,10 +52,13 @@
 ;; No wraping text
 (set-option :wrap false)
 (set-option :scrolloff 999)
+;; termguicolors
+(set-option :termguicolors true)
 
 ;; Enable filetype and syntax
 (cmd "filetype plugin indent on")
 (cmd "syntax enable")
+
 
 ;; disable builtin plugins
 (local builtin 

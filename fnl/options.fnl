@@ -1,5 +1,5 @@
-(local {: set-option
-        : cmd} (require :lib.tsukivim))
+(local 
+  {: set-option : cmd} (require :lib.tsukivim))
 
 ;; File encoding
 ; (set! :encoding :utf-8)
@@ -80,4 +80,4 @@
 
 (each [_ plugin (pairs builtin)]
   (tset vim.g (.. :loaded_ plugin) 1))
-    
+

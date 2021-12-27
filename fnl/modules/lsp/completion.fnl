@@ -1,6 +1,6 @@
 ;; Module for configure nvim-cmp & lspkind.nvim
-(import-macros {: let-global!} :lib.macro.vim)
-(local {: require-plugin} (require :lib.tsukivim))
+(local 
+  {: require-plugin : let-global} (require :lib.tsukivim))
 
 ;; Set icons for lspkind.nvim
 (local kind-icons 
@@ -73,7 +73,7 @@
 
 (let [(ok? cmp) (require-plugin :cmp)]
     (when ok?
-        (let-global! :completeopt "menu,menuone,noselect")
+        (let-global :completeopt "menu,menuone,noselect")
         (cmp.setup 
             {: snippet 
              : formatting

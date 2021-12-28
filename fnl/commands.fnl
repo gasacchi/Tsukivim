@@ -77,6 +77,10 @@
   "Toggle neovim file tree"
   (cmd :NvimTreeToggle))
 
+(fn editor-commands.open-glow-markdown []
+  "Open glow markdown previewer"
+  (cmd :Glow))
+
 ;; Git related commands
 (local git-commands {})
 

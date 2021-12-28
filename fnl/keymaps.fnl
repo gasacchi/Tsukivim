@@ -1,7 +1,8 @@
 ;; Module for configure keymaps
-(import-macros {: set-keymap! : let-global! : set-global!} :lib.macro.vim)
-
-(local {: require-plugin} (require :lib.tsukivim))
+(local {: require-plugin
+        : set-keymap 
+        : set-global
+        : let-global} (require :lib.tsukivim))
 
 (local {:buffer buffer-cmd
         :editor editor-cmd
@@ -21,23 +22,23 @@
   "Function that run before which-key loaded"
   (let [opts {:noremap true}]
     ;; Disable Arrow keys
-    (set-keymap! :i :<Up> :<NOP> opts)
-    (set-keymap! :i :<Down> :<NOP> opts)
-    (set-keymap! :i :<Right> :<NOP> opts)
-    (set-keymap! :i :<Left> :<NOP> opts)
-    (set-keymap! :n :<Up> :<NOP> opts)
-    (set-keymap! :n :<Down> :<NOP> opts)
-    (set-keymap! :n :<Right> :<NOP> opts)
-    (set-keymap! :n :<Left> :<NOP> opts)
+    (set-keymap :i :<Up> :<NOP> opts)
+    (set-keymap :i :<Down> :<NOP> opts)
+    (set-keymap :i :<Right> :<NOP> opts)
+    (set-keymap :i :<Left> :<NOP> opts)
+    (set-keymap :n :<Up> :<NOP> opts)
+    (set-keymap :n :<Down> :<NOP> opts)
+    (set-keymap :n :<Right> :<NOP> opts)
+    (set-keymap :n :<Left> :<NOP> opts)
 
     ;; consisten jump in middle
-    (set-keymap! :n :n :nzz opts)
-    (set-keymap! :n :N :Nzz opts)
+    (set-keymap :n :n :nzz opts)
+    (set-keymap :n :N :Nzz opts)
 
     ;; set timeout length for which-key
-    (set-global! :timeoutlen 300)
+    (set-global :timeoutlen 300)
     ;; Set <leader> to <space>
-    (let-global! :mapleader " ")))
+    (let-global :mapleader " ")))
 
 ;; Keymaps rules here
 (local keys {})
@@ -164,7 +165,8 @@
 (tset keys :o
        {:name :Open
         " "   [:<Esc>                        :Close]
-        :e    [editor-cmd.toggle-nvim-tree   :Toggle-file-tree]})
+        :e    [editor-cmd.toggle-nvim-tree   :Toggle-file-tree]
+        :m    [editor-cmd.open-glow-markdown :Open-glow-markdown]})
 
 ;; Open keymaps
 (tset keys :p
@@ -247,24 +249,24 @@
       key-opts {:noremap true}]
   (when ok?
     ;; Disable Arrow keys
-   (set-keymap! :i :<Up> :<NOP> key-opts)
-   (set-keymap! :i :<Down> :<NOP> key-opts)
-   (set-keymap! :i :<Right> :<NOP> key-opts)
-   (set-keymap! :i :<Left> :<NOP> key-opts)
-   (set-keymap! :n :<Up> :<NOP> key-opts)
-   (set-keymap! :n :<Down> :<NOP> key-opts)
-   (set-keymap! :n :<Right> :<NOP> key-opts)
-   (set-keymap! :n :<Left> :<NOP> key-opts)
+   (set-keymap :i :<Up> :<NOP> key-opts)
+   (set-keymap :i :<Down> :<NOP> key-opts)
+   (set-keymap :i :<Right> :<NOP> key-opts)
+   (set-keymap :i :<Left> :<NOP> key-opts)
+   (set-keymap :n :<Up> :<NOP> key-opts)
+   (set-keymap :n :<Down> :<NOP> key-opts)
+   (set-keymap :n :<Right> :<NOP> key-opts)
+   (set-keymap :n :<Left> :<NOP> key-opts)
    
    ;; consisten jump in middle
-   (set-keymap! :n :n :nzz key-opts)
-   (set-keymap! :n :N :Nzz key-opts)
+   (set-keymap :n :n :nzz key-opts)
+   (set-keymap :n :N :Nzz key-opts)
    
    ;; set timeout length for which-key
-   (set-global! :timeoutlen 300)
+   (set-global :timeoutlen 300)
    
    ;; set <leader> to <space>
-   (let-global! :mapleader " ")
+   (let-global :mapleader " ")
    
    (whichkey.setup whichkey-config)
    (whichkey.register keys opts)))

@@ -172,8 +172,11 @@
   (cmd "Telescope find_files theme=ivy"))
 
 (fn telescope-commands.git-files []
-  "Find files in git directory"
-  (cmd "Telescope git_files theme=ivy"))
+  "Find files in git directory and fallback to find_files if current directory
+  not a git repo"
+  (let [(ok? _) (pcall cmd "Telescope git_files theme=ivy")]
+    (if (not ok?)
+      (telescope-commands.find-files))))
 
 (fn telescope-commands.current-buffer-fuzzy-find []
   "Fuzzy find in current buffer"

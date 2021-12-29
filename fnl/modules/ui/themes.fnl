@@ -1,12 +1,13 @@
 ;; Module for configure themes
 (local 
-  {: require-plugin : cmd : let-global} (require :lib.tsukivim))
+  {: require-plugin : cmd } (require :lib.tsukivim))
 
-(let [(ok? _) (require-plugin :tokyonight)
-      {: gui? } (require :modules.ui.gui)]
+(let [(ok? kanagawa) (require-plugin :kanagawa)
+      {: gui?} (require :modules.ui.gui)]
   (when ok?
-     (let-global :tokyonight_style :storm)
-     (let-global :tokyonight_transparent (not (gui?)))
-     (let-global :tokyonight_sidebars [:qf :vista_kind :terminal :nvim-tree :packer])
-     (cmd "colorscheme tokyonight")))
+    (kanagawa.setup 
+      {:transparent (not (gui?))}
+      (cmd "colorscheme kanagawa"))))
+
+
 

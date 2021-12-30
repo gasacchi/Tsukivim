@@ -2,15 +2,16 @@
 (local {: require-plugin
         : set-keymap 
         : set-global
+        : notify
         : let-global} (require :lib.tsukivim))
 
-(local {:buffer buffer-cmd
-        :editor editor-cmd
-        :git git-cmd
-        :lsp lsp-cmd
-        :packer packer-cmd
-        :telescope telescope-cmd
-        :window window-cmd} (require :commands))
+(local buffer-cmd (require :commands.buffer))
+(local editor-cmd (require :commands.editor))
+(local git-cmd    (require :commands.git))
+(local lsp-cmd    (require :commands.lsp))
+(local packer-cmd (require :commands.packer))
+(local search-cmd (require :commands.search))
+(local window-cmd (require :commands.window))
 
 
 (fn cmd [command ?without-enter]
@@ -45,12 +46,11 @@
 
 ;; Single keymaps
 (tset keys " "      [:<Esc>                         :Close])
-(tset keys :.       [telescope-cmd.find-files       :Find-file])
+(tset keys :.       [search-cmd.find-files       :Find-file])
 (tset keys :q       [editor-cmd.quit                :Quit])
 (tset keys :Q       [editor-cmd.force-quit          :Force-Quit])
 (tset keys :<Tab>   [buffer-cmd.cycle-next          :Goto-next-buffer])
 (tset keys :<S-Tab> [buffer-cmd.cycle-prev          :Goto-prev-buffer])
-(tset keys :x       [telescope-cmd.test             :Goto-prev-buffer])
 
 ;; Action keymaps
 ;; TODO: add S-exp action jump
@@ -71,7 +71,7 @@
        :l  [buffer-cmd.last-buffer                  :Goto-last-buffer]
        :n  [buffer-cmd.cycle-next                   :Goto-next-buffer]
        :p  [buffer-cmd.cycle-prev                   :Goto-prev-buffer]
-       :s  [telescope-cmd.buffers                   :Search-buffer]
+       :s  [search-cmd.buffers                   :Search-buffer]
        :1  [(buffer-cmd.goto-buffer 1)              :Goto-buffer-1]
        :2  [(buffer-cmd.goto-buffer 2)              :Goto-buffer-2]
        :3  [(buffer-cmd.goto-buffer 3)              :Goto-buffer-3]
@@ -124,8 +124,8 @@
 (tset keys :h 
       {:name :Help
        " " [:<Esc> :Close]
-       :h  [telescope-cmd.help-tags      :Help-tags]
-       :m  [telescope-cmd.man-pages      :Man-pages]})
+       :h  [search-cmd.help-tags      :Help-tags]
+       :m  [search-cmd.man-pages      :Man-pages]})
 
 ;; LSP keymaps
 ;; see: modules/lsp/init.fnl
@@ -186,27 +186,27 @@
       {:name :Search
        " " [:<Esc> :Close]
        ;; File picker
-       :.  [telescope-cmd.grep-string    :Search-string-under-cursor]
-       :F  [telescope-cmd.file-browser   :File-browser]
-       :S  [telescope-cmd.live-grep      :Search-string-in-current-dir]
-       :f  [telescope-cmd.find-files     :Find-file-in-current-dir]
-       :g  [telescope-cmd.git-files      :Find-git-files]
-       :s  [telescope-cmd.current-buffer-fuzzy-find
+       :.  [search-cmd.grep-string    :Search-string-under-cursor]
+       :F  [search-cmd.file-browser   :File-browser]
+       :S  [search-cmd.live-grep      :Search-string-in-current-dir]
+       :f  [search-cmd.find-files     :Find-file-in-current-dir]
+       :g  [search-cmd.git-files      :Find-git-files]
+       :s  [search-cmd.current-buffer-fuzzy-find
             :Search-string-in-current-buffer]
 
        ;; Vim picker
-       ";" [telescope-cmd.filetypes        :List-filetypes]
-       "," [telescope-cmd.highlights       :List-highlights]
-       :C  [telescope-cmd.command-history  :List-command-history]
-       :H  [telescope-cmd.search-history   :Search-history]
-       :a  [telescope-cmd.autocommands     :List-autocommands]
-       :b  [telescope-cmd.buffers          :Search-buffers]
-       :c  [telescope-cmd.commands         :List-commands]
-       :h  [telescope-cmd.recent-files     :Search-recent-files]
-       :k  [telescope-cmd.keymaps          :Search-recent-files]
-       :m  [telescope-cmd.marks            :List-marks]
-       :o  [telescope-cmd.vim-options      :List-vim-options]
-       :r  [telescope-cmd.registers        :List-registers]})
+       ";" [search-cmd.filetypes        :List-filetypes]
+       "," [search-cmd.highlights       :List-highlights]
+       :C  [search-cmd.command-history  :List-command-history]
+       :H  [search-cmd.search-history   :Search-history]
+       :a  [search-cmd.autocommands     :List-autocommands]
+       :b  [search-cmd.buffers          :Search-buffers]
+       :c  [search-cmd.commands         :List-commands]
+       :h  [search-cmd.recent-files     :Search-recent-files]
+       :k  [search-cmd.keymaps          :Search-recent-files]
+       :m  [search-cmd.marks            :List-marks]
+       :o  [search-cmd.vim-options      :List-vim-options]
+       :r  [search-cmd.registers        :List-registers]})
 
 ;; Windows keymaps
 (tset keys :w

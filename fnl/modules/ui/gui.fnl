@@ -6,7 +6,7 @@
   "Check if neovide is exist, run command an return true otherwise false"
   (if vim.g.neovide
     (do
-      (let-global :neovide_transparency 0.3)
+      (let-global :neovide_transparency 0.5)
       (cmd "set guifont=Iosevka\\ Nerd\\ Font:h9")
       true)
     false))

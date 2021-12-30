@@ -1,10 +1,25 @@
 # TODO list
-- configuring snippet
-- configuring whichkey
-- install & configuring Neorg
-- install & configuring Zen mode
-- install & configuring Dashboard
-- install nvim-startup
-- choose hop or lightspeed
-- install S-exp editing
-
+- [] register buffer keymap for lspconfig init
+- [] lspsaga configuration
+- [] trouble.nvim configuration
+- [] rust tools install and  configuration
+- [] add autoload: run PackerSync when plugins.fnl saved
+- [] terminal integrations?
+- [] todo command configuration
+- [] marks?
+- [] folds?
+- [] complete telescope command
+- [] fix cmp luasnip configuration
+- [] neorg configuration
+- [] zen-mode
+    - [] settings
+    - [] keymap
+- [] notify match colorscheme with current theme
+- [] nui
+    - [] create utils for select and input ui
+- [] dashboard theme
+- [-] more custom statusline 
+  - [] fix diagnotics
+  - [] broken on small window size
+- [] lazy load packer
+- [] whichkey keymap complete and arangement

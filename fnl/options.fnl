@@ -40,7 +40,8 @@
 (set-option :lazyredraw true)
 
 ;; disable shada
-(set-option :shadafile "")
+(set-option :shadafile "NONE")
+(cmd "set shada=\"NONE\"")
 
 ;; Set colorcolumn
 (set-option :colorcolumn :80)
@@ -54,6 +55,9 @@
 (set-option :scrolloff 999)
 ;; termguicolors
 (set-option :termguicolors true)
+
+;; hide builtin mode text
+(set-option :showmode false)
 
 ;; Enable filetype and syntax
 (cmd "filetype plugin indent on")

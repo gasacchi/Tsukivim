@@ -1,10 +1,9 @@
 (local {: cmd} (require :lib.tsukivim))
 
-(cmd "augroup packer_user_config
-       autocmd!
-       autocmd BufWritePost /home/gasacchi/.config/nvim/fnl/plugins.fnl Fnlsource <afile> | PackerSync
-     augroup end")
-
+; (cmd "augroup packer_user_config
+;        autocmd!
+;        autocmd BufWritePost plugins.fnl | Fnlfile <afile> | PackerSync
+;      augroup end")
 ;; Keymap for spesific filetype
 ;; Map q to exit help
 (cmd "autocmd FileType help noremap <buffer> q :close<CR>")

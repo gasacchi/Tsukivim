@@ -4,40 +4,44 @@
 
 ;; Set icons for lspkind.nvim
 (local kind-icons 
-       {:Text "ﭨ"
-        :Method ""
-        :Function ""
-        :Constructor ""
-        :Field ""
-        :Variable ""
-        :Class "ﴰ"
-        :Interface ""
-        :Module ""
-        :Property "ﰠ"
-        :Unit ""
-        :Value ""
-        :Enum ""
-        :Keyword ""
-        :Snippet ""
-        :Color ""
-        :File ""
-        :Reference ""
-        :Folder ""
-        :EnumMember ""
-        :Constant ""
-        :Struct " "
-        :Event ""
-        :Operator ""
-        :TypeParameter ""})
+   {:Text  "ﭨ"
+    :Method  ""
+    :Function  ""
+    :Constructor  ""
+    :Field  ""
+    :Variable  ""
+    :Class  "ﴯ"
+    :Interface  ""
+    :Module  ""
+    :Property  "ﰠ"
+    :Unit  ""
+    :Value  ""
+    :Enum  ""
+    :Keyword  ""
+    :Snippet  ""
+    :Color  ""
+    :File  ""
+    :Reference  ""
+    :Folder  ""
+    :EnumMember  ""
+    :Constant  ""
+    :Struct  ""
+    :Event  ""
+    :Operator  ""
+    :TypeParameter  ""})
 
 ;; Snippet configuration
-(local snippet 
-    {:expand (fn [args]
-                 ((. vim.fn "vsnip#anonymous") args.body))})
+; (local snippet 
+;     {:expand (fn [args]
+;                "Setup luasnip for cmp-nvim"
+;                (let [(ok? luasnip) (require-plugin :luasnip)] 
+;                  (when ok?
+;                    (luasnip.lsp_expand args.body))))})
 
 ;; Set completion menu format
 (local formatting 
     {:format (fn [entry vim-item]
+               "Formating setup for cmp-nvim"
                  (let [menu {:buffer " :: Buffer"
                              :nvim_lsp " :: LSP"
                              :luasnip " :: Snippet"
@@ -51,21 +55,8 @@
 ;; Set list of sources used by nvim-cmp
 (local sources 
      [{:name :nvim_lsp}
-      {:name :vsnip}
-      {:name :path}
-      {:name :nvim_lua}
       {:name :buffer}])
 
-(fn mapping []
-    (let [(ok? cmp) (require-plugin :cmp)]
-        (if ok?
-            {:<Tab> (cmp.mapping.select_next_item)
-                  :<S-Tab> (cmp.mapping.select_prev_item)
-                  :<C-Space> (cmp.mapping.complete)
-                  :<C-e> (cmp.mapping.close)
-                  :<CR> (cmp.mapping.confirm 
-                            {:behaviour cmp.ConfirmBehavior.Replace
-                             :select true})})))
 
 ;; Use experimental features
 (local experimental 
@@ -75,9 +66,14 @@
     (when ok?
         (let-global :completeopt "menu,menuone,noselect")
         (cmp.setup 
-            {: snippet 
-             : formatting
+            {: formatting
              : sources
-             :mapping (mapping)
-             : experimental})))
+             :mapping {:<Tab> (cmp.mapping.select_next_item)
+                       :<S-Tab> (cmp.mapping.select_prev_item)
+                       :<C-Space> (cmp.mapping.complete)
+                       :<C-e> (cmp.mapping.close)
+                       :<CR> (cmp.mapping.confirm 
+                               {:behaviour cmp.ConfirmBehavior.Replace 
+                                :select true})}
+              : experimental})))
 

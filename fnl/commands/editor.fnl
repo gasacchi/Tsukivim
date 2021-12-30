@@ -14,14 +14,13 @@
 
 (fn editor-commands.toggle-number-line []
   "toggle number line"
-  (notify.info "Number line toggled" {:title "Editor Commands"
-                                      :timeout 1000})
+  (notify.info "Number line toggled" "Editor command toggle number line")
   (cmd "set invnumber"))
 
 (fn editor-commands.toggle-relative-number []
   "toggle relative number line"
-  (notify.info "Relative number line toggled" {:title "Editor Commands"}
-                                      :timeout 1000)
+  (notify.info "Relative number line toggled" 
+               "Editor command: toggle relative number")
   (cmd "set invrelativenumber"))
 
 ;; TODO: remove enter, add action to ask if user want to save the file
@@ -29,8 +28,7 @@
   "Quit tsukivim"
   (let [(ok? err) (pcall cmd :q)]
     (when (not ok?)
-      (notify.error err {:title "Editor command error"
-                         :keep (lambda [] true)}))))
+      (notify.error err "Editor command: quit"))))
 
 (fn editor-commands.force-quit []
   "Force quit tsukivim"
@@ -38,6 +36,7 @@
 
 (fn editor-commands.save-file []
   "Save file"
+  (notify.info "File saved." "Editor command: save")
   (cmd :w))
 
 (fn editor-commands.save-file-and-quit []

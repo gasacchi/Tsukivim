@@ -28,13 +28,12 @@
           section dashboard.section
           button dashboard.button]
       (tset section.header :val header)
-      (tset section.header.opts :hl :Boolean)
+      (tset section.header.opts :hl :TSKeywordReturn)
       (tset section.buttons :val 
             [(button "SPC s f"  "  Search files")
              (button "SPC s h"  "ﭯ  Recently opened files")
              (button "SPC q"    "  Quit tsukivim")])
-      (tset section.buttons.opts :hl :Boolean)
-      (tset section.buttons.opts :hl_shortcut :Boolean)
-      (tset section.footer :val ["Hello"])
+      (tset section.buttons.opts :hl :ErrorMsg)
+      (tset section.buttons.opts :hl_shortcut :ErrorMsg)
       (alpha.setup dashboard.opts))))
 

@@ -133,8 +133,14 @@
 (tset keys :h 
       {:name :Help
        " " [:<Esc> :Close]
-       :h  [search-cmd.help-tags      :Help-tags]
-       :m  [search-cmd.man-pages      :Man-pages]})
+       :H  [search-cmd.highlights       :List-highlights]
+       :a  [search-cmd.autocommands     :List-autocommands]
+       :c  [search-cmd.commands         :List-commands]
+       :f  [search-cmd.filetypes        :List-filetypes]
+       :h  [search-cmd.help-tags        :Help-tags]
+       :k  [search-cmd.keymaps          :Search-recent-files]
+       :m  [search-cmd.man-pages        :Man-pages]
+       :o  [search-cmd.vim-options      :List-vim-options]})
 
 ;; LSP keymaps
 ;; see: modules/lsp/init.fnl
@@ -197,17 +203,11 @@
             :Search-string-in-current-buffer]
 
        ;; Vim picker
-       ";" [search-cmd.filetypes        :List-filetypes]
-       "," [search-cmd.highlights       :List-highlights]
        :C  [search-cmd.command-history  :List-command-history]
        :H  [search-cmd.search-history   :Search-history]
-       :a  [search-cmd.autocommands     :List-autocommands]
        :b  [search-cmd.buffers          :Search-buffers]
-       :c  [search-cmd.commands         :List-commands]
        :h  [search-cmd.recent-files     :Search-recent-files]
-       :k  [search-cmd.keymaps          :Search-recent-files]
        :m  [search-cmd.marks            :List-marks]
-       :o  [search-cmd.vim-options      :List-vim-options]
        :r  [search-cmd.registers        :List-registers]})
 
 ;; Windows keymaps

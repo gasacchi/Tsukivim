@@ -1,8 +1,14 @@
 ;; Module contain tsukivim editor commands
-(local {: cmd : notify : get-option} (require :lib.tsukivim)) 
+(local {: cmd : notify : get-option : require-plugin} (require :lib.tsukivim)) 
 
 ;; Editor related commands
 (local editor-commands {})
+
+(fn editor-commands.dismiss-notify []
+  "Dismiss all notification"
+  (let [(ok? notify) (require-plugin :notify)]
+    (when ok?
+      (notify.dismiss))))
 
 (fn editor-commands.startup-time []
   "run startuptime profiling"

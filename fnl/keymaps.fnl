@@ -90,6 +90,7 @@
        :n  [editor-cmd.toggle-number-line       :Toggel-number-line]
        :r  [editor-cmd.toggle-relative-number   :Toggel-relative-number-line]
        :s  [editor-cmd.startup-time             :Run-profiling-startup-time]
+       :d  [editor-cmd.dismiss-notify           :Dismiss-notifications]
        :p {:name :Plugins
             " " [:<Esc>                         :Close]
             :c  [editor-cmd.plugin.compile       :Packer-plugin-compile]

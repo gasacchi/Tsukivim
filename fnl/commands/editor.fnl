@@ -51,5 +51,36 @@
   "Open glow markdown previewer"
   (cmd :Glow))
 
+(tset editor-commands :plugin {})
+
+(fn editor-commands.plugin.compile []
+  "Compile plugins.fnl to packer_compiled.lua"
+  (cmd "PackerCompile profile=true")
+  (notify.info "plugins.fnl file compiled." "Editor.plugin: packer compile"))
+
+(fn editor-commands.plugin.clean []
+  "Clean un-used plugins in plugins.fnl"
+  (cmd :PackerClean)
+  (notify.info "Plugin cleaned." "Editor.plugin: packer clean"))
+
+(fn editor-commands.plugin.install []
+  "Install plugin declared in plugins.fnl"
+  (cmd :PackerInstall))
+
+(fn editor-commands.plugin.sync []
+  "todo"
+  (cmd :PackerSync))
+
+(fn editor-commands.plugin.status []
+  "Show packer status"
+  (cmd :PackerStatus))
+
+(fn editor-commands.plugin.update []
+  "Update plugins"
+  (cmd :PackerUpdate))
+
+(fn editor-commands.plugin.profile []
+  (cmd :PackerProfile))
+
 editor-commands
 

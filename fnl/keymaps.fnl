@@ -9,7 +9,6 @@
 (local editor-cmd (require :commands.editor))
 (local git-cmd    (require :commands.git))
 (local lsp-cmd    (require :commands.lsp))
-(local packer-cmd (require :commands.packer))
 (local search-cmd (require :commands.search))
 (local window-cmd (require :commands.window))
 
@@ -90,7 +89,17 @@
        :h  [editor-cmd.no-highlight-search      :No-highlight-searc]
        :n  [editor-cmd.toggle-number-line       :Toggel-number-line]
        :r  [editor-cmd.toggle-relative-number   :Toggel-relative-number-line]
-       :s  [editor-cmd.startup-time             :Run-profiling-startup-time]})
+       :s  [editor-cmd.startup-time             :Run-profiling-startup-time]
+       :p {:name :Plugins
+            " " [:<Esc>                         :Close]
+            :c  [editor-cmd.plugin.compile       :Packer-plugin-compile]
+            :C  [editor-cmd.plugin.clean         :Packer-plugin-clean]
+            :i  [editor-cmd.plugin.instal        :Packer-plugin-install]
+            :s  [editor-cmd.plugin.sync          :Packer-plugin-sync]
+            :S  [editor-cmd.plugin.status        :Packer-plugin-status]
+            :u  [editor-cmd.plugin.update        :Packer-plugin-update]
+            :p  [editor-cmd.plugin.profile       :Packer-plugin-clean]}})
+            
 
 ;; Files keymaps
 (tset keys :f 
@@ -168,17 +177,10 @@
         :e    [editor-cmd.toggle-nvim-tree   :Toggle-file-tree]
         :m    [editor-cmd.open-glow-markdown :Open-glow-markdown]})
 
-;; Open keymaps
+;; Projects keymaps
 (tset keys :p
-       {:name :Plugin
-        " "   [:<Esc>                  :Close]
-        :c    [packer-cmd.compile      :Packer-compile]
-        :C    [packer-cmd.clean        :Packer-clean]
-        :i    [packer-cmd.install      :Packer-install]
-        :s    [packer-cmd.sync         :Packer-sync]
-        :S    [packer-cmd.status       :Packer-status]
-        :u    [packer-cmd.update       :Packer-update]
-        :p    [packer-cmd.profile      :Packer-profile]})
+       {:name :Projects
+        " "   [:<Esc>                  :Close]})
 
 ;; Search keymaps
 ;; TODO: make custom picker and use ivy like layout

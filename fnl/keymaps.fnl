@@ -44,12 +44,12 @@
 (local keys {})
 
 ;; Single keymaps
-(tset keys " "      [:<Esc>                         :Close])
-(tset keys :.       [search-cmd.find-files       :Find-file])
-(tset keys :q       [editor-cmd.quit                :Quit])
-(tset keys :Q       [editor-cmd.force-quit          :Force-Quit])
-(tset keys :<Tab>   [buffer-cmd.cycle-next          :Goto-next-buffer])
-(tset keys :<S-Tab> [buffer-cmd.cycle-prev          :Goto-prev-buffer])
+(tset keys " "        [:<Esc>                         :Close])
+(tset keys :.         [search-cmd.find-files          :Find-file])
+(tset keys :q         [editor-cmd.quit                :Quit])
+(tset keys :Q         [editor-cmd.force-quit          :Force-Quit])
+(tset keys :<Tab>     [buffer-cmd.cycle-next          :Goto-next-buffer])
+(tset keys :<S-Tab>   [buffer-cmd.cycle-prev          :Goto-prev-buffer])
 
 ;; Action keymaps
 ;; TODO: add S-exp action jump
@@ -86,16 +86,17 @@
       {:name :Editors
        " " [:<Esc>                              :Close]
        ;; TODO: set keymaps for eval fennel
+       :d  [editor-cmd.dismiss-notify           :Dismiss-notifications]
        :h  [editor-cmd.no-highlight-search      :No-highlight-searc]
        :n  [editor-cmd.toggle-number-line       :Toggel-number-line]
        :r  [editor-cmd.toggle-relative-number   :Toggel-relative-number-line]
        :s  [editor-cmd.startup-time             :Run-profiling-startup-time]
-       :d  [editor-cmd.dismiss-notify           :Dismiss-notifications]
+       :z  [editor-cmd.zen-mode                 :Zen-mode]
        :p {:name :Plugins
             " " [:<Esc>                         :Close]
             :c  [editor-cmd.plugin.compile       :Packer-plugin-compile]
             :C  [editor-cmd.plugin.clean         :Packer-plugin-clean]
-            :i  [editor-cmd.plugin.instal        :Packer-plugin-install]
+            :i  [editor-cmd.plugin.install        :Packer-plugin-install]
             :s  [editor-cmd.plugin.sync          :Packer-plugin-sync]
             :S  [editor-cmd.plugin.status        :Packer-plugin-status]
             :u  [editor-cmd.plugin.update        :Packer-plugin-update]

@@ -301,6 +301,12 @@
        :cmd :ZenMode
        :config "require'modules.ui.zen-mode'"})
 
+    ;; Hightlight portion of code with treesitter used by zen-mode
+    (use 
+      {1 :folke/twilight.nvim
+       :cmd [:Twilight]
+       :after :zen-mode.nvim})
+
     ;; Hightlight HEX color
     ;; see: modules/ui/colorizer.fnl for configure nvim-colorizer
     ;; load when using ColorizerToggle command

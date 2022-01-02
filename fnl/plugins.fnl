@@ -61,12 +61,12 @@
      ;; load after nvim-cmp
      (use
        {1 :hrsh7th/cmp-nvim-lsp
-        :after :nvim-cmp})
+        :module :cmp_nvim_lsp})
 
      ;; load after cmp-nvim-lsp
      (use
        {1 :hrsh7th/cmp-buffer
-        :after :cmp-nvim-lsp})
+        :after :nvim-cmp})
 
     ;; Pretty diagnostic list
     ;; see: modules/lsp/trouble.fnl for configure trouble.nvim

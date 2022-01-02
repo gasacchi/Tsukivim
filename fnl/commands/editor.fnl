@@ -10,6 +10,10 @@
     (when ok?
       (notify.dismiss))))
 
+(fn editor-commands.zen-mode []
+  "use zen mode, distraction free"
+  (cmd "ZenMode"))
+
 (fn editor-commands.startup-time []
   "run startuptime profiling"
   (cmd :StartupTime))
@@ -20,13 +24,13 @@
 
 (fn editor-commands.toggle-number-line []
   "toggle number line"
-  (notify.info "Number line toggled" "Editor command toggle number line")
+  (notify.info "Number line toggled" "Editor: toggle number line")
   (cmd "set invnumber"))
 
 (fn editor-commands.toggle-relative-number []
   "toggle relative number line"
   (notify.info "Relative number line toggled" 
-               "Editor command: toggle relative number")
+               "Editor: toggle relative number")
   (cmd "set invrelativenumber"))
 
 ;; TODO: remove enter, add action to ask if user want to save the file
@@ -34,7 +38,7 @@
   "Quit tsukivim"
   (let [(ok? err) (pcall cmd :q)]
     (when (not ok?)
-      (notify.error err "Editor command: quit"))))
+      (notify.error err "Editor: quit"))))
 
 (fn editor-commands.force-quit []
   "Force quit tsukivim"
@@ -42,7 +46,7 @@
 
 (fn editor-commands.save-file []
   "Save file"
-  (notify.info "File saved." "Editor command: save")
+  (notify.info "File saved." "Editor: save")
   (cmd :w))
 
 (fn editor-commands.save-file-and-quit []

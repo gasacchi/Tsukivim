@@ -47,8 +47,8 @@
     ;; load on BufReadPre
      (use 
        {1 :neovim/nvim-lspconfig
-           :event :BufReadPre
-           :config "require'modules.lsp'"})
+        :event :BufReadPre
+        :config "require'modules.lsp'"})
 
     ;; Neovim code completions
     ;; see: modules/lsp/completion.fnl for configure cmp.nvim

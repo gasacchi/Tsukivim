@@ -109,5 +109,8 @@
                                        :timout 4000}))
       (vim.notify msg vim.log.levels.TRACE))))
 
+(fn tsukivim.todo [fn-name]
+  (tsukivim.notify.error fn-name "TODO not implemented"))
+
 tsukivim
  

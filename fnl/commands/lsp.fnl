@@ -1,19 +1,22 @@
 ;; Module contains lsp commands
-(local {: cmd} (require :lib.tsukivim))
+(local {: cmd : notify} (require :lib.tsukivim))
 
 (local lsp-commands {})
 
 (fn lsp-commands.start-server []
   "Start LSP"
-  (cmd :LspStart))
+  (cmd :LspStart)
+  (notify.info "Starting LSP." "LSP: start"))
 
 (fn lsp-commands.stop-server []
   "Stop LSP"
-  (cmd :LspStop))
+  (cmd :LspStop)
+  (notify.info "Stopping LSP." "LSP: stop"))
 
 (fn lsp-commands.restart-server []
   "Restart LSP"
-  (cmd :LspRestart))
+  (cmd :LspRestart)
+  (notify.info "Restarting LSP." "LSP: restart"))
 
 lsp-commands
 

@@ -188,11 +188,14 @@
       {1 :nvim-telescope/telescope.nvim
        :cmd :Telescope
        :module :telescope
+       ; :requires [{1 :nvim-telescope/telescope-fzf-native.nvim
+       ;             :opt true}]
        :config "require'modules.utils.telescope'"})
     (use 
       {1 :nvim-telescope/telescope-fzf-native.nvim
-       :after :telescope.nvim
+       :cmd :Telescope
        :run :make})
+
     
     ;; Nvim file tree
     ;; see: modules/utils/nvim-tree.fnl for configure nvim-tree

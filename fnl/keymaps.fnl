@@ -69,7 +69,6 @@
        :h  [editor-cmd.no-highlight-search      :No-highlight-searc]
        :n  [editor-cmd.toggle-number-line       :Toggel-number-line]
        :r  [editor-cmd.toggle-relative-number   :Toggel-relative-number-line]
-       :s  [editor-cmd.startup-time             :Run-profiling-startup-time]
        :z  [editor-cmd.zen-mode                 :Zen-mode]
        :p {:name :Plugins
             " " [:<Esc>                         :Close]

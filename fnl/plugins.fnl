@@ -213,13 +213,6 @@
        :event :BufRead
        :config "require'modules.utils.todo-comments'"}) 
 
-    ;; display neovim startup time
-    ;; see modules/utils/nvim-startup.fnl for configure nvim-startup
-    ;; load when using StartupTime command 
-    (use
-      {1 :dstein64/vim-startuptime
-       :cmd :StartupTime})
-
     ;; Markdown previewer
     ;; load when using Glow command
     (use

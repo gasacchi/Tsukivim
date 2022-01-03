@@ -36,7 +36,7 @@
     (set-keymap :n :N :Nzz opts)
 
     ;; set timeout length for which-key
-    (set-global :timeoutlen 300)
+    (set-global :timeoutlen 200)
     ;; Set <leader> to <space>
     (let-global :mapleader " ")))
 

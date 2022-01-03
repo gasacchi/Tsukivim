@@ -18,30 +18,9 @@
     (.. :: command)
     (.. :: command :<cr>)))
 
-(fn setup []
-  "Function that run before which-key loaded"
-  (let [opts {:noremap true}]
-    ;; Disable Arrow keys
-    (set-keymap :i :<Up> :<NOP> opts)
-    (set-keymap :i :<Down> :<NOP> opts)
-    (set-keymap :i :<Right> :<NOP> opts)
-    (set-keymap :i :<Left> :<NOP> opts)
-    (set-keymap :n :<Up> :<NOP> opts)
-    (set-keymap :n :<Down> :<NOP> opts)
-    (set-keymap :n :<Right> :<NOP> opts)
-    (set-keymap :n :<Left> :<NOP> opts)
-
-    ;; consisten jump in middle
-    (set-keymap :n :n :nzz opts)
-    (set-keymap :n :N :Nzz opts)
-
-    ;; set timeout length for which-key
-    (set-global :timeoutlen 200)
-    ;; Set <leader> to <space>
-    (let-global :mapleader " ")))
-
 ;; Keymaps rules here
 (local keys {})
+(local keys-visual {})
 
 ;; Single keymaps
 (tset keys " "        [:<Esc>                         :Close])
@@ -70,7 +49,7 @@
        :l  [buffer-cmd.last-buffer                  :Goto-last-buffer]
        :n  [buffer-cmd.cycle-next                   :Goto-next-buffer]
        :p  [buffer-cmd.cycle-prev                   :Goto-prev-buffer]
-       :s  [search-cmd.buffers                   :Search-buffer]
+       :s  [search-cmd.buffers                      :Search-buffer]
        :1  [(buffer-cmd.goto-buffer 1)              :Goto-buffer-1]
        :2  [(buffer-cmd.goto-buffer 2)              :Goto-buffer-2]
        :3  [(buffer-cmd.goto-buffer 3)              :Goto-buffer-3]
@@ -101,7 +80,6 @@
             :S  [editor-cmd.plugin.status        :Packer-plugin-status]
             :u  [editor-cmd.plugin.update        :Packer-plugin-update]
             :p  [editor-cmd.plugin.profile       :Packer-plugin-clean]}})
-            
 
 ;; Files keymaps
 (tset keys :f 
@@ -246,7 +224,6 @@
                 :<S-Tab> :S-TAB} 
    :layout {:align :center}})
 
-(local keys-visual {})
 
 (let [(ok? whichkey) (require-plugin :which-key)
       opts {:prefix :<leader>}
@@ -267,7 +244,7 @@
    (set-keymap :n :N :Nzz key-opts)
    
    ;; set timeout length for which-key
-   (set-global :timeoutlen 300)
+   (set-global :timeoutlen 200)
    
    ;; set <leader> to <space>
    (let-global :mapleader " ")

@@ -165,7 +165,8 @@
 ;; Projects keymaps
 (tset keys :p
        {:name :Projects
-        " "   [:<Esc>                  :Close]})
+        " "   [:<Esc>                        :Close]
+        :s    [search-cmd.projects           :Search-projects]})
 
 ;; Search keymaps
 ;; TODO: make custom picker and use ivy like layout

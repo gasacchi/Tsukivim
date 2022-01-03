@@ -94,5 +94,9 @@
   "Search for available registers"
   (cmd "Telescope registers theme=ivy"))
 
+(fn search-commands.projects []
+  "Search available projects"
+  (cmd "Telescope projects theme=ivy"))
+
 search-commands
 

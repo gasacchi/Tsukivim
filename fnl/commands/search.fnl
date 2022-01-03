@@ -1,5 +1,5 @@
 ;; Module contians search command provide by telescope
-(local {: cmd} (require :lib.tsukivim))
+(local {: cmd : notify} (require :lib.tsukivim))
 
 (local search-commands {})
 
@@ -37,7 +37,10 @@
   not a git repo"
   (let [(ok? _) (pcall cmd "Telescope git_files theme=ivy")]
     (if (not ok?)
-      (search-commands.find-files))))
+      (do 
+        (notify.warn "Current directory isn't git repo fallback to find-files" 
+                     "Search: git-files")
+        (search-commands.find-files)))))
 
 (fn search-commands.current-buffer-fuzzy-find []
   "Fuzzy find in current buffer"

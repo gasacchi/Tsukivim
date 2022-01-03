@@ -224,7 +224,7 @@
     ;; see: modules/ui/notify.fnl for configuration
     (use
       {1 :rcarriga/nvim-notify
-       :after :which-key.nvim
+       :module :notify
        :config "require'modules.ui.notify'"})
 
     ;; Startup dashboard
@@ -346,7 +346,8 @@
     ;; load on VimEnter
     (use
       {1 :folke/which-key.nvim
-       :after :lualine.nvim
+       :keys ["!" "\"" "'" ">" "@" "[" "]" "`" "<"
+              :<c-w> :<space> :c :d :g :v :y :z]
        :config "require'keymaps'"})))
 
 ; sync plugin when first time install tsukivim

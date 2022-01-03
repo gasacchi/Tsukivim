@@ -1,5 +1,5 @@
 ;; Module for configure dashboard
-(local {: require-plugin} (require :lib.tsukivim))
+(local {: require-plugin : notify} (require :lib.tsukivim))
 
 (fn get-total-plugins []
   (var total 0)
@@ -17,21 +17,25 @@
         (tset status :total (+ status.total 1))))
     status))
 
-; (fn get-startup-time []
-;  (let [f (io.open "rg 'NVIM STARTED' /tmp/nvim-startuptime | tail -1")
-;        time (f:read "*a")]
-;    (f:close)
-;    (time:match "([%d.]+)  [%d.]+: [-]+ NVIM STARTED [-]+"))) ;"(%d+.%d+)")))
-
 (fn get-startup-time []
   (let [file-path (.. (vim.fn.stdpath "config") "/startuptime.log")
         pattern "([%d.]+)  [%d.]+: [-]+ NVIM STARTED [-]+"
-        file (io.open file-path)
-        file (file:read "*all")
-        time (file:match pattern)]
-    (: (io.open file-path "w") :close)
-    time))
-
+        startup-file (or (and (io.open file-path) 
+                              (: (io.open file-path) :read "*all")) 
+                         nil)
+        startuptime (or (startup-file:match pattern) 
+                        nil)]
+    (if (and startup-file startuptime)
+      (do 
+        (: (io.open file-path "w") :close)
+        (.. " in " startuptime " ms"))
+      (and startup-file (not startuptime))
+      (do 
+        (notify.info "Startuptime will run on the next tsukivim instance" 
+                     "Dashboard: get-startup-time")
+        "")
+      (notify.error "Cannot find startuptime files" 
+                    "Dashboard: get-startup-time"))))
 
 (local header 
   ["⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
@@ -63,7 +67,7 @@
                      (tset b.opts :hl_shortcut :String)
                      b))
           {: total : loaded} (get-plugin-status)
-          time (get-startup-time)]
+          startuptime (get-startup-time)]
       (tset section.header :val header)
       (tset section.header.opts :hl :Boolean)
       (tset section.buttons :val
@@ -74,8 +78,8 @@
                                     loaded
                                     " of "
                                     total
-                                    " plugins in "
-                                    time " ms"))
+                                    " plugins"
+                                    startuptime))
       (tset section.footer.opts :hl :Statement)
       (alpha.setup dashboard.opts))))
 

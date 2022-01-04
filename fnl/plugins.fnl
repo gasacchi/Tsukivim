@@ -191,7 +191,6 @@
     ;; load when using Telescope command 
     (use
       {1 :nvim-telescope/telescope.nvim
-       :cmd :Telescope
        :module :telescope
        :requires [{1 :nvim-telescope/telescope-fzf-native.nvim
                    :opt true

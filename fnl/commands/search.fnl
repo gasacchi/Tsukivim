@@ -98,7 +98,7 @@
 
 (fn search-commands.marks []
   "Search for available marks"
-  (picker :morks "  Marks" 15))
+  (picker :marks "  Marks" 15))
 
 (fn search-commands.vim-options []
   "Search for vim options and apply it"

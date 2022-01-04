@@ -88,7 +88,7 @@
       (n.notify msg "warn" (or ?opts default-options))
       (vim.notify msg vim.log.levels.WARN))))
 
-(fn tsukivim.notify.debug [msg ?opts]
+(fn tsukivim.notify.debug [msg ?title ?opts]
   "Accept message and title and pass to notify.nvim as debug notification
   fallback to native vim.notify if notify.nvim not installed"
   (let [(ok? n) (tsukivim.require-plugin :notify)
@@ -98,7 +98,7 @@
       (n.notify msg "debug" (or ?opts default-options))
       (vim.notify msg vim.log.levels.DEBUG))))
 
-(fn tsukivim.notify.trace [msg ?opts]
+(fn tsukivim.notify.trace [msg ?title ?opts]
   "Accept message and title and pass to notify.nvim as trace notification
   fallback to native vim.notify if notify.nvim not installed"
   (let [(ok? n) (tsukivim.require-plugin :notify)

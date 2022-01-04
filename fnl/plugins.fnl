@@ -17,20 +17,25 @@
 
     ;; Core plugins for managing plugin and fennel in Tsukivim ;;;;;;;;;;;;;;;;;
     ;; Packer plugin manager
-     (use :wbthomason/packer.nvim)
+     (use 
+       {1 :wbthomason/packer.nvim 
+        :opt true})
 
     ;; Fennel integrations in neovim
     ;; see: ../init.lua:37 for adding fennel configuration
-     (use :rktjmp/hotpot.nvim)
+     (use 
+       {1 :rktjmp/hotpot.nvim
+        :event :VimEnter})
 
      ;; Essential for some plugins
      (use
        {1 :nvim-lua/plenary.nvim
         :module :plenary})
      
-     (use
-       {1 :nvim-lua/popup.nvim
-        :module :popup})
+     ;; Create neovim ui
+     (use 
+       {1 :MunifTanjim/nui.nvim
+        :module :nui})
      
      ;; For fancy icon
      (use
@@ -188,17 +193,10 @@
       {1 :nvim-telescope/telescope.nvim
        :cmd :Telescope
        :module :telescope
+       :requires [{1 :nvim-telescope/telescope-fzf-native.nvim
+                   :opt true
+                   :run :make}]
        :config "require'modules.utils.telescope'"})
-    (use 
-      {1 :nvim-telescope/telescope-fzf-native.nvim
-       :cmd :Telescope
-       :run :make})
-
-    (use 
-      {1 :ahmedkhalf/project.nvim
-       :cmd :Telescope
-       :config "require'modules.utils.project'"})
-
     
     ;; Nvim file tree
     ;; see: modules/utils/nvim-tree.fnl for configure nvim-tree

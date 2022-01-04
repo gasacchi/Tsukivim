@@ -7,8 +7,8 @@
 (cmd "autocmd FileType dashboard noremap <buffer> q :q<CR>")
 ;; for quikfix
 (cmd "autocmd FileType qf noremap <buffer> q :q<CR>")
-;; for startuptime
-(cmd "autocmd FileType startuptime noremap <buffer> q :q<CR>")
+;; for lspinfo
+(cmd "autocmd FileType lspinfo noremap <buffer> q :q<CR>")
 
 ;; Set swayconf file as swayconfig filetype
 (cmd "augroup swayconf

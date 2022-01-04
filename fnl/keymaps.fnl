@@ -175,7 +175,6 @@
        " " [:<Esc> :Close]
        ;; File picker
        :.  [search-cmd.grep-string    :Search-string-under-cursor]
-       :F  [search-cmd.file-browser   :File-browser]
        :S  [search-cmd.live-grep      :Search-string-in-current-dir]
        :f  [search-cmd.find-files     :Find-file-in-current-dir]
        :g  [search-cmd.git-files      :Find-git-files]

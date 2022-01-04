@@ -35,11 +35,6 @@
   "Search string under cursor"
   (picker :grep_string "  String under cursor"))
 
-;; FIX: file-browser desprecated
-(fn search-commands.file-browser []
-  "Open file browser in telescope"
-  (picker :file_browser "  Browse files"))
-
 (fn search-commands.live-grep []
   "Search string in current directory"
   (picker :live_grep "  String in current directory"))

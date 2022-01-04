@@ -1,5 +1,8 @@
 ;; Module contians search command provide by telescope
-(local {: cmd : notify : require-plugin : todo} (require :lib.tsukivim))
+(local {: cmd 
+        : notify 
+        : load-plugin
+        : require-plugin} (require :lib.tsukivim))
 
 (local search-commands {})
 
@@ -105,11 +108,14 @@
   "Search for available registers"
   (picker :registers "  Registers" 15))
 
-;; TODO:: 
 (fn search-commands.projects []
   "Search available projects"
-  ; (cmd "Telescope projects theme=ivy")
-  (todo :search-commands.projects))
+  (let [(ok? telescope) (require-plugin :telescope)] 
+    (if ok? 
+      (do 
+        (load-plugin :telescope-project.nvim)
+        (telescope.load_extension :project)
+        (telescope.extensions.project.project (theme "  Projects" 15))))))
 
 search-commands
 

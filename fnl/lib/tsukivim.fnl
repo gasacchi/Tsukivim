@@ -56,6 +56,10 @@
   "Accept string of VimL and run it"
   (vim.cmd c))
 
+(fn tsukivim.load-plugin [name]
+  "Manualy load plugin, use for lazy loaded plugin"
+  (tsukivim.cmd (.. "packadd " name)))
+
 (tset tsukivim :notify {})
 
 (fn tsukivim.notify.error [msg ?title ?opts]

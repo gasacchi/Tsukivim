@@ -195,7 +195,9 @@
        :module :telescope
        :requires [{1 :nvim-telescope/telescope-fzf-native.nvim
                    :opt true
-                   :run :make}]
+                   :run :make}
+                  {1 :nvim-telescope/telescope-project.nvim
+                   :opt true}]
        :config "require'modules.utils.telescope'"})
     
     ;; Nvim file tree

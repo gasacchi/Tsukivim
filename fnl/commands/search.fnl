@@ -1,41 +1,57 @@
 ;; Module contians search command provide by telescope
-(local {: cmd : notify} (require :lib.tsukivim))
+(local {: cmd : notify : require-plugin : todo} (require :lib.tsukivim))
 
 (local search-commands {})
 
-(fn search-commands.test []
-  (let [built-in (require :telescope.builtin)]
-   (built-in.man_pages {:layout_strategy :bottom_pane
-                        :layout_config {:height 5 :prompt_position :bottom}})))     
+(fn theme [title ?height] 
+  "Accept title and optional height and return ivy theme table
+  with additional options"
+  (let [(ok? themes) (require-plugin :telescope.themes)]
+    (if ok? 
+      (themes.get_ivy {:layout_config {:prompt_position :bottom
+                                       :height (or ?height 20)}
+                       :prompt_prefix " ﬦ "
+                       :prompt_title title})
+      {})))
+
+(fn picker [name ?title ?height]
+  "Accept name of the telescope builtin picker and optional titile and height
+  passed to theme function and return builtin picker if telescope is loaded 
+  throw notification error otherwise"
+  (let [(ok? builtin) (require-plugin :telescope.builtin)]
+    (if ok?
+      ((. builtin name) (theme (or ?title name) ?height))
+      notify.error "Cannot load telescope" (.. "Search: " name))))
 
 (fn search-commands.help-tags []
   "Open :h help tags in telescope"
-  (cmd "Telescope help_tags theme=ivy"))
+  (picker :help_tags "ﬤ  Help" 15))
 
 (fn search-commands.man-pages []
   "Open man pages in telescope"
-  (cmd "Telescope man_pages theme=ivy"))
+  (picker :man_pages "  Man page" 15))
 
 (fn search-commands.grep-string []
   "Search string under cursor"
-  (cmd "Telescope grep_string theme=ivy"))
+  (picker :grep_string "  String under cursor"))
 
+;; FIX: file-browser desprecated
 (fn search-commands.file-browser []
   "Open file browser in telescope"
-  (cmd "Telescope file_browser theme=ivy"))
+  (picker :file_browser "  Browse files"))
 
 (fn search-commands.live-grep []
   "Search string in current directory"
-  (cmd "Telescope live_grep theme=ivy"))
+  (picker :live_grep "  String in current directory"))
 
 (fn search-commands.find-files []
   "Find files in current directory tree"
-  (cmd "Telescope find_files theme=ivy"))
+  (picker :find_files "  Find files in current directory"))
 
 (fn search-commands.git-files []
   "Find files in git directory and fallback to find_files if current directory
   not a git repo"
-  (let [(ok? _) (pcall cmd "Telescope git_files theme=ivy")]
+  (let [(ok? _) (pcall picker :git_files "  Git files")]
     (if (not ok?)
       (do 
         (notify.warn "Current directory isn't git repo fallback to find-files" 
@@ -44,59 +60,61 @@
 
 (fn search-commands.current-buffer-fuzzy-find []
   "Fuzzy find in current buffer"
-  (cmd "Telescope current_buffer_fuzzy_find theme=ivy"))
+  (picker :current_buffer_fuzzy_find "  String in current buffer"))
 
 (fn search-commands.filetypes []
   "Search filetypes and apply to current opened buffer"
-  (cmd "Telescope filetypes theme=ivy"))
+  (picker :filetypes "  Filetypes" 15))
 
 (fn search-commands.highlights []
   "Search for highlights group"
-  (cmd "Telescope highlights theme=ivy"))
+  (picker :highlights "  Highlights" 15))
 
 (fn search-commands.command-history []
   "Search for command history"
-  (cmd "Telescope command_history theme=ivy"))
+  (picker :command_history "  Command history" 15))
 
 (fn search-commands.search-history []
   "Search for search term '/' history"
-  (cmd "Telescope search_history theme=ivy"))
+  (picker :search_history "  Search history" 15))
 
 (fn search-commands.autocommands []
   "Search for auto commands"
-  (cmd "Telescope autocommands theme=ivy"))
+  (picker :autocommands "省 Autocommands" 15))
 
 (fn search-commands.buffers []
   "Search for buffers"
-  (cmd "Telescope buffers theme=ivy"))
+  (picker :buffers "﬘  Buffers"))
   
 (fn search-commands.commands []
   "Search available commands"
-  (cmd "Telescope commands theme=ivy"))
+  (picker :commands "﬘  Commands" 15))
 
 (fn search-commands.recent-files []
   "Search for recently opened files"
-  (cmd "Telescope oldfiles theme=ivy"))
+  (picker :oldfiles "  Recently opened files"))
 
 (fn search-commands.keymaps []
   "Search for available keymaps"
-  (cmd "Telescope keymaps theme=ivy"))
+  (picker :keymaps "  Keymaps" 15))
 
 (fn search-commands.marks []
   "Search for available marks"
-  (cmd "Telescope marks theme=ivy"))
+  (picker :morks "  Marks" 15))
 
 (fn search-commands.vim-options []
   "Search for vim options and apply it"
-  (cmd "Telescope vim_options theme=ivy"))
+  (picker :vim_options "  Vim options" 15))
 
 (fn search-commands.registers []
   "Search for available registers"
-  (cmd "Telescope registers theme=ivy"))
+  (picker :registers "  Registers" 15))
 
+;; TODO:: 
 (fn search-commands.projects []
   "Search available projects"
-  (cmd "Telescope projects theme=ivy"))
+  ; (cmd "Telescope projects theme=ivy")
+  (todo :search-commands.projects))
 
 search-commands
 

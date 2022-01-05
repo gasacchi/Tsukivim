@@ -19,7 +19,7 @@
 (set-option :hidden true)
 
 ;; Set default shell
-(set-option :shell "/bin/bash")
+(set-option :shell "/bin/fish")
 
 ;; Searching
 (set-option :hlsearch true)

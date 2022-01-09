@@ -7,15 +7,44 @@
   (let [(ok? hop) (lib.require-plugin :hop)
         BEFORE-CURSOR 1 
         AFTER-CURSOR 2
-        cmd {}]
+        cmd {}
+        hint (match target 
+               :words :hint_words
+               :patterns :hint_patterns
+               :one-char :hint_char1
+               :two-char :hint_char2
+               :lines    :hint_lines
+               :line-starts :hint_lines_skip_whitespace)]
     (if ok?
+      ; (do 
+      ;    (tset cmd :all 
+      ;          (fn []
+      ;            ((. hop hint) {})))
+      ;    (tset cmd :current-line
+      ;          (fn []
+      ;            ((. hop hint) {:current_line_only true})))
+      ;    (tset cmd :before-cursor
+      ;          (fn []
+      ;            ((. hop hint) {:direction BEFORE-CURSOR})))
+      ;    (tset cmd :after-cursor
+      ;          (fn []
+      ;            ((. hop hint) {:direction AFTER-CURSOR})))
+      ;    (tset cmd :before-cursor-current-line
+      ;          (fn []
+      ;            ((. hop hint) {:direction BEFORE-CURSOR
+      ;                           :current_line_only true})))
+      ;    (tset cmd :after-cursor-current-line
+      ;          (fn []
+      ;            ((. hop hint) {:direction AFTER-CURSOR
+      ;                           :current_line_only true})))
+      ;    cmd)
       (let [hint (match target 
-                   :word (. hop :hint_words)
-                   :pattern (. hop :hint_patterns)
+                   :words (. hop :hint_words)
+                   :patterns (. hop :hint_patterns)
                    :one-char (. hop :hint_char1)
                    :two-char (. hop :hint_char2)
-                   :line (. hop :hint_lines)
-                   :line-start (. hop :hint_lines_skip_whitespace)
+                   :lines (. hop :hint_lines)
+                   :line-starts (. hop :hint_lines_skip_whitespace)
                    :s-exp (. hop :hint_patterns)
                    _ (lib.notify.error (.. "Invalid target" target) 
                                        "Hop: target->hop-commands"))
@@ -26,61 +55,39 @@
              (tset cmd :all 
                    (fn []
                      (hint {} s-exp-pattern)))
-             (tset cmd :current-line
-                   (fn []
-                     (hint {:current_line_only true} s-exp-pattern)))
+             ; (tset cmd :current-line
+             ;       (fn []
+             ;         (hint {:current_line_only true} s-exp-pattern)))
              (tset cmd :before-cursor
                    (fn []
                      (hint {:direction BEFORE-CURSOR} s-exp-pattern)))
              (tset cmd :after-cursor
                    (fn []
                      (hint {:direction AFTER-CURSOR} s-exp-pattern)))
-             (tset cmd :before-cursor-current-line
-                   (fn []
-                     (hint {:direction BEFORE-CURSOR
-                            :current_line_only true} s-exp-pattern)))
-             (tset cmd :after-cursor-current-line
-                   (fn []
-                     (hint {:direction AFTER-CURSOR
-                            :current_line_only true} s-exp-pattern)))
-             cmd))
-      ; (do 
-      ;   (tset cmd :all 
-      ;         (fn []
-      ;           ((. hop hint) {})))
-      ;   (tset cmd :current-line
-      ;         (fn []
-      ;           ((. hop hint) {:current_line_only true})))
-      ;   (tset cmd :before-cursor
-      ;         (fn []
-      ;           ((. hop hint) {:direction BEFORE-CURSOR})))
-      ;   (tset cmd :after-cursor
-      ;         (fn []
-      ;           ((. hop hint) {:direction AFTER-CURSOR})))
-      ;   (tset cmd :before-cursor-current-line
-      ;         (fn []
-      ;           ((. hop hint) {:direction BEFORE-CURSOR
-      ;                          :current_line_only true})))
-      ;   (tset cmd :after-cursor-current-line
-      ;         (fn []
-      ;           ((. hop hint) {:direction AFTER-CURSOR
-      ;                          :current_line_only true})))
-      ;   cmd) ;; return commands
+             ; (tset cmd :before-cursor-current-line
+             ;       (fn []
+             ;         (hint {:direction BEFORE-CURSOR
+             ;                :current_line_only true} s-exp-pattern)))
+             ; (tset cmd :after-cursor-current-line
+             ;       (fn []
+             ;         (hint {:direction AFTER-CURSOR
+             ;                :current_line_only true} s-exp-pattern)))
+             cmd)) ;; return cmd
       :otherwise (lib.notify.error hop "Hop: target->hop-commands"))))
 
-(local line 
-  (let [{: all : before-cursor : after-cursor} (target->hop-commands :line)]
+(local lines
+  (let [{: all : before-cursor : after-cursor} (target->hop-commands :lines)]
     {: all : before-cursor : after-cursor}))
 
-(local line-start
-  (let [{: all : before-cursor : after-cursor} (target->hop-commands :line-start)]
+(local line-starts
+  (let [{: all : before-cursor : after-cursor} (target->hop-commands :line-starts)]
     {: all : before-cursor : after-cursor}))
 
-{:word (target->hop-commands :word)
- :pattern (target->hop-commands :pattern)
+{:words (target->hop-commands :words)
+ :patterns (target->hop-commands :patterns)
  :one-char (target->hop-commands :one-char)
  :two-char (target->hop-commands :two-char)
- : line
- : line-start
+ : lines
+ : line-starts
  :s-exp (target->hop-commands :s-exp)}
 

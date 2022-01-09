@@ -3,14 +3,17 @@
         : set-keymap 
         : set-global
         : notify
+        : git-directory?
         : let-global} (require :lib.tsukivim))
 
-(local buffer-cmd (require :commands.buffer))
-(local editor-cmd (require :commands.editor))
-(local git-cmd    (require :commands.git))
-(local lsp-cmd    (require :commands.lsp))
-(local search-cmd (require :commands.search))
-(local window-cmd (require :commands.window))
+(local action-cmd     (require :commands.action))
+(local buffer-cmd     (require :commands.buffer))
+(local editor-cmd     (require :commands.editor))
+(local git-cmd        (require :commands.git))
+(local terminal-cmd   (require :commands.terminal))
+(local lsp-cmd        (require :commands.lsp))
+(local search-cmd     (require :commands.search))
+(local window-cmd     (require :commands.window))
 
 
 (fn cmd [command ?without-enter]
@@ -22,6 +25,8 @@
 (local keys {})
 (local keys-visual {})
 
+(local hop-cmd (require :modules.editing.hop.commands))
+
 ;; Single keymaps
 (tset keys " "        [:<Esc>                         :Close])
 (tset keys :.         [search-cmd.find-files          :Find-file])
@@ -29,6 +34,7 @@
 (tset keys :Q         [editor-cmd.force-quit          :Force-Quit])
 (tset keys :<Tab>     [buffer-cmd.cycle-next          :Goto-next-buffer])
 (tset keys :<S-Tab>   [buffer-cmd.cycle-prev          :Goto-prev-buffer])
+(tset keys :x         [hop-cmd.word-before-cursor          :Goto-prev-buffer])
 
 ;; Action keymaps
 ;; TODO: add S-exp action jump
@@ -36,7 +42,9 @@
 (tset keys :a 
       {:name :Actions
        " " [:<Esc>                                  :Close]
-       :p  ["\"+p"                                  :Paste-from-clipboard]})
+       :p  ["\"+p"                                  :Paste-from-clipboard]
+       :e  [action-cmd.eval-current-file            :Eval-current-file]
+       :s  [action-cmd.source-current-file          :Source-current-file]})
 
 ;; Buffer keymaps
 (tset keys :b 
@@ -78,7 +86,7 @@
             :s  [editor-cmd.plugin.sync          :Packer-plugin-sync]
             :S  [editor-cmd.plugin.status        :Packer-plugin-status]
             :u  [editor-cmd.plugin.update        :Packer-plugin-update]
-            :p  [editor-cmd.plugin.profile       :Packer-plugin-clean]}})
+            :p  [editor-cmd.plugin.profile       :Packer-plugin-profile]}})
 
 ;; Files keymaps
 (tset keys :f 
@@ -109,7 +117,7 @@
        :b                                     :Blame-line})
 
 ;; Help keymaps 
-(tset keys :h 
+(tset keys :H
       {:name :Help
        " " [:<Esc> :Close]
        :H  [search-cmd.highlights       :List-highlights]
@@ -120,6 +128,9 @@
        :k  [search-cmd.keymaps          :Search-recent-files]
        :m  [search-cmd.man-pages        :Man-pages]
        :o  [search-cmd.vim-options      :List-vim-options]})
+
+(local hop-keymaps (require :modules.editing.hop.keymaps))
+(tset keys :h hop-keymaps)
 
 ;; LSP keymaps
 ;; see: modules/lsp/init.fnl
@@ -159,8 +170,10 @@
 (tset keys :o
        {:name :Open
         " "   [:<Esc>                        :Close]
-        :e    [editor-cmd.toggle-nvim-tree   :Toggle-file-tree]
-        :m    [editor-cmd.open-glow-markdown :Open-glow-markdown]})
+        :e    [editor-cmd.toggle-nvim-tree   :Toggle-file-explorer]
+        :m    [editor-cmd.open-glow-markdown :Open-glow-markdown]
+        :t    [terminal-cmd.toggle-term      :Toggle-terminal]
+        :T    [terminal-cmd.toggle-all-term      :Toggle-terminal]})
 
 ;; Projects keymaps
 (tset keys :p

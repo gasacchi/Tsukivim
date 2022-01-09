@@ -31,6 +31,10 @@
                                        (.. :Hop- target :-all)]
                                    :C [(. hop-cmd target :current-line)
                                        (.. :Hop- target :-current-line)]} general-keys) 
+      :s-exp (vim.extend :keep {:s [(. hop-cmd target :all) 
+                                    (.. :Hop- target :-all)]
+                                :S [(. hop-cmd target :current-line)
+                                    (.. :Hop- target :-current-line)]} general-keys) 
       :line {: name
              :j general-keys.j
              :k general-keys.k
@@ -38,11 +42,13 @@
       :line-start {: name
                    :j general-keys.j
                    :k general-keys.k
-                   :l [(. hop-cmd target :all) (.. :Hop- target :-all)]}))) 
+                   :l [(. hop-cmd target :all) (.. :Hop- target :-all)]})))
 
-{:w (target->hop-keymaps :word)
- :p (target->hop-keymaps :pattern)
+
+{:C (target->hop-keymaps :two-char)
+ :L (target->hop-keymaps :line-start)
  :c (target->hop-keymaps :one-char)
- :C (target->hop-keymaps :two-char)
  :l (target->hop-keymaps :line)
- :L (target->hop-keymaps :line-start)}
+ :p (target->hop-keymaps :pattern)
+ :s (target->hop-keymaps :s-exp)
+ :w (target->hop-keymaps :word)}

@@ -311,7 +311,7 @@
     (use 
       (doto [:folke/zen-mode.nvim]
             (tset :cmd :ZenMode)
-            (tset :config "require'modules.ui.zen-mode'")))
+            (tset :config "require'modules.ui.zen-mode.config'")))
 
     ;; Hightlight portion of code with treesitter used by zen-mode
     (use 

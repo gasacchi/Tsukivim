@@ -4,6 +4,7 @@
 (local hop-cmd (require :modules.editing.hop.commands))
 
 (fn target->hop-keymaps [target]
+  "Generate whichkey keymaps for hop-commands with given target"
   (let [(name _) (string.gsub target "^%l" string.upper)
         general-keys {: name
                       :j [(. hop-cmd target :after-cursor) 

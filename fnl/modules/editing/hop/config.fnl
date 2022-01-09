@@ -6,6 +6,7 @@
   (if ok?
     (hop.setup 
       {:keys "aoeuidhtns" ;; Only use this key for jumping
-       :quit_key :q
-       :multi_windows true}))) ;; use "q" to quit hop mode
+       :quit_key :q ;; quit hop mode with `q`
+       :multi_windows true})
+    :otherwise (tsv.notify.error "Cannot load hop.nvim" "Plugin: hop.nvim"))) 
 

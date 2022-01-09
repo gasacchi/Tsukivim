@@ -1,5 +1,6 @@
 ;; Module for hop keymaps
 
+(local tsv (require :lib.tsukivim))
 (local vim (require :lib.vim))
 (local hop-cmd (require :modules.editing.hop.commands))
 
@@ -43,7 +44,9 @@
       :line-starts {: name
                     :j general-keys.j
                     :k general-keys.k
-                    :l [(. hop-cmd target :all) (.. :Hop- target :-all)]})))
+                    :l [(. hop-cmd target :all) (.. :Hop- target :-all)]}
+      :otherwise (tsv.notify.error (..  "Invalid target name:" target) 
+                                   "Hop: target->hop-keymaps"))))
 
 
 {:C (target->hop-keymaps :two-char)

@@ -1,12 +1,10 @@
 ;; Module for configure bufferline
-(local {: require-plugin} (require :lib.tsukivim))
+
+(local tsv (require :lib.tsukivim))
 
 (local options 
    {:numbers :ordinal
     :close_command "Bdelete %d"
-    ; :modified_icon ""
-    ; :indicator_icon "  "
-    ; :buffer_close_icon "﯇"
     :separator_style :padded_slant
     :offsets 
       [{:filetype "NvimTree" 
@@ -17,8 +15,9 @@
     (fn [count level diag_dict ctx]
       (.. "[" count "]"))})
 
-(let [(ok? bufferline) (require-plugin :bufferline)]
-  (when ok?
-    (bufferline.setup {: options})))
-
+(let [(ok? bufferline) (tsv.require-plugin :bufferline)]
+  (if ok?
+    (bufferline.setup {: options})
+    :otherwise (tsv.notify.error "Cannot load bufferline.nvim"
+                                 "Plugin: bufferline.nvim")))
 

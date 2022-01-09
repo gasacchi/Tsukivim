@@ -302,12 +302,11 @@
     (use 
       (doto [:akinsho/bufferline.nvim]
             (tset :event :BufReadPre)
-            (tset :config "require'modules.ui.bufferline'")))
+            (tset :config "require'modules.ui.bufferline.config'")))
 
 
     ;; Zen mode
-    ;; load when using ZenMode command 
-    ;; see:modules/ui/zen-mode.fnl for configure zen-mode
+    ;; see:modules/ui/zen-mode/config.fnl for configure zen-mode
     (use 
       (doto [:folke/zen-mode.nvim]
             (tset :cmd :ZenMode)

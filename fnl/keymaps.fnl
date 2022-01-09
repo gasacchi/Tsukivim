@@ -7,14 +7,13 @@
         : let-global} (require :lib.tsukivim))
 
 (local action-cmd     (require :commands.action))
-(local buffer-cmd     (require :commands.buffer))
+(local bufferline-cmd (require :modules.ui.bufferline.commands))
 (local editor-cmd     (require :commands.editor))
 (local git-cmd        (require :commands.git))
 (local terminal-cmd   (require :commands.terminal))
 (local lsp-cmd        (require :commands.lsp))
 (local search-cmd     (require :commands.search))
 (local window-cmd     (require :commands.window))
-
 
 (fn cmd [command ?without-enter]
   (if ?without-enter
@@ -25,16 +24,14 @@
 (local keys {})
 (local keys-visual {})
 
-(local hop-cmd (require :modules.editing.hop.commands))
 
 ;; Single keymaps
 (tset keys " "        [:<Esc>                         :Close])
 (tset keys :.         [search-cmd.find-files          :Find-file])
 (tset keys :q         [editor-cmd.quit                :Quit])
 (tset keys :Q         [editor-cmd.force-quit          :Force-Quit])
-(tset keys :<Tab>     [buffer-cmd.cycle-next          :Goto-next-buffer])
-(tset keys :<S-Tab>   [buffer-cmd.cycle-prev          :Goto-prev-buffer])
-(tset keys :x         [hop-cmd.word-before-cursor          :Goto-prev-buffer])
+(tset keys :<Tab>     [bufferline-cmd.cycle-next          :Goto-next-buffer])
+(tset keys :<S-Tab>   [bufferline-cmd.cycle-prev          :Goto-prev-buffer])
 
 ;; Action keymaps
 ;; TODO: add S-exp action jump
@@ -47,26 +44,7 @@
        :s  [action-cmd.source-current-file          :Source-current-file]})
 
 ;; Buffer keymaps
-(tset keys :b 
-      {:name :Buffers
-       " " [:<Esc>                                  :Close]
-       :b  [buffer-cmd.pick-buffer                  :Pick-goto-buffer]
-       :d  [buffer-cmd.delete-buffer                :Delete-current-buffer]
-       :D  [buffer-cmd.pick-and-close-buffer        :Pick-delete-buffer]
-       :f  [buffer-cmd.first-buffer                 :Goto-first-buffer]
-       :l  [buffer-cmd.last-buffer                  :Goto-last-buffer]
-       :n  [buffer-cmd.cycle-next                   :Goto-next-buffer]
-       :p  [buffer-cmd.cycle-prev                   :Goto-prev-buffer]
-       :s  [search-cmd.buffers                      :Search-buffer]
-       :1  [(buffer-cmd.goto-buffer 1)              :Goto-buffer-1]
-       :2  [(buffer-cmd.goto-buffer 2)              :Goto-buffer-2]
-       :3  [(buffer-cmd.goto-buffer 3)              :Goto-buffer-3]
-       :4  [(buffer-cmd.goto-buffer 4)              :Goto-buffer-4]
-       :5  [(buffer-cmd.goto-buffer 5)              :Goto-buffer-5]
-       :6  [(buffer-cmd.goto-buffer 6)              :Goto-buffer-6]
-       :7  [(buffer-cmd.goto-buffer 7)              :Goto-buffer-7]
-       :8  [(buffer-cmd.goto-buffer 8)              :Goto-buffer-8]
-       :9  [(buffer-cmd.goto-buffer 9)              :Goto-buffer-9]})
+(tset keys :b (require :modules.ui.bufferline.keymaps))
 
 ;; Editor keymaps
 (tset keys :e 

@@ -1,9 +1,9 @@
 ;; Modules contains hop.nvim commands
-(local lib (require :lib.tsukivim))
+(local tsv (require :lib.tsukivim))
 
 (fn target->hop-commands [target]
   "Generate hop commands with various behaviour"
-  (let [(ok? hop) (lib.require-plugin :hop)
+  (let [(ok? hop) (tsv.require-plugin :hop)
         BEFORE-CURSOR 1 
         AFTER-CURSOR 2
         cmd {}]
@@ -16,7 +16,7 @@
                    :lines (. hop :hint_lines)
                    :line-starts (. hop :hint_lines_skip_whitespace)
                    :s-exp (. hop :hint_patterns)
-                   _ (lib.notify.error (.. "Invalid target" target) 
+                   _ (tsv.notify.error (.. "Invalid target" target) 
                                        "Hop: target->hop-commands"))
             s-exp-pattern (if (= target :s-exp)
                             "(\\|{\\|\\["
@@ -43,7 +43,7 @@
              ;         (hint {:direction AFTER-CURSOR
              ;                :current_line_only true} s-exp-pattern)))
              cmd)) ;; return cmd
-      :otherwise (lib.notify.error hop "Hop: target->hop-commands"))))
+      :otherwise (tsv.notify.error hop "Hop: target->hop-commands"))))
 
 (local lines
   (let [{: all : before-cursor : after-cursor} (target->hop-commands :lines)]

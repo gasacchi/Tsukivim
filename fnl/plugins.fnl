@@ -9,7 +9,7 @@
     :prompt_border :single
     :profile {:enable true :threshold 0}}})
 
-(packer.startup 
+(packer.startup
   (fn [use]
     "Packer use this declaration to compile to ../plugin/packer_compiled.lua
      then install to ~/.local/share/nvim/site/pack/packer/start/ or 
@@ -346,13 +346,14 @@
             (tset :config "require'modules.editing.comment.config'")))
 
     ;; better escape with fast jk
-    ;; see: modules/editing/better-escape.fnl
-    ;; load on InsertEnter
+    ;; see: modules/editing/better-escape/config.fnl
     (use 
       (doto [:max397574/better-escape.nvim]
             (tset :event :InsertEnter)
-            (tset :config "require'modules.editing.better-escape'")))
+            (tset :config "require'modules.editing.better-escape.config'")))
 
+    ;; hop / jump 
+    ;; see: modules/editing/hop/config.fnl
     (use 
       (doto [:phaazon/hop.nvim]
             (tset :module :hop)
@@ -362,7 +363,6 @@
 
     ;; which-key for documenting keymaps
     ;; see: keymaps.fnl
-    ;; load on VimEnter
     (use 
       (doto [:zeertzjq/which-key.nvim];:folke/which-key.nvim]
             (tset :branch :patch-1)

@@ -1,43 +1,13 @@
 ;; Modules contains hop.nvim commands
 (local lib (require :lib.tsukivim))
 
-;; FIX: s-exp
 (fn target->hop-commands [target]
   "Generate hop commands with various behaviour"
   (let [(ok? hop) (lib.require-plugin :hop)
         BEFORE-CURSOR 1 
         AFTER-CURSOR 2
-        cmd {}
-        hint (match target 
-               :words :hint_words
-               :patterns :hint_patterns
-               :one-char :hint_char1
-               :two-char :hint_char2
-               :lines    :hint_lines
-               :line-starts :hint_lines_skip_whitespace)]
+        cmd {}]
     (if ok?
-      ; (do 
-      ;    (tset cmd :all 
-      ;          (fn []
-      ;            ((. hop hint) {})))
-      ;    (tset cmd :current-line
-      ;          (fn []
-      ;            ((. hop hint) {:current_line_only true})))
-      ;    (tset cmd :before-cursor
-      ;          (fn []
-      ;            ((. hop hint) {:direction BEFORE-CURSOR})))
-      ;    (tset cmd :after-cursor
-      ;          (fn []
-      ;            ((. hop hint) {:direction AFTER-CURSOR})))
-      ;    (tset cmd :before-cursor-current-line
-      ;          (fn []
-      ;            ((. hop hint) {:direction BEFORE-CURSOR
-      ;                           :current_line_only true})))
-      ;    (tset cmd :after-cursor-current-line
-      ;          (fn []
-      ;            ((. hop hint) {:direction AFTER-CURSOR
-      ;                           :current_line_only true})))
-      ;    cmd)
       (let [hint (match target 
                    :words (. hop :hint_words)
                    :patterns (. hop :hint_patterns)

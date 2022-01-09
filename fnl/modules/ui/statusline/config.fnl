@@ -1,7 +1,9 @@
 ;; Module for configure statusline
-(local {: cmd : require-plugin} (require :lib.tsukivim))
+
+(local tsv (require :lib.tsukivim))
 
 (fn mode []
+  "Redraw Lualine foreground color when mode is changed"
   (let [color (require :modules.ui.colors)
         color-mode {:n    [color.springGreen  :normal]
                     :no   [color.autumnGreen  :o-pending]
@@ -40,12 +42,20 @@
                     :t    [color.roninYellow  :terminal]}
         mode-name (. color-mode (vim.fn.mode) 2)
         fg-color (. color-mode (vim.fn.mode) 1)] ;; Terminal
-      (cmd (.. "hi! LualineMode guifg=" fg-color " guibg=" color.sumiInk0))
+      (tsv.cmd (.. "hi! LualineMode guifg=" fg-color " guibg=" color.sumiInk0))
       (.. " " mode-name)))
 
 (fn position []
   (let [(row col) (unpack (vim.api.nvim_win_get_cursor 0))]
     (.. "line:" row " col:" col)))
+
+(local filename
+  {1 :filename
+   :color {:bg :#252535}
+   :separator {:left "" :right "  "}
+   :symbols {:modified " ᵐᵒᵈⁱᶠⁱᵉᵈ"
+             :readonly "  "
+             :unnamed " -no name-"}}) 
 
 (local sections 
   {:lualine_a [{1 mode
@@ -61,12 +71,7 @@
                 :separator {:left "" :right " "}} 
                {1 :diagnostics
                 :separator {:left "" :right "  "}}]
-   :lualine_c [{1 :filename
-                :color {:bg :#252535}
-                :separator {:left "" :right "  "}
-                :symbols {:modified " 🄼 "
-                          :readonly "  "
-                          :unnamed " -no name-"}}]
+   :lualine_c [filename]
    :lualine_x [{1 :filetype
                 :color {:bg :#252535}
                 :separator {:left " " :right ""}}]
@@ -79,13 +84,14 @@
                 :separator {:left " " :right ""}}]})
 
 (local inactive-section 
-  {:lualine_c [:filename]
+  {:lualine_c [filename]
    :lualine_x [position]})
 
-(let [(ok? lualine) (require-plugin :lualine)]
-  (when ok?
+(let [(ok? lualine) (tsv.require-plugin :lualine)]
+  (if ok?
    (lualine.setup {:options {:theme :kanagawa}
                    : sections
-                   :inactive_sections inactive-section})))
-
+                   :inactive_sections inactive-section})
+   :otherwise (tsv.notify.error "Cannot load lualine.nvim" 
+                                "Plugin: lualine.nvim")))
 

@@ -293,7 +293,7 @@
     (use 
       (doto [:nvim-lualine/lualine.nvim]
             (tset :after :alpha-nvim)
-            (tset :config "require'modules.ui.statusline'")))
+            (tset :config "require'modules.ui.statusline.config'")))
 
 
     ;; Bufferline

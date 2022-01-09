@@ -339,12 +339,11 @@
             (tset :cmd :Bdelete)))
 
     ;; auto comment
-    ;; see: modules/editing/kommentary.fnl for configue kommentary
-    ;; load when pressing gc key
+    ;; see: modules/editing/comment/config.fnl
     (use 
-      (doto [:b3nj5m1n/kommentary]
-            (tset :keys [:gc])
-            (tset :config "require'modules.editing.kommentary")))
+      (doto [:numToStr/Comment.nvim]
+            (tset :event :BufRead)
+            (tset :config "require'modules.editing.comment.config'")))
 
     ;; better escape with fast jk
     ;; see: modules/editing/better-escape.fnl

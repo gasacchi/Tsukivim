@@ -45,8 +45,8 @@
                     :j general-keys.j
                     :k general-keys.k
                     :l [(. hop-cmd target :all) (.. :Hop- target :-all)]}
-      :otherwise (tsv.notify.error (..  "Invalid target name:" target) 
-                                   "Hop: target->hop-keymaps"))))
+      _ (tsv.notify.error (..  "Invalid target name:" target 
+                           "Hop: target->hop-keymaps")))))
 
 
 {:C (target->hop-keymaps :two-char)
@@ -56,3 +56,4 @@
  :p (target->hop-keymaps :patterns)
  :s (target->hop-keymaps :s-exp)
  :w (target->hop-keymaps :words)}
+

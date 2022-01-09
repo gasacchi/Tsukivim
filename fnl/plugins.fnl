@@ -359,14 +359,14 @@
             (tset :module :hop)
             (tset :config "require'modules.editing.hop.config'")))
 
-
     ;; Mapping related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     ;; which-key for documenting keymaps
     ;; see: keymaps.fnl
     ;; load on VimEnter
     (use 
-      (doto [:folke/which-key.nvim]
+      (doto [:zeertzjq/which-key.nvim];:folke/which-key.nvim]
+            (tset :branch :patch-1)
             (tset :keys ["!" "\"" "'" ">" "@" "[" "]" "`" "<"
                          :<c-w> :<space> :c :d :g :v :y :z])
             (tset :config "require'keymaps'")))))

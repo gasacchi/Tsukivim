@@ -342,7 +342,7 @@
     ;; see: modules/editing/comment/config.fnl
     (use 
       (doto [:numToStr/Comment.nvim]
-            (tset :event :BufRead)
+            (tset :keys [:gc :gcc :gbc]);
             (tset :config "require'modules.editing.comment.config'")))
 
     ;; better escape with fast jk

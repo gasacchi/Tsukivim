@@ -91,7 +91,7 @@
     (use 
       (doto [:tami5/lspsaga.nvim]
             (tset :event :BufRead)
-            (tset :config "require'modules.lsp.saga'")))
+            (tset :config "require'modules.lsp.saga.config'")))
      
     ;; Programming language related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Fennel

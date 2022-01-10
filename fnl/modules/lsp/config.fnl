@@ -1,12 +1,12 @@
 ;; Module for configure built-in Neovim LSP
-(local {: require-plugin} (require :lib.tsukivim))
+(local {: require-plugin 
+        : set-buffer-keymap} (require :lib.tsukivim))
 
-;; TODO: configure mappings for lsp
 (fn on-attach [_ bufnr]
   "Function that run when lsp server attach on buffer"
-  (let [set-keymap (fn [...] (vim.api.nvim_buf_set_keymap bufnr ...))]
-       set-option (fn [...] (vim.api.nvim_buf_set_option bufnr ...))
-       opts {:noremap true :silent true}
+  (let [set-keymap (fn [...] (vim.api.nvim_buf_set_keymap bufnr ...))
+        set-option (fn [...] (vim.api.nvim_buf_set_option bufnr ...))
+        opts {:noremap true :silent true}]
 
       ;; Trouble lsp mappings
       ;; see: ./trouble.fnl for trouble.nvim configuration
@@ -60,9 +60,12 @@
        :on_attach on-attach})))
 
 (let [(ok? lsp-config) (require-plugin :lspconfig)
-         conf (make-config)
-         servers [:svelte :cssls :html]]
-     (when ok?
-       (each [_ lsp (ipairs servers)]
-         (tset (. lsp-config lsp) :setup conf))))
+      cmp (require :cmp_nvim_lsp)
+      ;; FIX: nil value because cannot require unload cmp
+      conf {:capabilities (cmp.update_capabilities (vim.lsp.protocol.make_client_capabilities))
+             :on_attach on-attach}
+      servers [:svelte :cssls :html :rust_analyzer]]
+   (when ok?
+     (each [_ lsp (ipairs servers)]
+       ((. lsp-config lsp :setup) conf))))
 

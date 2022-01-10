@@ -52,7 +52,7 @@
      (use 
        (doto [:neovim/nvim-lspconfig]
              (tset :event :BufReadPre)
-             (tset :config "require'modules.lsp'")))
+             (tset :config "require'modules.lsp.config'")))
 
     ;; Neovim code completions
     ;; see: modules/lsp/completion.fnl for configure cmp.nvim

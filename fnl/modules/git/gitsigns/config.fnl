@@ -1,5 +1,5 @@
 ;; Module for configure gitsigns
-(local {: require-plugin} (require :lib.tsukivim))
+(local tsv (require :lib.tsukivim))
 
 (local keymaps 
   {:noremap true :buffer true 
@@ -16,7 +16,9 @@
    "o ih" ":<C-U>lua require'gitsigns'.select_hunk()<CR>"
    "x ih" ":<C-U>lua require'gitsigns'.select_hunk()<CR>"})
 
-(let [(ok gitsigns) (require-plugin :gitsigns)]
+(let [(ok gitsigns) (tsv.require-plugin :gitsigns)]
   (if ok
-    (gitsigns.setup {: keymaps})))
+    (gitsigns.setup {: keymaps})
+    :otherwise (tsv.notify.error "Cannot load gitsigns.nvim"
+                                 "Plugin: gitsigns.nvim")))
 

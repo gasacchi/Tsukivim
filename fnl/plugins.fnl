@@ -187,7 +187,7 @@
     (use
       (doto [:lewis6991/gitsigns.nvim]
             (tset :event :BufReadPre)
-            (tset :config "require'modules.git.gitsigns'")))
+            (tset :config "require'modules.git.gitsigns.config'")))
 
     ;; Utility related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Telescope Fuzzy finder

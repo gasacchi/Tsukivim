@@ -264,20 +264,17 @@
       (doto [:nvim-treesitter/nvim-treesitter]
             (tset :run :TSUpdate)
             (tset :event :BufRead)
-            (tset :config "require'modules.ui.treesitter.config'")))
-
-    ;; Rainbow parentheses
-    ;; see: modules/ui/nvim-treesitter.fnl for configure nvim-ts-rainbow
-    ;; load after nvim-treesitter
-    (use 
-      (doto [:p00f/nvim-ts-rainbow]
-            (tset :after :nvim-treesitter)))
+            (tset :config "require'modules.ui.treesitter.config'")
+            (tset :requires 
+                  ;; Rainbow parentheses
+                  [(doto [:p00f/nvim-ts-rainbow]
+                         (tset :after :nvim-treesitter))])))
 
     ;; Add underline for same word
-    ;; load on BufRead
+    ;; TODO: config
     (use 
-      (doto [:yamatsum/nvim-cursorline]
-            (tset :event :BufRead)))
+      (doto [:RRethy/vim-illuminate]
+            (tset :opt true)))
 
     ;; Indent 
     ;; see: modules/ui/indent-blankline.fnl for configure indent-blankline

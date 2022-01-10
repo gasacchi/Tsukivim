@@ -319,8 +319,6 @@
             (tset :after :zen-mode.nvim)))
 
     ;; Hightlight HEX color
-    ;; see: modules/ui/colorizer.fnl for configure nvim-colorizer
-    ;; load when using ColorizerToggle command
     (use 
       (doto [:norcalli/nvim-colorizer.lua]
             (tset :cmd :ColorizerToggle)))

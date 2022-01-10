@@ -11,32 +11,32 @@
                       :j [(. hop-cmd target :after-cursor) 
                           (.. :Hop- target :-after-cursor)]
                       :k [(. hop-cmd target :before-cursor) 
-                          (.. :Hop- target :-before-cursor)]}]
-                      ; :l [(. hop-cmd target :after-cursor-current-line) 
-                      ;     (.. :Hop- target :-after-cursor-current-line)]
-                      ; :h [(. hop-cmd target :before-cursor-current-line) 
-                      ;     (.. :Hop- target :-before-cursor-current-line)]}]
+                          (.. :Hop- target :-before-cursor)]
+                       :l [(. hop-cmd target :after-cursor-current-line) 
+                           (.. :Hop- target :-after-cursor-current-line)]
+                       :h [(. hop-cmd target :before-cursor-current-line) 
+                           (.. :Hop- target :-before-cursor-current-line)]}]
     (match target
       :words (vim.extend :keep {:w [(. hop-cmd target :all) 
-                                    (.. :Hop- target :-all)]} general-keys)
-                                ; :W [(. hop-cmd target :current-line)
-                                ;     (.. :Hop- target :-current-line)]} general-keys) 
+                                    (.. :Hop- target :-all)]
+                                :W [(. hop-cmd target :current-line)
+                                    (.. :Hop- target :-current-line)]} general-keys) 
       :patterns (vim.extend :keep {:p [(. hop-cmd target :all) 
-                                       (.. :Hop- target :-all)]} general-keys)
-                                   ; :P [(. hop-cmd target :current-line)
-                                   ;     (.. :Hop- target :-current-line)]} general-keys) 
+                                       (.. :Hop- target :-all)]
+                                   :P [(. hop-cmd target :current-line)
+                                       (.. :Hop- target :-current-line)]} general-keys) 
       :one-char (vim.extend :keep {:c [(. hop-cmd target :all) 
-                                       (.. :Hop- target :-all)]} general-keys)
-                                   ; :C [(. hop-cmd target :current-line)
-                                   ;     (.. :Hop- target :-current-line)]} general-keys) 
+                                       (.. :Hop- target :-all)]
+                                    :C [(. hop-cmd target :current-line)
+                                        (.. :Hop- target :-current-line)]} general-keys) 
       :two-char (vim.extend :keep {:c [(. hop-cmd target :all) 
-                                       (.. :Hop- target :-all)]} general-keys)
-                                   ; :C [(. hop-cmd target :current-line)
-                                   ;     (.. :Hop- target :-current-line)]} general-keys) 
+                                       (.. :Hop- target :-all)]
+                                    :C [(. hop-cmd target :current-line)
+                                        (.. :Hop- target :-current-line)]} general-keys) 
       :s-exp (vim.extend :keep {:s [(. hop-cmd target :all) 
-                                    (.. :Hop- target :-all)]} general-keys)
-                                ; :S [(. hop-cmd target :current-line)
-                                ;     (.. :Hop- target :-current-line)]} general-keys) 
+                                    (.. :Hop- target :-all)]
+                                 :S [(. hop-cmd target :current-line)
+                                     (.. :Hop- target :-current-line)]} general-keys) 
       :lines {: name
               :j general-keys.j
               :k general-keys.k

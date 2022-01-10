@@ -23,25 +23,25 @@
                             :otherwise nil)]
           (do 
              (tset cmd :all 
-                   (fn []
+                  (fn []
                      (hint {} s-exp-pattern)))
-             ; (tset cmd :current-line
-             ;       (fn []
-             ;         (hint {:current_line_only true} s-exp-pattern)))
+             (tset cmd :current-line
+                  (fn []
+                     (hint {:current_line_only true} s-exp-pattern)))
              (tset cmd :before-cursor
-                   (fn []
+                  (fn []
                      (hint {:direction BEFORE-CURSOR} s-exp-pattern)))
              (tset cmd :after-cursor
-                   (fn []
+                  (fn []
                      (hint {:direction AFTER-CURSOR} s-exp-pattern)))
-             ; (tset cmd :before-cursor-current-line
-             ;       (fn []
-             ;         (hint {:direction BEFORE-CURSOR
-             ;                :current_line_only true} s-exp-pattern)))
-             ; (tset cmd :after-cursor-current-line
-             ;       (fn []
-             ;         (hint {:direction AFTER-CURSOR
-             ;                :current_line_only true} s-exp-pattern)))
+             (tset cmd :before-cursor-current-line
+                  (fn []
+                     (hint {:direction BEFORE-CURSOR
+                            :current_line_only true} s-exp-pattern)))
+             (tset cmd :after-cursor-current-line
+                  (fn []
+                     (hint {:direction AFTER-CURSOR
+                            :current_line_only true} s-exp-pattern)))
              cmd)) ;; return cmd
       :otherwise (tsv.notify.error hop "Hop: target->hop-commands"))))
 

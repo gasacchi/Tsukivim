@@ -313,13 +313,12 @@
     (use 
       (doto [:folke/zen-mode.nvim]
             (tset :cmd :ZenMode)
-            (tset :config "require'modules.ui.zen-mode.config'")))
-
-    ;; Hightlight portion of code with treesitter used by zen-mode
-    (use 
-      (doto [:folke/twilight.nvim]
-            (tset :cmd [:Twilight])
-            (tset :after :zen-mode.nvim)))
+            (tset :config "require'modules.ui.zen-mode.config'")
+            (tset :requires 
+                  ;; Hightlight portion of code with treesitter used by zen-mode
+                  [(doto [:folke/twilight.nvim]
+                         (tset :cmd [:Twilight])
+                         (tset :after :zen-mode.nvim))])))
 
     ;; Hightlight HEX color
     (use 

@@ -7,12 +7,12 @@
   (if ok?
     (kanagawa.setup 
       {:transparent (not (gui?))}
-      (cmd "colorscheme kanagawa"))
+      (tsv.cmd "colorscheme kanagawa"))
     :otherwise (tsv.notify "Cannot load kanagawa.nvim"
                            "Plugin: kanagawa.nvim")))
 
 (when (not (gui?))
-  (cmd "hi! MsgArea guibg=none guifg=#DCD7BA")
-  (cmd "hi! Normal guibg=none guifg=#DCD7BA	"))
+  (tsv.cmd "hi! MsgArea guibg=none guifg=#DCD7BA")
+  (tsv.cmd "hi! Normal guibg=none guifg=#DCD7BA	"))
 
 

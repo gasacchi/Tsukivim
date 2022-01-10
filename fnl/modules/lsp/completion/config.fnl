@@ -1,6 +1,5 @@
 ;; Module for configure nvim-cmp & lspkind.nvim
-(local 
-  {: require-plugin : let-global} (require :lib.tsukivim))
+(local tsv (require :lib.tsukivim))
 
 ;; Set icons for lspkind.nvim
 (local kind-icons 
@@ -62,9 +61,10 @@
 (local experimental 
      {:ghost_text true})
 
-(let [(ok? cmp) (require-plugin :cmp)]
-    (when ok?
-        (let-global :completeopt "menu,menuone,noselect")
+(let [(ok? cmp) (tsv.require-plugin :cmp)]
+    (if ok?
+      (do
+        (tsv.let-global :completeopt "menu,menuone,noselect")
         (cmp.setup 
             {: formatting
              : sources
@@ -75,5 +75,7 @@
                        :<CR> (cmp.mapping.confirm 
                                {:behaviour cmp.ConfirmBehavior.Replace 
                                 :select true})}
-              : experimental})))
+              : experimental}))
+     :otherwise (tsv.notify.error "Cannot load cmp.nvim"
+                                   "Plugin: cmp.nvim")))
 

@@ -60,7 +60,7 @@
      (use 
        (doto [:hrsh7th/nvim-cmp]
              (tset :event :InsertEnter)
-             (tset :config "require'modules.lsp.completion'")))
+             (tset :config "require'modules.lsp.completion.config'")))
      
      ;; load after nvim-cmp
      (use 

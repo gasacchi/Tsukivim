@@ -210,7 +210,7 @@
     (use 
       (doto [:kyazdani42/nvim-tree.lua]
             (tset :cmd :NvimTreeToggle)
-            (tset :config "require'modules.utils.nvim-tree'")))
+            (tset :config "require'modules.utils.nvim-tree.config'")))
     
     ;; Extends todo comment 
     ;; see: modules/utils/todo-comments.fnl for configure todo-comments

@@ -302,8 +302,11 @@
     (use 
       (doto [:akinsho/bufferline.nvim]
             (tset :event :BufReadPre)
-            (tset :config "require'modules.ui.bufferline.config'")))
-
+            (tset :config "require'modules.ui.bufferline.config'")
+            (tset :requires 
+                  ;; Buffer delete without losing window layout
+                  [(doto [:famiu/bufdelete.nvim] 
+                         (tset :cmd :Bdelete))])))
 
     ;; Zen mode
     ;; see:modules/ui/zen-mode/config.fnl for configure zen-mode
@@ -329,11 +332,6 @@
       (doto [:gpanders/nvim-parinfer]
             (tset :ft [:fennel])))
 
-    ;; buffer delete without losting window layout
-    ;; load when using Bdelete command
-    (use
-      (doto [:famiu/bufdelete.nvim]
-            (tset :cmd :Bdelete)))
 
     ;; auto comment
     ;; see: modules/editing/comment/config.fnl

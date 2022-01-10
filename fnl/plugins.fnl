@@ -226,7 +226,7 @@
     (use 
       (doto [:akinsho/toggleterm.nvim]
             (tset :cmd :ToggleTerm)
-            (tset :config "require'modules.utils.toggleterm'")))
+            (tset :config "require'modules.utils.toggleterm.config'")))
 
     ;; Markdown previewer
     ;; load when using Glow command

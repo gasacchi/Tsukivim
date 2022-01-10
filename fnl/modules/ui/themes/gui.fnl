@@ -7,7 +7,7 @@
     (do
       ; (let-global :neovide_transparency 0.5)
       (tsv.let-global :neovide_transparency 0.9)
-      (tsv. cmd "set guifont=Iosevka\\ Nerd\\ Font:h9")
+      (tsv.cmd "set guifont=Iosevka\\ Nerd\\ Font:h9")
       true)
     :otherwise false))
 

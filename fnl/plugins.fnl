@@ -285,7 +285,7 @@
     (use
       (doto [:lukas-reineke/indent-blankline.nvim]
             (tset :event :BufRead)
-            (tset :config "require'modules.ui.indent-blankline'")))
+            (tset :config "require'modules.ui.indent-blankline.config'")))
 
     ;; Statusline
     ;; see: modules/ui/statusline.fnl for configure statusline

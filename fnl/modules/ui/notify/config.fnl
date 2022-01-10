@@ -1,6 +1,6 @@
 ;; Module for configure notify
 (local tsv (require :lib.tsukivim))
-(local colors (require :modules.ui.colors))
+(local colors (require :modules.ui.themes.colors))
 
 (local notify-colors
   {:NotifyERRORBorder {:fg colors.peachRed}

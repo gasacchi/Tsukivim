@@ -1,7 +1,7 @@
 ;; Module for configure themes
 (local tsv (require :lib.tsukivim))
 
-(local {: gui?} (require :modules.ui.gui))
+(local {: gui?} (require :modules.ui.themes.gui))
    
 (let [(ok? kanagawa) (tsv.require-plugin :kanagawa)]
   (if ok?

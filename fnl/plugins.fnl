@@ -240,7 +240,7 @@
     (use 
       (doto [:rebelot/kanagawa.nvim]
             (tset :after :hotpot.nvim)
-            (tset :config "require'modules.ui.themes'")))
+            (tset :config "require'modules.ui.themes.config'")))
 
     ;; Notification for neovim
     ;; see: modules/ui/notify.fnl for configuration

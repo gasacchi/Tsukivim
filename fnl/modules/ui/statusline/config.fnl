@@ -4,7 +4,7 @@
 
 (fn mode []
   "Redraw Lualine foreground color when mode is changed"
-  (let [color (require :modules.ui.colors)
+  (let [color (require :modules.ui.themes.colors)
         color-mode {:n    [color.springGreen  :normal]
                     :no   [color.autumnGreen  :o-pending]
                     :nov  [color.autumnGreen  :o-pending]

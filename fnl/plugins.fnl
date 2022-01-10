@@ -83,7 +83,7 @@
      (use 
        (doto [:folke/trouble.nvim]
              (tset :cmd [:Trouble :TroubleToggle])
-             (tset :config "require'modules.lsp.trouble'")))
+             (tset :config "require'modules.lsp.trouble.config'")))
 
     ;; LSP UI
     ;; see: modules/lsp/saga.fnl for configure lspsaga

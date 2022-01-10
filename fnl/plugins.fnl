@@ -247,7 +247,7 @@
     (use 
       (doto [:rcarriga/nvim-notify]
             (tset :module :notify)
-            (tset :config "require'modules.ui.notify'")))
+            (tset :config "require'modules.ui.notify.config'")))
 
     ;; Startup dashboard
     ;; see: modules/ui/dashboard.fnl for configure dashboard

@@ -1,5 +1,5 @@
 ;; Module for configure notify
-(local {: require-plugin : cmd} (require :lib.tsukivim))
+(local tsv (require :lib.tsukivim))
 (local colors (require :modules.ui.colors))
 
 (local notify-colors
@@ -19,12 +19,14 @@
    :NotifyDEBUGTitle {:fg colors.springGreen}
    :NotifyTRACETitle {:fg colors.samuraiRed}})
 
-(let [(ok? notify) (require-plugin :notify)]
-  (when ok?
+(let [(ok? notify) (tsv.require-plugin :notify)]
+  (if ok?
     (notify.setup 
       {:stages :fade
        :background_colour "#16161D"})
     (each [group {: fg} (pairs notify-colors)]
-      (cmd (.. "hi " group " guifg=" fg)))))
+      (tsv.cmd (.. "hi " group " guifg=" fg)))
+    :otherwise (tsv.notify "Cannot load notify.nvim"
+                           "Plugin: notify.nvim")))
 
 

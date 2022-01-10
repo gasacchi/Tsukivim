@@ -179,7 +179,7 @@
     (use 
       (doto [:TimUntersberger/neogit]
             (tset :cmd :Neogit)
-            (tset :config "require'modules.git.neogit'")))
+            (tset :config "require'modules.git.neogit.config'")))
 
     ;; Git signs
     ;; see: modules/git/gitsigns.fnl for configure gitsigns

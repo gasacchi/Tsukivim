@@ -218,7 +218,7 @@
     (use
       (doto [:folke/todo-comments.nvim]
             (tset :event :BufRead)
-            (tset :config "require'modules.utils.todo-comments'")))
+            (tset :config "require'modules.utils.todo-comments.config'")))
 
     ;; Terminal integrations
     ;; see: modules/utils/toggleterm.fnl

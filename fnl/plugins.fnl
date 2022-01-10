@@ -196,7 +196,7 @@
     (use 
       (doto [:nvim-telescope/telescope.nvim]
             (tset :module :telescope)
-            (tset :config "require'modules.utils.telescope'")
+            (tset :config "require'modules.utils.telescope.config'")
             (tset :requires 
                   [(doto [:nvim-telescope/telescope-fzf-native.nvim]
                          (tset :opt true)

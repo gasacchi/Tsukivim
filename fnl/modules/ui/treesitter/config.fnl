@@ -1,5 +1,5 @@
 ;; Module for configure nvim-treesitter
-(local {: require-plugin} (require :lib.tsukivim))
+(local tsv (require :lib.tsukivim))
 
 ;; List language syntax
 (local syntax 
@@ -25,11 +25,13 @@
    :yaml
    :rust])
 
-(let [(ok? treesitter) (require-plugin :nvim-treesitter.configs)]
-  (when ok?
+(let [(ok? treesitter) (tsv.require-plugin :nvim-treesitter.configs)]
+  (if ok?
     (treesitter.setup
       {:ensure_installed syntax
        :rainbow {:enable true 
                  :extended_mode true
-                 :max_file_lines nil}})))
+                 :max_file_lines nil}})
+    :otherwise (tsv.notify "Cannot load nvim-treesitter.nvim"
+                           "Plugin: nvim-treesitter.nvim")))
 

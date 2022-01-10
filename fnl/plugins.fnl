@@ -264,7 +264,7 @@
       (doto [:nvim-treesitter/nvim-treesitter]
             (tset :run :TSUpdate)
             (tset :event :BufRead)
-            (tset :config "require'modules.ui.treesitter'")))
+            (tset :config "require'modules.ui.treesitter.config'")))
 
     ;; Rainbow parentheses
     ;; see: modules/ui/nvim-treesitter.fnl for configure nvim-ts-rainbow

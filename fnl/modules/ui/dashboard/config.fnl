@@ -1,5 +1,5 @@
 ;; Module for configure dashboard
-(local {: require-plugin : notify} (require :lib.tsukivim))
+(local tsv (require :lib.tsukivim))
 
 (fn get-total-plugins []
   (var total 0)
@@ -31,10 +31,10 @@
         (.. " in " startuptime " ms"))
       (and startup-file (not startuptime))
       (do 
-        (notify.info "Startuptime will run on the next tsukivim instance" 
+        (tsv.notify.info "Startuptime will run on the next tsukivim instance" 
                      "Dashboard: get-startup-time")
         "")
-      (notify.error "Cannot find startuptime files" 
+      (tsv.notify.error "Cannot find startuptime files" 
                     "Dashboard: get-startup-time"))))
 
 (local header 
@@ -57,8 +57,8 @@
    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣇⠀⠀⠈⠛⠛⠛⣷⡄⣸⡇⠀⠀⣿⠁⢨⡟⠻⣧⡀⠀⣼⠃⠀⢹⣇⢠⡟⠁⠀⣼⠗⠈⣿⡏⠀⠀⣿⡏⠀⠘⣷⠀⠀⠀⠀⠀⠀⠀"
    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⠀⠀⠘⠷⣦⣴⠟⠁⠈⠻⠷⠾⠃⠀⠸⠇⠀⠈⢷⠀⠛⠀⠀⠀⢿⠟⠁⠀⠀⠛⠀⠀⠿⠇⠀⠀⠿⠃⠀⠀⠇⠀⠀⠀⠀   "])
 
-(let [(ok? alpha) (require-plugin :alpha)]
-  (when ok?
+(let [(ok? alpha) (tsv.require-plugin :alpha)]
+  (if ok?
     (let [dashboard (require :alpha.themes.dashboard)
           section dashboard.section
           button (fn [shortcut txt keybind keybind-opts]
@@ -71,8 +71,10 @@
       (tset section.header :val header)
       (tset section.header.opts :hl :Boolean)
       (tset section.buttons :val
-            [(button "SPC s f"  "  Search files") 
+            [(button "SPC p s"  "  Projects")
+             (button "SPC s f"  "  Search files") 
              (button "SPC s h"  "ﭯ  Recently opened files")
+             (button "SPC h h"  "  Help")
              (button "SPC q"    "  Quit tsukivim")])
       (tset section.footer :val (.. "Tsukivim loaded " 
                                     loaded
@@ -81,5 +83,7 @@
                                     " plugins"
                                     startuptime))
       (tset section.footer.opts :hl :Statement)
-      (alpha.setup dashboard.opts))))
+      (alpha.setup dashboard.opts))
+    :otherwise (tsv.notify "Cannot load alpha.nvim"
+                           "Plugin: alpha.nvim")))
 

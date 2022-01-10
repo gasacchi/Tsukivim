@@ -255,7 +255,7 @@
     (use
       (doto [:goolord/alpha-nvim]
             (tset :after :kanagawa.nvim)
-            (tset :config "require'modules.ui.dashboard'")))
+            (tset :config "require'modules.ui.dashboard.config'")))
 
     ;; Treesitter
     ;; see: modules/ui/treesitter.fnl for configure treesitter

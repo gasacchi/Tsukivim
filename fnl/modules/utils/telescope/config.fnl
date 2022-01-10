@@ -8,9 +8,10 @@
 
 (let [(ok? telescope) (tsv.require-plugin :telescope)]
     (if ok?
-     (telescope.setup opts) 
-     (tsv.load-plugin :telescope-fzf-native.nvim)
-     (telescope.load_extension :fzf)
+     (do 
+       (telescope.setup opts) 
+       (tsv.load-plugin :telescope-fzf-native.nvim)
+       (telescope.load_extension :fzf))
      :otherwise (tsv.notify.error "Cannot load telescope.nvim"
                                   "Plugin: telescope.nvim")))
 

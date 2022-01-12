@@ -16,8 +16,9 @@
                    :lines (. hop :hint_lines)
                    :line-starts (. hop :hint_lines_skip_whitespace)
                    :s-exp (. hop :hint_patterns)
-                   _ (tsv.notify.error (.. "Invalid target" target) 
-                                       "Hop: target->hop-commands"))
+                   _ (tsv.notify.error 
+                       (.. "Invalid target" target) 
+                       "modules.editing.hop.commands: fn target->hop-commands"))
             s-exp-pattern (if (= target :s-exp)
                             "(\\|{\\|\\["
                             :otherwise nil)]
@@ -43,14 +44,17 @@
                      (hint {:direction AFTER-CURSOR
                             :current_line_only true} s-exp-pattern)))
              cmd)) ;; return cmd
-      :otherwise (tsv.notify.error hop "Hop: target->hop-commands"))))
+      :otherwise (tsv.notify.error 
+                   hop 
+                   "modules.editing.hop.commands: fn target->hop-commands"))))
 
 (local lines
   (let [{: all : before-cursor : after-cursor} (target->hop-commands :lines)]
     {: all : before-cursor : after-cursor}))
 
 (local line-starts
-  (let [{: all : before-cursor : after-cursor} (target->hop-commands :line-starts)]
+  (let 
+    [{: all : before-cursor : after-cursor} (target->hop-commands :line-starts)]
     {: all : before-cursor : after-cursor}))
 
 {:words (target->hop-commands :words)

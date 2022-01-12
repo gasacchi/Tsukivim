@@ -8,5 +8,6 @@
       {:keys "aoeuidhtns" ;; Only use this key for jumping
        :quit_key :q ;; quit hop mode with `q`
        :multi_windows true})
-    :otherwise (tsv.notify.error "Cannot load hop.nvim" "Plugin: hop.nvim"))) 
+    :otherwise (tsv.notify.error hop 
+                                 "modules.editing.hop.config"))) 
 

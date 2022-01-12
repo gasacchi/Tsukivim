@@ -186,7 +186,8 @@
     ;; load on BufReadPre
     (use
       (doto [:lewis6991/gitsigns.nvim]
-            (tset :event :BufReadPre)
+            ;; (tset :event :BufReadPre)
+            (tset :module :gitsigns)
             (tset :config "require'modules.git.gitsigns.config'")))
 
     ;; Utility related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -328,7 +329,6 @@
       (doto [:gpanders/nvim-parinfer]
             (tset :ft [:fennel])))
 
-
     ;; auto comment
     ;; see: modules/editing/comment/config.fnl
     (use 
@@ -359,7 +359,7 @@
             (tset :branch :patch-1)
             (tset :keys ["!" "\"" "'" ">" "@" "[" "]" "`" "<"
                          :<c-w> :<space> :c :d :g :v :y :z])
-            (tset :config "require'keymaps'")))))
+            (tset :config "require'modules.core.keymaps'")))))
 
 ; sync plugin when first time install tsukivim
 (if _G.packer_bootstrap 

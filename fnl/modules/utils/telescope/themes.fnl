@@ -11,6 +11,10 @@
                                        :height (or ?height 20)}
                        :prompt " ﬦ "
                        :prompt_title title})
-      :otherwise {})))
+      :otherwise (do 
+                   (tsv.notify.error 
+                     themes
+                     "modules.utils.telescope.themes: fn config")
+                   {}))))
 
 {: config}

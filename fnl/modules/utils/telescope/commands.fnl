@@ -5,12 +5,14 @@
 
 (fn picker [name ?title ?height]
   "Accept name of the telescope builtin picker and optional title and height
-  passed to theme config function and return builtin picker if telesope is loaded
-  otherwise show notification with error"
+  passed to theme config function and return builtin picker 
+  if telescope is loaded otherwise show notification with error"
   (let [(ok? builtin) (tsv.require-plugin :telescope.builtin)]
     (if ok?
       ((. builtin name) (themes.config (or ?title name) ?height))
-      :otherwise (tsv.notify.error builtin "modules.utils.telesope.commands: fn picker"))))
+      :otherwise (tsv.notify.error 
+                   builtin 
+                   "modules.utils.telescope.commands: fn picker"))))
 
 (fn help-tags []
   "Open :h help tags in telescope"
@@ -35,10 +37,10 @@
 (fn git-files []
   "Find files in git directory and fallback to find_files if current directory
   not a git repo"
-  (let [(ok? _) (pcall picker :git_files "  Git files")]
+  (let [(ok? err) (pcall picker :git_files "  Git files")]
     (when (not ok?)
-        (tsv.notify.warn "Current directory isn't git repo fallback to find-files" 
-                     "Search: git-files")
+        (tsv.notify.warn err
+                         "modules.utils.telescope.commands: fn git-files")
         (find-files))))
 
 (fn current-buffer-fuzzy-find []
@@ -101,7 +103,7 @@
         (tsv.load-plugin :telescope-project.nvim)
         (telescope.load_extension :project)
         (telescope.extensions.project.project (themes.config "  Projects" 15)))
-      :otherwise (tsv.notify.error telesope "modules.utils.telesope.commands: fn projects"))))
+      :otherwise (tsv.notify.error telescope "modules.utils.telescope.commands: fn projects"))))
 
 
 {: help-tags

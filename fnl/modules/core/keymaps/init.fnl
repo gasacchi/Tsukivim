@@ -18,7 +18,7 @@
      :<S-Tab>              bufferline-keymaps.normal.p
      
      ;; Actions
-     :a                    (require :modules.core.keymaps.actions)
+     :a                    (. (require :modules.core.keymaps.actions) :normal)
      
      ;; Buffer
      :b                    bufferline-keymaps.normal
@@ -92,6 +92,6 @@
          (whichkey.setup whichkey-config)
          (whichkey.register keys-normal opts))
      
-     :otherwise (tsv.notify.error "Cannot load which-key.nvim"
-                                  "Plugin: which-key.nvim")))
+     :otherwise (tsv.notify.error whichkey
+                                  "modules.core.keymaps.init")))
 

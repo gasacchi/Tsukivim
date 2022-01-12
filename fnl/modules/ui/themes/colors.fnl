@@ -5,7 +5,7 @@
   (let [(ok? kanagawa) (tsv.require-plugin :kanagawa.colors)]
     (if ok?
       (kanagawa.setup)
-      :otherwise (tsv.notify.error "Cannot load kanagawa.colors"
-                                   "Plugin: kanagawa.nvim")))) 
+      :otherwise (tsv.notify.error kanagawa
+                                   "modules.ui.themes.colors: local colors")))) 
 
 colors

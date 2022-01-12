@@ -5,12 +5,13 @@
 (fn compile []
   "Compile plugins.fnl to packer_compiled.lua"
   (tsv.cmd "PackerCompile profile=true")
-  (tsv.notify.info "plugins.fnl file compiled." "Editor.plugin: packer compile"))
+  (tsv.notify.info "plugins.fnl file compiled." 
+                   "modules.core.commands.plugin: fn compile"))
 
 (fn clean []
   "Clean un-used plugins in plugins.fnl"
   (tsv.cmd :PackerClean)
-  (tsv.notify.info "Plugin cleaned." "Editor.plugin: packer clean"))
+  (tsv.notify.info "Plugin cleaned." "modules.core.commands.plugin: fn clean"))
 
 (fn install []
   "Install plugin declared in plugins.fnl"

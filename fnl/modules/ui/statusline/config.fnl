@@ -92,6 +92,6 @@
    (lualine.setup {:options {:theme :kanagawa}
                    : sections
                    :inactive_sections inactive-section})
-   :otherwise (tsv.notify.error "Cannot load lualine.nvim" 
-                                "Plugin: lualine.nvim")))
+   :otherwise (tsv.notify.error lualine
+                                "modules.ui.statusline.config")))
 

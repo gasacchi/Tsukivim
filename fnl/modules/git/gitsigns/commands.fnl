@@ -22,10 +22,12 @@
                    (gitsigns.preview_hunk))
         :blame (fn []
                  (gitsigns.blame_line {:full true}))
-        _ (tsv.notify.error "Invalid sub-command" 
-                            "modules.git.gitsigns.commands: fn generate-command"))
-      :otherwise (tsv.notify.error gitsigns 
-                                   "modules.git.gitsigns.commands: fn generate-command"))))
+        _ (tsv.notify.error 
+            "Invalid sub-command" 
+            "modules.git.gitsigns.commands: fn generate-command"))
+      :otherwise (tsv.notify.error 
+                   gitsigns 
+                   "modules.git.gitsigns.commands: fn generate-command"))))
 
 {:next         (generate-command :next)
  :prev         (generate-command :prev)

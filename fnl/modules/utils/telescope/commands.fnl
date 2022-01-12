@@ -103,7 +103,9 @@
         (tsv.load-plugin :telescope-project.nvim)
         (telescope.load_extension :project)
         (telescope.extensions.project.project (themes.config "  Projects" 15)))
-      :otherwise (tsv.notify.error telescope "modules.utils.telescope.commands: fn projects"))))
+      :otherwise (tsv.notify.error 
+                   telescope 
+                   "modules.utils.telescope.commands: fn projects"))))
 
 
 {: help-tags

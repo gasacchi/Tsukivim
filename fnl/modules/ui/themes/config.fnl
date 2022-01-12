@@ -8,8 +8,8 @@
     (do (kanagawa.setup 
           {:transparent (not (gui?))})
         (tsv.cmd "colorscheme kanagawa"))
-    :otherwise (tsv.notify "Cannot load kanagawa.nvim"
-                           "Plugin: kanagawa.nvim")))
+    :otherwise (tsv.notify.error kanagawa
+                                 "modules.ui.themes.config")))
 
 (when (not (gui?))
   (tsv.cmd "hi! MsgArea guibg=none guifg=#DCD7BA")

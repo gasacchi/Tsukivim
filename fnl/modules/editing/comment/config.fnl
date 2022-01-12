@@ -7,6 +7,6 @@
     (do 
       (cmt.setup)
       (ft.set :fennel ";;%s"))
-    :otherwise (tsv.notify.error "Cannot load Comment.nvim" 
-                                 "Plugin: Comment.nvim")))
+    :otherwise (tsv.notify.error cmt
+                                 "modules.editing.comment.config")))
 

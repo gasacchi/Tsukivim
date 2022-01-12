@@ -32,6 +32,6 @@
        :rainbow {:enable true 
                  :extended_mode true
                  :max_file_lines nil}})
-    :otherwise (tsv.notify "Cannot load nvim-treesitter.nvim"
-                           "Plugin: nvim-treesitter.nvim")))
+    :otherwise (tsv.notify.error treesitter
+                                 "modules.ui.treesitter.config")))
 

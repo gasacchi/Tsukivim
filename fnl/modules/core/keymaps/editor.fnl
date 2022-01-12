@@ -1,12 +1,14 @@
 ;; Module contain editor keymaps
 
 (local editor-cmd (require :modules.core.commands.editor))
+(local colorizer-cmd (require :modules.ui.colorizer.commands))
 (local notify-cmd (require :modules.ui.notify.commands))
 (local zen-mode-cmd (require :modules.ui.zen-mode.commands))
 
 {:normal 
  {:name :Editors
    " " [:<Esc>                              :Close]
+   :c  [colorizer-cmd.toggle                :Toggle-colorizer]
    :d  [notify-cmd.dismiss                  :Dismiss-notifications]
    :h  [editor-cmd.no-highlight-search      :No-highlight-searc]
    :n  [editor-cmd.toggle-number-line       :Toggel-number-line]

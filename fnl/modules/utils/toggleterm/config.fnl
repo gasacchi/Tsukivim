@@ -6,5 +6,5 @@
   [(ok? toggleterm) (tsv.require-plugin :toggleterm)]
   (if ok?
     (toggleterm.setup)
-    :otherwise (tsv.notify.error "Cannot load toggleterm.nvim"
-                                 "Plugin: toggleterm.nvim")))
+    :otherwise (tsv.notify.error toggleterm
+                                 "modules.utils.toggleterm.config")))

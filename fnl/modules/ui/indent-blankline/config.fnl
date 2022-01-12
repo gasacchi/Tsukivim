@@ -14,6 +14,6 @@
         :filetype_exclude [:packer :alpha :TelescopePrompt :glowpreview :NvimTree]
         :show_current_context true
         :show_current_context_start true}))
-   :otherwise (tsv.notify.error "Cannot load indent-blankline.nvim" 
-                                "Plugin: indent-blankline.nvim")))
+   :otherwise (tsv.notify.error indent
+                                "modules.ui.indent-blankline.config")))
 

@@ -76,6 +76,6 @@
                                {:behaviour cmp.ConfirmBehavior.Replace 
                                 :select true})}
               : experimental}))
-     :otherwise (tsv.notify.error "Cannot load cmp.nvim"
-                                   "Plugin: cmp.nvim")))
+     :otherwise (tsv.notify.error cmp
+                                  "modules.lsp.completion.config")))
 

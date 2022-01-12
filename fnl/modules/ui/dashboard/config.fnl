@@ -14,7 +14,7 @@
         (do 
           (tset status :total (+ status.total 1))
           (tset status :loaded (+ status.loaded 1)))
-        (tset status :total (+ status.total 1))))
+        :otherwise (tset status :total (+ status.total 1))))
     status))
 
 (fn get-startup-time []
@@ -32,10 +32,11 @@
       (and startup-file (not startuptime))
       (do 
         (tsv.notify.info "Startuptime will run on the next tsukivim instance" 
-                     "Dashboard: get-startup-time")
+                         "modules.ui.dashboard.config: fn get-startup-time")
         "")
-      (tsv.notify.error "Cannot find startuptime files" 
-                    "Dashboard: get-startup-time"))))
+      :otherwise (tsv.notify.error 
+                   "Cannot find startuptime files" 
+                   "modules.ui.dashboard.config: fn get-startup-time"))))
 
 (local header 
   ["⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
@@ -84,6 +85,6 @@
                                     startuptime))
       (tset section.footer.opts :hl :Statement)
       (alpha.setup dashboard.opts))
-    :otherwise (tsv.notify "Cannot load alpha.nvim"
-                           "Plugin: alpha.nvim")))
+    :otherwise (tsv.notify alpha
+                           "modules.ui.dashboard.config")))
 

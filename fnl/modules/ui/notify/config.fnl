@@ -27,7 +27,7 @@
          :background_colour "#16161D"})
       (each [group {: fg} (pairs notify-colors)]
         (tsv.cmd (.. "hi " group " guifg=" fg))))
-    :otherwise (tsv.notify "Cannot load notify.nvim"
-                           "Plugin: notify.nvim")))
+    :otherwise (tsv.notify notify
+                           "modules.ui.notify.config")))
 
 

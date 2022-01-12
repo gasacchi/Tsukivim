@@ -5,6 +5,6 @@
 (let [(ok? zen-mode) (tsv.require-plugin :zen-mode)]
   (if ok?
     (zen-mode.setup)
-    :otherwise (tsv.notify.error "Cannot load zen-mode.nvim"
-                                 "Plugin: zen-mode.nvim")))
+    :otherwise (tsv.notify.error zen-mode
+                                 "modules.ui.zen-mode.config")))
 

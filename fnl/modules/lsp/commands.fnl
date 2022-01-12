@@ -5,17 +5,18 @@
 (fn start []
   "Start LSP"
   (tsv.cmd :LspStart)
-  (tsv.notify.info "Starting LSP." "LSP: start"))
+  (tsv.notify.info "Starting LSP." 
+                   "modules.lsp.commands: fn start"))
 
 (fn stop []
   "Stop LSP"
   (tsv.cmd :LspStop)
-  (tsv.notify.info "Stopping LSP." "LSP: stop"))
+  (tsv.notify.info "Stopping LSP." "modules.lsp.commands: fn stop"))
 
 (fn restart []
   "Restart LSP"
   (tsv.cmd :LspRestart)
-  (tsv.notify.info "Restarting LSP." "LSP: restart"))
+  (tsv.notify.info "Restarting LSP." "modules.lsp.commands: fn restart"))
 
 {: start
  : stop

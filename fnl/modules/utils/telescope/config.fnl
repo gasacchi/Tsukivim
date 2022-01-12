@@ -2,7 +2,8 @@
 (local tsv (require :lib.tsukivim))
 
 (let [(ok? telescope) (tsv.require-plugin :telescope)
-      opts {:extensions {:project {:base_dirs ["~/.dev/github"
+      opts {:pickers {:find_files {:theme :ivy}}
+            :extensions {:project {:base_dirs ["~/.dev/github"
                                                "~/.dev/job"]}}}]
     (if ok?
      (do 

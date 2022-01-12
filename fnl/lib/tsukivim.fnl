@@ -71,7 +71,7 @@
 (fn notify.error [msg ?title ?opts]
   "Accept message and title and pass to notify.nvim as error notification
   fallback to native vim.notify if notify.nvim not installed"
-  (let [(ok? n) (tsukivim.require-plugin :notify)
+  (let [(ok? n) (require-plugin :notify)
         default-options {:title (or ?title :ERROR)
                          :keep (lambda [] true)}]
     (if ok? 
@@ -81,7 +81,7 @@
 (fn notify.info [msg ?title ?opts]
   "Accept message and title and pass to notify.nvim as info notification
   fallback to native vim.notify if notify.nvim not installed"
-  (let [(ok? n) (tsukivim.require-plugin :notify)
+  (let [(ok? n) (require-plugin :notify)
         default-options {:title (or ?title :INFO)
                          :timeout 1000}]
     (if ok? 
@@ -91,7 +91,7 @@
 (fn notify.warn [msg ?title ?opts]
   "Accept message and title and pass to notify.nvim as warning notification
   fallback to native vim.notify if notify.nvim not installed"
-  (let [(ok? n) (tsukivim.require-plugin :notify)
+  (let [(ok? n) (require-plugin :notify)
         default-options {:title (or ?title :WARN)
                          :timout 3000}]
     (if ok? 
@@ -101,7 +101,7 @@
 (fn notify.debug [msg ?title ?opts]
   "Accept message and title and pass to notify.nvim as debug notification
   fallback to native vim.notify if notify.nvim not installed"
-  (let [(ok? n) (tsukivim.require-plugin :notify)
+  (let [(ok? n) (require-plugin :notify)
         default-options {:title (or ?title :DEBUG)
                          :timeout 4000}]
     (if ok? 
@@ -111,7 +111,7 @@
 (fn notify.trace [msg ?title ?opts]
   "Accept message and title and pass to notify.nvim as trace notification
   fallback to native vim.notify if notify.nvim not installed"
-  (let [(ok? n) (tsukivim.require-plugin :notify)
+  (let [(ok? n) (require-plugin :notify)
         default-options {:title (or ?title :TRACE)
                          :timout 4000}]
     (if ok? 

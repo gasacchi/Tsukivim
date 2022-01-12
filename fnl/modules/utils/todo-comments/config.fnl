@@ -4,6 +4,6 @@
 (let [(ok? todo-comments) (tsv.require-plugin :todo-comments)]
    (if ok? 
      (todo-comments.setup)
-     :otherwise (tsv.notify "Cannot load todo-comments.nvim"
-                            "Plugin: todo-comments.nvim")))
+     :otherwise (tsv.notify todo-comments
+                            "modules.utils.todo-comments.config")))
 

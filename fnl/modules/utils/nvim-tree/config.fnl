@@ -6,6 +6,6 @@
     (nvim-tree.setup 
       {:view {:side :right}
        :update_cwd true})
-    :otherwise (tsv.notify.error "Cannot load nvim-tree.nvim"
-                                 "Plugin: nvim-tree.nvim")))
+    :otherwise (tsv.notify.error nvim-tree
+                                 "modules.utils.nvim-tree.config")))
 

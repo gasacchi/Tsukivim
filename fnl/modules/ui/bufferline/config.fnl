@@ -11,13 +11,12 @@
         :text "File Explorer"
         :text_align "center"}]
     :diagnostics "nvim_lsp"
-    :diagnostics_indicator 
-    (fn [count level diag_dict ctx]
-      (.. "[" count "]"))})
+    :diagnostics_indicator (fn [count level diag_dict ctx]
+                             (.. "[" count "]"))})
 
 (let [(ok? bufferline) (tsv.require-plugin :bufferline)]
   (if ok?
     (bufferline.setup {: options})
-    :otherwise (tsv.notify.error "Cannot load bufferline.nvim"
-                                 "Plugin: bufferline.nvim")))
+    :otherwise (tsv.notify.error bufferline
+                                 "modules.ui.bufferline.config")))
 

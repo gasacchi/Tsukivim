@@ -1,17 +1,13 @@
 ;; Module for configure telescope
 (local tsv (require :lib.tsukivim))
 
-(local opts 
-  {:pickers {:find_files {:theme :ivy}}
-   :extensions {:project {:base_dirs ["~/.dev/github"
-                                      "~/.dev/job"]}}})
-
-(let [(ok? telescope) (tsv.require-plugin :telescope)]
+(let [(ok? telescope) (tsv.require-plugin :telescope)
+      opts {:extensions {:project {:base_dirs ["~/.dev/github"
+                                               "~/.dev/job"]}}}]
     (if ok?
      (do 
        (telescope.setup opts) 
        (tsv.load-plugin :telescope-fzf-native.nvim)
        (telescope.load_extension :fzf))
-     :otherwise (tsv.notify.error "Cannot load telescope.nvim"
-                                  "Plugin: telescope.nvim")))
+     :otherwise (tsv.notify.error telescope "modules.utils.telescope.config")))
 

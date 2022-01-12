@@ -10,8 +10,7 @@
   (let [(ok? builtin) (tsv.require-plugin :telescope.builtin)]
     (if ok?
       ((. builtin name) (themes.config (or ?title name) ?height))
-      :otherwise (tsv.notify.error "Cannot load telescope builtin" 
-                                   "Plugin: telescope.builtin"))))
+      :otherwise (tsv.notify.error builtin "modules.utils.telesope.commands: fn picker"))))
 
 (fn help-tags []
   "Open :h help tags in telescope"
@@ -102,8 +101,7 @@
         (tsv.load-plugin :telescope-project.nvim)
         (telescope.load_extension :project)
         (telescope.extensions.project.project (themes.config "  Projects" 15)))
-      :otherwise (tsv.notify.error "Cannot load telescope.nvim"
-                                   "Plugin: telescope.nvim"))))
+      :otherwise (tsv.notify.error telesope "modules.utils.telesope.commands: fn projects"))))
 
 
 {: help-tags

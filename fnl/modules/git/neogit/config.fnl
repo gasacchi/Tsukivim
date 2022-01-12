@@ -4,6 +4,6 @@
 (let [(ok? neogit) (tsv.require-plugin :neogit)]
   (if ok?
     (neogit.setup)
-    :otherwise (tsv.notify.error "Cannot load neogit.nvim"
-                                 "Plugin: neogit.nvim")))
+    :otherwise (tsv.notify.error neogit "modules.git.neogit.config")))
+
 

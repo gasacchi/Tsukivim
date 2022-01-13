@@ -355,8 +355,7 @@
     ;; which-key for documenting keymaps
     ;; see: keymaps.fnl
     (use 
-      (doto [:zeertzjq/which-key.nvim];:folke/which-key.nvim]
-            (tset :branch :patch-1)
+      (doto [:folke/which-key.nvim]
             (tset :keys ["!" "\"" "'" ">" "@" "[" "]" "`" "<"
                          :<c-w> :<space> :c :d :g :v :y :z])
             (tset :config "require'modules.core.keymaps'")))))

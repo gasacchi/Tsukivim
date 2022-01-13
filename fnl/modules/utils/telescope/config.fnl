@@ -10,5 +10,6 @@
        (telescope.setup opts) 
        (tsv.load-plugin :telescope-fzf-native.nvim)
        (telescope.load_extension :fzf))
-     :otherwise (tsv.notify.error telescope "modules.utils.telescope.config")))
+     :otherwise (tsv.notify.error telescope 
+                                  [:module :modules.utils.telescope.config])))
 

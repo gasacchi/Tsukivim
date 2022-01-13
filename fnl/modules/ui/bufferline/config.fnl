@@ -18,5 +18,5 @@
   (if ok?
     (bufferline.setup {: options})
     :otherwise (tsv.notify.error bufferline
-                                 "modules.ui.bufferline.config")))
+                                 [:module :modules.ui.bufferline.config])))
 

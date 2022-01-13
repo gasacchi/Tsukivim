@@ -5,5 +5,5 @@
   (if ok?
     (saga.setup)
     :otherwise (tsv.notify.error saga
-                                 "modules.lsp.saga.config")))
+                                 [:module :modules.lsp.saga.config])))
 

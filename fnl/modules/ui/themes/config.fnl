@@ -9,7 +9,7 @@
           {:transparent (not (gui?))})
         (tsv.cmd "colorscheme kanagawa"))
     :otherwise (tsv.notify.error kanagawa
-                                 "modules.ui.themes.config")))
+                                 [:module :modules.ui.themes.config])))
 
 (when (not (gui?))
   (tsv.cmd "hi! MsgArea guibg=none guifg=#DCD7BA")

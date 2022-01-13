@@ -77,5 +77,5 @@
                                 :select true})}
               : experimental}))
      :otherwise (tsv.notify.error cmp
-                                  "modules.lsp.completion.config")))
+                                  [:module :modules.lsp.completion.config])))
 

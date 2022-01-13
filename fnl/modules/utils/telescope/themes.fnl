@@ -14,7 +14,7 @@
       :otherwise (do 
                    (tsv.notify.error 
                      themes
-                     "modules.utils.telescope.themes: fn config")
+                     [:fn:config :modules.utils.telescope.themes])
                    {}))))
 
 {: config}

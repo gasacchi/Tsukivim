@@ -5,4 +5,4 @@
   (if ok?
     (trouble.setup)
     :otherwise (tsv.notify.error trouble
-                                 "modules.lsp.trouble.config"))) 
+                                 [:module :modules.lsp.trouble.config]))) 

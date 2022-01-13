@@ -93,5 +93,5 @@
                    : sections
                    :inactive_sections inactive-section})
    :otherwise (tsv.notify.error lualine
-                                "modules.ui.statusline.config")))
+                                [:module :modules.ui.statusline.config])))
 

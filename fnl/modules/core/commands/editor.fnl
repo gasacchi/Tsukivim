@@ -9,13 +9,13 @@
 (fn toggle-number-line []
   "toggle number line"
   (tsv.notify.info "Number line toggled" 
-                   "modules.core.commands.editor: fn toggle-number-line")
+                   [:fn:toggle-number-line :modules.core.commands.editor])
   (tsv.cmd "set invnumber"))
 
 (fn toggle-relative-number []
   "toggle relative number line"
   (tsv.notify.info "Relative number line toggled" 
-               "modules.core.commands.editor: fn toggle-relative-number")
+                   [:fn:toggle-relative-number :modules.core.commands.editor])
   (tsv.cmd "set invrelativenumber"))
 
 ;; TODO: remove enter, add action to ask if user want to save the file
@@ -23,7 +23,8 @@
   "Quit tsukivim"
   (let [(ok? err) (pcall tsv.cmd :q)]
     (when (not ok?)
-      (tsv.notify.error err "modules.core.commands.editor: fn quit"))))
+      (tsv.notify.error err 
+                        [:fn:quit :modules.core.commands.editor]))))
 
 (fn force-quit []
   "Force quit tsukivim"
@@ -31,7 +32,8 @@
 
 (fn save-file []
   "Save file"
-  (tsv.notify.info "File saved." "modules.core.commands.editor: fn save-file")
+  (tsv.notify.info "File saved." 
+                   [:fn:save-file :modules.core.commands.editor])
   (tsv.cmd :w))
 
 (fn save-file-and-quit []

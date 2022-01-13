@@ -12,7 +12,7 @@
       ((. builtin name) (themes.config (or ?title name) ?height))
       :otherwise (tsv.notify.error 
                    builtin 
-                   "modules.utils.telescope.commands: fn picker"))))
+                   [:fn:picker :modules.utils.telescope.commands]))))
 
 (fn help-tags []
   "Open :h help tags in telescope"
@@ -40,7 +40,7 @@
   (let [(ok? err) (pcall picker :git_files "  Git files")]
     (when (not ok?)
         (tsv.notify.warn err
-                         "modules.utils.telescope.commands: fn git-files")
+                         [:fn:git-files :modules.utils.telescope.commands])
         (find-files))))
 
 (fn current-buffer-fuzzy-find []
@@ -105,8 +105,7 @@
         (telescope.extensions.project.project (themes.config "  Projects" 15)))
       :otherwise (tsv.notify.error 
                    telescope 
-                   "modules.utils.telescope.commands: fn projects"))))
-
+                   [:fn:projects :modules.utils.telescope.commands]))))
 
 {: help-tags
  : man-pages

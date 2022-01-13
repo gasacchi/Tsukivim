@@ -7,5 +7,5 @@
       {:view {:side :right}
        :update_cwd true})
     :otherwise (tsv.notify.error nvim-tree
-                                 "modules.utils.nvim-tree.config")))
+                                 [:module :modules.utils.nvim-tree.config])))
 

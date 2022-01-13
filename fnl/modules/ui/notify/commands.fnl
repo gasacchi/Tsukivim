@@ -8,7 +8,7 @@
     (if ok?
       (notify.dismiss)
       :otherwise (tsv.notify.error notify
-                                   "modules.ui.notify.commands: fn dismiss"))))
+                                   [:fn:dismiss :modules.ui.notify.commands]))))
 
 (fn history []
   "Display notification with telescope"
@@ -18,7 +18,7 @@
       (telescope.extensions.notify.notify 
         (themes.config "  Notification History"))
       :otherwise (tsv.notify.error telescope
-                                   "modules.ui.notify.commands: fn history"))))
+                                   [:fn:history :modules.ui.notify.commands]))))
 
 {: dismiss
  : history}

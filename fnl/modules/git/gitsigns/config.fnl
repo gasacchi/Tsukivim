@@ -5,5 +5,6 @@
 (let [(ok gitsigns) (tsv.require-plugin :gitsigns)]
   (if ok
     (gitsigns.setup {:keymaps {}})
-    :otherwise (tsv.notify.error gitsigns "modules.git.gitsigns.config")))
+    :otherwise (tsv.notify.error gitsigns 
+                                 [:module :modules.git.gitsigns.config])))
 

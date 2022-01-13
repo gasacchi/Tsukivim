@@ -6,6 +6,6 @@
     (if ok?
       (kanagawa.setup)
       :otherwise (tsv.notify.error kanagawa
-                                   "modules.ui.themes.colors: local colors")))) 
+                                   [:local:colors :modules.ui.themes.colors])))) 
 
 colors

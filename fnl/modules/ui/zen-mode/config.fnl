@@ -6,5 +6,5 @@
   (if ok?
     (zen-mode.setup)
     :otherwise (tsv.notify.error zen-mode
-                                 "modules.ui.zen-mode.config")))
+                                 [:module :modules.ui.zen-mode.config])))
 

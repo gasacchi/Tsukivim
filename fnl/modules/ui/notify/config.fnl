@@ -24,10 +24,11 @@
     (do 
       (notify.setup 
         {:stages :fade
-         :background_colour "#16161D"})
+         :background_colour "#16161D"
+         :minimal_width 60})
       (each [group {: fg} (pairs notify-colors)]
         (tsv.cmd (.. "hi " group " guifg=" fg))))
     :otherwise (tsv.notify notify
-                           "modules.ui.notify.config")))
+                           [:module :modules.ui.notify.config])))
 
 

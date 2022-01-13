@@ -24,10 +24,10 @@
                  (gitsigns.blame_line {:full true}))
         _ (tsv.notify.error 
             "Invalid sub-command" 
-            "modules.git.gitsigns.commands: fn generate-command"))
+            [:fn:generate-command :modules.git.gitsigns.commands]))
       :otherwise (tsv.notify.error 
                    gitsigns 
-                   "modules.git.gitsigns.commands: fn generate-command"))))
+                   [:fn:generate-command :modules.git.gitsigns.commands]))))
 
 {:next         (generate-command :next)
  :prev         (generate-command :prev)

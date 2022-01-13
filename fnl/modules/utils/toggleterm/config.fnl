@@ -7,4 +7,4 @@
   (if ok?
     (toggleterm.setup)
     :otherwise (tsv.notify.error toggleterm
-                                 "modules.utils.toggleterm.config")))
+                                 [:module :modules.utils.toggleterm.config])))

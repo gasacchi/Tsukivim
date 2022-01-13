@@ -8,5 +8,5 @@
       (cmt.setup)
       (ft.set :fennel ";;%s"))
     :otherwise (tsv.notify.error cmt
-                                 "modules.editing.comment.config")))
+                                 [:module :modules.editing.comment.config])))
 

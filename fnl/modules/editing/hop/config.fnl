@@ -9,5 +9,5 @@
        :quit_key :q ;; quit hop mode with `q`
        :multi_windows true})
     :otherwise (tsv.notify.error hop 
-                                 "modules.editing.hop.config"))) 
+                                 [:module :modules.editing.hop.config]))) 
 

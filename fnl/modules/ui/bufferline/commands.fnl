@@ -28,9 +28,10 @@
   "Delete buffer without destroying window layout"
   (let [(deleted? err) (pcall tsv.cmd :Bdelete)]
     (if (not deleted?)
-      (tsv.notify.error err "modules.ui.bufferline.commands: fn delete-buffer")
+      (tsv.notify.error err 
+                        [:fn:delete-buffer :modules.ui.bufferline.commands])
       :otherwise (tsv.notify.info "Buffer deleted." 
-                       "modules.ui.bufferline.commands: fn delete-buffer"))))
+                       [:fn:delete-buffer :modules.ui.bufferline.commands]))))
 
 (fn first []
   "Go to first buffer"

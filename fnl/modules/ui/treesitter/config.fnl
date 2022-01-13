@@ -33,5 +33,5 @@
                  :extended_mode true
                  :max_file_lines nil}})
     :otherwise (tsv.notify.error treesitter
-                                 "modules.ui.treesitter.config")))
+                                 [:module :modules.ui.treesitter.config])))
 

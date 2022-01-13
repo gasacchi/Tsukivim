@@ -93,5 +93,5 @@
          (whichkey.register keys-normal opts))
      
      :otherwise (tsv.notify.error whichkey
-                                  "modules.core.keymaps.init")))
+                                  [:module :modules.core.keymaps.init])))
 

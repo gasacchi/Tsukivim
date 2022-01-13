@@ -5,5 +5,5 @@
    (if ok? 
      (todo-comments.setup)
      :otherwise (tsv.notify todo-comments
-                            "modules.utils.todo-comments.config")))
+                            [:module :modules.utils.todo-comments.config])))
 

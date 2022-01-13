@@ -32,11 +32,11 @@
       (and startup-file (not startuptime))
       (do 
         (tsv.notify.info "Startuptime will run on the next tsukivim instance" 
-                         "modules.ui.dashboard.config: fn get-startup-time")
+                         [:fn:get-startup-time :modules.ui.dashboard.config])
         "")
       :otherwise (tsv.notify.error 
                    "Cannot find startuptime files" 
-                   "modules.ui.dashboard.config: fn get-startup-time"))))
+                   [:fn:get-startup-time :modules.ui.dashboard.config]))))
 
 (local header 
   ["⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
@@ -86,5 +86,5 @@
       (tset section.footer.opts :hl :Statement)
       (alpha.setup dashboard.opts))
     :otherwise (tsv.notify alpha
-                           "modules.ui.dashboard.config")))
+                           [:module :modules.ui.dashboard.config])))
 

@@ -18,7 +18,8 @@
                    :s-exp (. hop :hint_patterns)
                    _ (tsv.notify.error 
                        (.. "Invalid target" target) 
-                       "modules.editing.hop.commands: fn target->hop-commands"))
+                       [:fn:target->hop-commands 
+                        :modules.editing.hop.commands]))
             s-exp-pattern (if (= target :s-exp)
                             "(\\|{\\|\\["
                             :otherwise nil)]
@@ -46,7 +47,7 @@
              cmd)) ;; return cmd
       :otherwise (tsv.notify.error 
                    hop 
-                   "modules.editing.hop.commands: fn target->hop-commands"))))
+                   [:fn:target->hop-commands :modules.editing.hop.commands]))))
 
 (local lines
   (let [{: all : before-cursor : after-cursor} (target->hop-commands :lines)]

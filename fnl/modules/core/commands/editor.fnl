@@ -18,6 +18,16 @@
                    [:fn:toggle-relative-number :modules.core.commands.editor])
   (tsv.cmd "set invrelativenumber"))
 
+(fn check-health []
+  "check neovim health"
+  (tsv.cmd :checkhealth))
+
+(fn current-work-directory []
+  "Get current word directory and print it to notify"
+  (tsv.notify.info (vim.fn.getcwd) 
+                   [:fn:current-word-directory 
+                    :modules.core.commands.editor]))
+
 ;; TODO: remove enter, add action to ask if user want to save the file
 (fn quit []
   "Quit tsukivim"
@@ -43,6 +53,8 @@
 {: no-highlight-search
  : toggle-number-line
  : toggle-relative-number
+ : check-health
+ : current-work-directory
  : quit
  : force-quit
  : save-file

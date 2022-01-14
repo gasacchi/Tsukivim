@@ -56,6 +56,10 @@
      ;; Window
      :w                   (. (require :modules.core.keymaps.window) :normal)}))
 
+(local keys-visual
+  (let []
+    {:a (. (require :modules.core.keymaps.actions) :visual)}))
+
 (local whichkey-config 
   {:key_labels {:<space> :SPC 
                 :<cr> :RET
@@ -90,7 +94,8 @@
          (tsv.let-global :mapleader " ")
      
          (whichkey.setup whichkey-config)
-         (whichkey.register keys-normal opts))
+         (whichkey.register keys-normal {:prefix :<leader>})
+         (whichkey.register keys-visual {:prefix :<leader> :mode :v}))
      
      :otherwise (tsv.notify.error whichkey
                                   [:module :modules.core.keymaps.init])))

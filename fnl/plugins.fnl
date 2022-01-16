@@ -252,7 +252,6 @@
 
     ;; Startup dashboard
     ;; see: modules/ui/dashboard.fnl for configure dashboard
-    ;; TODO: lazy load?
     (use
       (doto [:goolord/alpha-nvim]
             (tset :after :kanagawa.nvim)

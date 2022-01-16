@@ -6,7 +6,8 @@
   (let [(ok? which-key)     (tsv.require-plugin :which-key)
         lspconfig-keys      (require :modules.lsp.lspconfig.keymaps)
         saga-keys           (require :modules.lsp.saga.keymaps)
-        trouble-keys-normal (. (require :modules.lsp.trouble.keymaps) :normal)
+        trouble-keys-normal (. (require :modules.lsp.trouble.keymaps) 
+                               :normal)
         lsp-keys-normal     (vim.tbl_extend 
                               :keep 
                               (. lspconfig-keys :normal) 

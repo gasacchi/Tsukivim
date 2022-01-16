@@ -4,4 +4,5 @@
 
 {:normal 
  {:name :Trouble
-  :t [todo-comments-cmd.trouble-toggle :Todo-Trouble-toggle]}}
+  " " [:<Esc>                           :Close]
+  :t  [todo-comments-cmd.trouble-toggle :Todo-Trouble-toggle]}}

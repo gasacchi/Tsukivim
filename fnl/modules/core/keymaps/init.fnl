@@ -49,6 +49,8 @@
      
      ;; Search
      :s                    telescope-keymaps.normal.search
+
+     :x                   (. (require :modules.utils.todo-comments.keymaps) :normal)
      
      ;; Window
      :w                   (. (require :modules.core.keymaps.window) :normal)}))

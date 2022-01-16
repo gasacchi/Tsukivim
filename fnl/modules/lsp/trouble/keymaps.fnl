@@ -14,6 +14,6 @@
   :l  [trouble-cmd.loclist                :Loclist]
   :r  [trouble-cmd.lsp-references         :Lsp-references]
   :d  [trouble-cmd.lsp-definitions        :Lsp-definitions]
-  :t  [trouble-cmd.lsp-type-definitions   :Lsp-type-definitions]
+  :T  [trouble-cmd.lsp-type-definitions   :Lsp-type-definitions]
   :n  [trouble-cmd.next                   :Next-diagnostics]
   :p  [trouble-cmd.prev                   :Prev-diagnostics]}}

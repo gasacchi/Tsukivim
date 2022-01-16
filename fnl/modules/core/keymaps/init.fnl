@@ -38,9 +38,6 @@
      ;; Hop
      :h                    (. (require :modules.editing.hop.keymaps) :normal)
      
-     ;; Lsp
-     :l                    (. (require :modules.lsp.keymaps) :normal)
-     
      ;; Open
      :o                    (. (require :modules.core.keymaps.open) :normal)
      

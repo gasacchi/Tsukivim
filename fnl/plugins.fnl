@@ -52,7 +52,7 @@
      (use 
        (doto [:neovim/nvim-lspconfig]
              (tset :event :BufReadPre)
-             (tset :config "require'modules.lsp.config'")))
+             (tset :config "require'modules.lsp.lspconfig.config'")))
 
     ;; Neovim code completions
     ;; see: modules/lsp/completion.fnl for configure cmp.nvim
@@ -82,7 +82,7 @@
     ;; load when using Trouble / TroubleToggle command 
      (use 
        (doto [:folke/trouble.nvim]
-             (tset :cmd [:Trouble :TroubleToggle])
+             (tset :after :nvim-lspconfig)
              (tset :config "require'modules.lsp.trouble.config'")))
 
     ;; LSP UI
@@ -356,6 +356,7 @@
     ;; see: keymaps.fnl
     (use 
       (doto [:folke/which-key.nvim]
+            (tset :module :which-key)
             (tset :keys ["!" "\"" "'" ">" "@" "[" "]" "`" "<"
                          :<c-w> :<space> :c :d :g :v :y :z])
             (tset :config "require'modules.core.keymaps'")))))

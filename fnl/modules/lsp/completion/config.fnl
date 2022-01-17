@@ -56,6 +56,9 @@
      [{:name :nvim_lsp}
       {:name :buffer}])
 
+(fn feed-keys [key mode]
+  (vim.api.nvim_feedkeys 
+    (vim.api.nvim_replace_termcodes key true true true) mode true))
 
 ;; Use experimental features
 (local experimental 

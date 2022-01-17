@@ -56,33 +56,29 @@
 
     ;; Neovim code completions
     ;; see: modules/lsp/completion.fnl for configure cmp.nvim
-    ;; load on InsertEnter
-     (use 
+     (use
        (doto [:hrsh7th/nvim-cmp]
              (tset :event :InsertEnter)
-             (tset :config "require'modules.lsp.completion.config'")))
-     
-     ;; load after nvim-cmp
-     (use 
-       (doto [:hrsh7th/cmp-nvim-lsp]
-             (tset :module :cmp_nvim_lsp)))
-
-     ;; load after cmp-nvim-lsp
-     (use
-       (doto [:hrsh7th/cmp-buffer]
-             (tset :after :nvim-cmp)))
-
-     ;; Snippet
-     (use 
-       (doto [:L3MON4D3/LuaSnip]
-             (tset :opt true)))
+             (tset :config "require'modules.lsp.completion.config'")
+             (tset :requires [(doto [:hrsh7th/cmp-nvim-lsp]
+                                    (tset :module :cmp_nvim_lsp))
+                              (doto [:hrsh7th/cmp-vsnip]
+                                    (tset :after :nvim-cmp))
+                              (doto [:hrsh7th/vim-vsnip]
+                                    (tset :after :cmp-vsnip))
+                              (doto [:hrsh7th/cmp-buffer]
+                                    (tset :after :cmp-vsnip))
+                              (doto [:rafamadriz/friendly-snippets]
+                                    (tset :after :nvim-cmp))])))
 
     ;; Pretty diagnostic list
     ;; see: modules/lsp/trouble.fnl for configure trouble.nvim
     ;; load when using Trouble / TroubleToggle command 
      (use 
        (doto [:folke/trouble.nvim]
-             (tset :after :nvim-lspconfig)
+             ;; (tset :after :nvim-lspconfig)
+             (tset :module :trouble)
+             (tset :cmd [:Trouble])
              (tset :config "require'modules.lsp.trouble.config'")))
 
     ;; LSP UI

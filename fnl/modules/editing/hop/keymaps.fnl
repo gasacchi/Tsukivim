@@ -1,7 +1,6 @@
 ;; Module for hop keymaps
 
 (local tsv (require :lib.tsukivim))
-(local vim (require :lib.vim))
 (local hop-cmd (require :modules.editing.hop.commands))
 
 (fn target->hop-keymaps [target]
@@ -17,36 +16,36 @@
                        :h [(. hop-cmd target :before-cursor-current-line) 
                            (.. :Hop- target :-before-cursor-current-line)]}]
     (match target
-      :words (vim.extend :keep 
-                         {:w [(. hop-cmd target :all) 
-                              (.. :Hop- target :-all)]
-                          :W [(. hop-cmd target :current-line)
-                              (.. :Hop- target :-current-line)]} 
-                         general-keys) 
-      :patterns (vim.extend :keep 
-                            {:p [(. hop-cmd target :all) 
-                                 (.. :Hop- target :-all)]
-                             :P [(. hop-cmd target :current-line)
-                                 (.. :Hop- target :-current-line)]} 
-                            general-keys) 
-      :one-char (vim.extend :keep 
-                            {:c [(. hop-cmd target :all) 
-                                 (.. :Hop- target :-all)]
-                             :C [(. hop-cmd target :current-line)
-                                 (.. :Hop- target :-current-line)]} 
-                            general-keys) 
-      :two-char (vim.extend :keep 
-                            {:c [(. hop-cmd target :all) 
-                                 (.. :Hop- target :-all)]
-                             :C [(. hop-cmd target :current-line)
-                                 (.. :Hop- target :-current-line)]} 
-                            general-keys) 
-      :s-exp (vim.extend :keep 
-                         {:s [(. hop-cmd target :all) 
-                              (.. :Hop- target :-all)]
-                          :S [(. hop-cmd target :current-line)
-                              (.. :Hop- target :-current-line)]} 
-                         general-keys) 
+      :words (vim.tbl_extend :keep 
+                             {:w [(. hop-cmd target :all) 
+                                  (.. :Hop- target :-all)]
+                              :W [(. hop-cmd target :current-line)
+                                  (.. :Hop- target :-current-line)]} 
+                             general-keys) 
+      :patterns (vim.tbl_extend :keep 
+                                {:p [(. hop-cmd target :all) 
+                                     (.. :Hop- target :-all)]
+                                 :P [(. hop-cmd target :current-line)
+                                     (.. :Hop- target :-current-line)]} 
+                                general-keys) 
+      :one-char (vim.tbl_extend :keep 
+                                {:c [(. hop-cmd target :all) 
+                                     (.. :Hop- target :-all)]
+                                 :C [(. hop-cmd target :current-line)
+                                     (.. :Hop- target :-current-line)]} 
+                                general-keys) 
+      :two-char (vim.tbl_extend :keep 
+                                {:c [(. hop-cmd target :all) 
+                                     (.. :Hop- target :-all)]
+                                 :C [(. hop-cmd target :current-line)
+                                     (.. :Hop- target :-current-line)]} 
+                                general-keys) 
+      :s-exp (vim.tbl_extend :keep 
+                             {:s [(. hop-cmd target :all) 
+                                  (.. :Hop- target :-all)]
+                              :S [(. hop-cmd target :current-line)
+                                  (.. :Hop- target :-current-line)]} 
+                             general-keys) 
       :lines {: name
               :j general-keys.j
               :k general-keys.k

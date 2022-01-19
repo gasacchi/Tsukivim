@@ -6,25 +6,34 @@
 
 ;; Keymaps <leader> in normal mode
 (local keys-normal 
-  (let [editor-keymaps (require :modules.core.keymaps.editor)
-        telescope-keymaps (require :modules.utils.telescope.keymaps)
-        bufferline-keymaps (require :modules.ui.bufferline.keymaps)]
     {" "                   close
      ;; Single keymaps
-     :.                    telescope-keymaps.normal.search.f
-     :q                    editor-keymaps.normal.q
-     :Q                    editor-keymaps.normal.Q
-     :<Tab>                bufferline-keymaps.normal.n
-     :<S-Tab>              bufferline-keymaps.normal.p
+     :.                    (. (require :modules.utils.telescope.keymaps) 
+                              :normal
+                              :search
+                              :f)
+     :q                    (. (require :modules.core.keymaps.editor) 
+                              :normal
+                              :q)
+     :Q                    (. (require :modules.core.keymaps.editor)
+                              :normal
+                              :Q)
+     :<Tab>                (. (require :modules.ui.bufferline.keymaps)
+                              :normal
+                              :n)
+     
+     :<S-Tab>                (. (require :modules.ui.bufferline.keymaps)
+                                :normal
+                                :p)
      
      ;; Actions
      :a                    (. (require :modules.core.keymaps.actions) :normal)
      
      ;; Buffer
-     :b                    bufferline-keymaps.normal
+     :b                    (. (require :modules.ui.bufferline.keymaps) :normal)
      
      ;; Editor
-     :e                    editor-keymaps.normal
+     :e                    (. (require :modules.core.keymaps.editor) :normal)
      
      ;; Files
      :f                    (. (require :modules.core.keymaps.file) :normal)
@@ -33,7 +42,9 @@
      :g                    (. (require :modules.core.keymaps.git) :normal)
      
      ;; Help
-     :H                    telescope-keymaps.normal.help
+     :H                    (. (require :modules.utils.telescope.keymaps)
+                              :normal
+                              :help)
      
      ;; Hop
      :h                    (. (require :modules.editing.hop.keymaps) :normal)
@@ -45,20 +56,26 @@
      :P                    (. (require :modules.core.keymaps.plugin) :normal)
      
      ;; Prejects
-     :p                    telescope-keymaps.normal.projects
+     :p                    (. (require :modules.utils.telescope.keymaps)
+                              :normal
+                              :projects)
      
      ;; Search
-     :s                    telescope-keymaps.normal.search
+     :s                    (. (require :modules.utils.telescope.keymaps)
+                              :normal
+                              :search)
 
      :x                   (. (require :modules.utils.todo-comments.keymaps) 
                              :normal)
      
      ;; Window
-     :w                   (. (require :modules.core.keymaps.window) :normal)}))
+     :w                   (. (require :modules.core.keymaps.window) :normal)})
 
 (local keys-visual
-  (let []
-    {:a (. (require :modules.core.keymaps.actions) :visual)}))
+    {:q                    (. (require :modules.core.keymaps.editor) :visual :q)
+     :Q                    (. (require :modules.core.keymaps.editor) :visual :Q)
+     :a                    (. (require :modules.core.keymaps.actions) :visual)
+     :e                    (. (require :modules.core.keymaps.editor) :visual)})
 
 (local whichkey-config 
   {:key_labels {:<space> :SPC 

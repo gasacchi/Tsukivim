@@ -18,5 +18,10 @@
    :q  [editor-cmd.quit                      :Quit]
    :Q  [editor-cmd.force-quit                :Force-Quit]
    :z  [zen-mode-cmd.toggle                  :Zen-mode-toggle]
-   :Z  [zen-mode-cmd.twilight-toggle         :Zen-twilight-toggle]}}
+   :Z  [zen-mode-cmd.twilight-toggle         :Zen-twilight-toggle]}
+ :visual 
+ {:name :Editors
+  " " [:<Esc>                                :Close]
+  :q  [editor-cmd.quit                      :Quit]
+  :Q  [editor-cmd.force-quit                :Force-Quit]}}
 

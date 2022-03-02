@@ -67,9 +67,9 @@
                               (doto [:hrsh7th/vim-vsnip]
                                     (tset :after :cmp-vsnip))
                               (doto [:hrsh7th/cmp-buffer]
-                                    (tset :after :cmp-vsnip))
-                              (doto [:rafamadriz/friendly-snippets]
-                                    (tset :after :nvim-cmp))])))
+                                    (tset :after :cmp-vsnip))])))
+                              ;; (doto [:rafamadriz/friendly-snippets]
+                              ;;       (tset :after :nvim-cmp))])))
 
     ;; Pretty diagnostic list
     ;; see: modules/lsp/trouble.fnl for configure trouble.nvim

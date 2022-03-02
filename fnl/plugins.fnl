@@ -268,9 +268,9 @@
 
     ;; Add underline for same word
     ;; TODO: config
-    (use 
-      (doto [:RRethy/vim-illuminate]
-            (tset :opt true)))
+    ;; (use 
+    ;;   (doto [:RRethy/vim-illuminate]
+    ;;         (tset :opt true)))
 
     ;; Indent 
     ;; see: modules/ui/indent-blankline.fnl for configure indent-blankline

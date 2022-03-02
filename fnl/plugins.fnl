@@ -141,7 +141,7 @@
     ;; Svelte
     ;; load only for svelte file
     (use
-      (doto [:leafOfTree/vim-svelte-plugin]
+      (doto [:evanleck/vim-svelte]
             (tset :ft :svelte)))
 
     ;; Markdown

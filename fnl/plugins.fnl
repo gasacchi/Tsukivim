@@ -78,7 +78,6 @@
     ;; load when using Trouble / TroubleToggle command 
      (use 
        (doto [:folke/trouble.nvim]
-             ;; (tset :after :nvim-lspconfig)
              (tset :module :trouble)
              (tset :cmd [:Trouble])
              (tset :config "require'modules.trouble.config'")))
@@ -90,6 +89,11 @@
       (doto [:tami5/lspsaga.nvim]
             (tset :event :BufRead)
             (tset :config "require'modules.lspsaga.config'")))
+
+    (use 
+      (doto [:j-hui/fidget.nvim]
+            (tset :after :nvim-lspconfig)
+            (tset :config "require'modules.lsp-fidget.config'")))
      
     ;; Programming language related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Fennel
@@ -139,6 +143,10 @@
     (use 
       (doto [:HerringtonDarkholme/yats.vim]
             (tset :ft :typescript)))
+
+    (use 
+      (doto [:pantharshit00/vim-prisma]
+            (tset :ft :prisma)))
 
     ;; Svelte
     ;; load only for svelte file

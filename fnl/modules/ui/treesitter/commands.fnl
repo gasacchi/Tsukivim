@@ -1,2 +1,0 @@
-;; Module contains treesitter commands
-

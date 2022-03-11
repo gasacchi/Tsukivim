@@ -1,4 +1,4 @@
-(local tsv (require :lib.tsukivim))
+(local tsv (require :utils))
 
 ;; Keymap for spesific filetype
 ;; Map q to exit help

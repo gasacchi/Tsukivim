@@ -2,6 +2,7 @@
 (local packer (require :packer))
 (local packer-utils (require :packer.util))
 
+;; Packer settings
 (packer.init 
   {:display 
    {:open_fn (lambda []
@@ -9,6 +10,7 @@
     :prompt_border :single
     :profile {:enable true :threshold 0}}})
 
+;; Packer plugin declarations
 (packer.startup
   (fn [use]
     "Packer use this declaration to compile to ../plugin/packer_compiled.lua
@@ -52,14 +54,14 @@
      (use 
        (doto [:neovim/nvim-lspconfig]
              (tset :event :BufReadPre)
-             (tset :config "require'modules.lsp.lspconfig.config'")))
+             (tset :config "require'modules.lspconfig.config'")))
 
     ;; Neovim code completions
     ;; see: modules/lsp/completion.fnl for configure cmp.nvim
      (use
        (doto [:hrsh7th/nvim-cmp]
              (tset :event :InsertEnter)
-             (tset :config "require'modules.lsp.completion.config'")
+             (tset :config "require'modules.cmp.config'")
              (tset :requires [(doto [:hrsh7th/cmp-nvim-lsp]
                                     (tset :module :cmp_nvim_lsp))
                               (doto [:hrsh7th/cmp-vsnip]
@@ -79,7 +81,7 @@
              ;; (tset :after :nvim-lspconfig)
              (tset :module :trouble)
              (tset :cmd [:Trouble])
-             (tset :config "require'modules.lsp.trouble.config'")))
+             (tset :config "require'modules.trouble.config'")))
 
     ;; LSP UI
     ;; see: modules/lsp/saga.fnl for configure lspsaga
@@ -87,7 +89,7 @@
     (use 
       (doto [:tami5/lspsaga.nvim]
             (tset :event :BufRead)
-            (tset :config "require'modules.lsp.saga.config'")))
+            (tset :config "require'modules.lspsaga.config'")))
      
     ;; Programming language related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Fennel
@@ -175,7 +177,7 @@
     (use 
       (doto [:TimUntersberger/neogit]
             (tset :cmd :Neogit)
-            (tset :config "require'modules.git.neogit.config'")))
+            (tset :config "require'modules.neogit.config'")))
 
     ;; Git signs
     ;; see: modules/git/gitsigns.fnl for configure gitsigns
@@ -184,7 +186,7 @@
       (doto [:lewis6991/gitsigns.nvim]
             ;; (tset :event :BufReadPre)
             (tset :module :gitsigns)
-            (tset :config "require'modules.git.gitsigns.config'")))
+            (tset :config "require'modules.gitsigns.config'")))
 
     ;; Utility related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Telescope Fuzzy finder
@@ -193,7 +195,7 @@
     (use 
       (doto [:nvim-telescope/telescope.nvim]
             (tset :module :telescope)
-            (tset :config "require'modules.utils.telescope.config'")
+            (tset :config "require'modules.telescope.config'")
             (tset :requires 
                   [(doto [:nvim-telescope/telescope-fzf-native.nvim]
                          (tset :opt true)
@@ -207,7 +209,7 @@
     (use 
       (doto [:kyazdani42/nvim-tree.lua]
             (tset :cmd :NvimTreeToggle)
-            (tset :config "require'modules.utils.nvim-tree.config'")))
+            (tset :config "require'modules.nvim-tree.config'")))
     
     ;; Extends todo comment 
     ;; see: modules/utils/todo-comments.fnl for configure todo-comments
@@ -215,15 +217,7 @@
     (use
       (doto [:folke/todo-comments.nvim]
             (tset :event :BufRead)
-            (tset :config "require'modules.utils.todo-comments.config'")))
-
-    ;; Terminal integrations
-    ;; see: modules/utils/toggleterm.fnl
-    ;; load when using ToggleTerm command
-    (use 
-      (doto [:akinsho/toggleterm.nvim]
-            (tset :cmd :ToggleTerm)
-            (tset :config "require'modules.utils.toggleterm.config'")))
+            (tset :config "require'modules.todo-comments.config'")))
 
     ;; Markdown previewer
     ;; load when using Glow command
@@ -237,21 +231,21 @@
     (use 
       (doto [:rebelot/kanagawa.nvim]
             (tset :after :hotpot.nvim)
-            (tset :config "require'modules.ui.themes.config'")))
+            (tset :config "require'modules.themes.config'")))
 
     ;; Notification for neovim
     ;; see: modules/ui/notify.fnl for configuration
     (use 
       (doto [:rcarriga/nvim-notify]
             (tset :module :notify)
-            (tset :config "require'modules.ui.notify.config'")))
+            (tset :config "require'modules.notify.config'")))
 
     ;; Startup dashboard
     ;; see: modules/ui/dashboard.fnl for configure dashboard
     (use
       (doto [:goolord/alpha-nvim]
             (tset :after :kanagawa.nvim)
-            (tset :config "require'modules.ui.dashboard.config'")))
+            (tset :config "require'modules.alpha-dashboard.config'")))
 
     ;; Treesitter
     ;; see: modules/ui/treesitter.fnl for configure treesitter
@@ -260,7 +254,7 @@
       (doto [:nvim-treesitter/nvim-treesitter]
             (tset :run :TSUpdate)
             (tset :event :BufRead)
-            (tset :config "require'modules.ui.treesitter.config'")
+            (tset :config "require'modules.treesitter.config'")
             (tset :requires 
                   ;; Rainbow parentheses
                   [(doto [:p00f/nvim-ts-rainbow]
@@ -278,7 +272,7 @@
     (use
       (doto [:lukas-reineke/indent-blankline.nvim]
             (tset :event :BufRead)
-            (tset :config "require'modules.ui.indent-blankline.config'")))
+            (tset :config "require'modules.indent-blankline.config'")))
 
     ;; Statusline
     ;; see: modules/ui/statusline.fnl for configure statusline
@@ -286,7 +280,7 @@
     (use 
       (doto [:nvim-lualine/lualine.nvim]
             (tset :after :alpha-nvim)
-            (tset :config "require'modules.ui.statusline.config'")))
+            (tset :config "require'modules.lualine.config'")))
 
 
     ;; Bufferline
@@ -295,7 +289,7 @@
     (use 
       (doto [:akinsho/bufferline.nvim]
             (tset :event :BufReadPre)
-            (tset :config "require'modules.ui.bufferline.config'")
+            (tset :config "require'modules.bufferline.config'")
             (tset :requires 
                   ;; Buffer delete without losing window layout
                   [(doto [:famiu/bufdelete.nvim] 
@@ -306,7 +300,7 @@
     (use 
       (doto [:folke/zen-mode.nvim]
             (tset :cmd :ZenMode)
-            (tset :config "require'modules.ui.zen-mode.config'")
+            (tset :config "require'modules.zen-mode.config'")
             (tset :requires 
                   ;; Hightlight portion of code with treesitter used by zen-mode
                   [(doto [:folke/twilight.nvim]
@@ -329,21 +323,21 @@
     (use 
       (doto [:numToStr/Comment.nvim]
             (tset :keys [:gc :gcc :gbc]);
-            (tset :config "require'modules.editing.comment.config'")))
+            (tset :config "require'modules.comment.config'")))
 
     ;; better escape with fast jk
     ;; see: modules/editing/better-escape/config.fnl
     (use 
       (doto [:max397574/better-escape.nvim]
             (tset :event :InsertEnter)
-            (tset :config "require'modules.editing.better-escape.config'")))
+            (tset :config "require'modules.better-escape.config'")))
 
     ;; hop / jump 
     ;; see: modules/editing/hop/config.fnl
     (use 
       (doto [:phaazon/hop.nvim]
             (tset :module :hop)
-            (tset :config "require'modules.editing.hop.config'")))
+            (tset :config "require'modules.hop.config'")))
 
     ;; Mapping related plugins ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -354,9 +348,8 @@
             (tset :module :which-key)
             (tset :keys ["!" "\"" "'" ">" "@" "[" "]" "`" "<"
                          :<c-w> :<space> :c :d :g :v :y :z])
-            (tset :config "require'modules.core.keymaps'")))))
+            (tset :config "require'modules.keymaps.config'")))))
 
 ; sync plugin when first time install tsukivim
 (if _G.packer_bootstrap 
    (packer.sync))
-

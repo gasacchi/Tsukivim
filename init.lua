@@ -40,4 +40,3 @@ require("hotpot")
 
 -- require Tsukivim configuration
 require("tsukivim")
-

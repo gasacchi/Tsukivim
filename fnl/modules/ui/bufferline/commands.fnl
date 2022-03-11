@@ -24,6 +24,7 @@
    (lambda [] 
      (tsv.cmd buffer-number-cmd))))
 
+;; FIX: handle error when buffer not saved
 (fn delete []
   "Delete buffer without destroying window layout"
   (let [(deleted? err) (pcall tsv.cmd :Bdelete)]

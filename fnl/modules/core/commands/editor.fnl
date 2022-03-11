@@ -28,7 +28,7 @@
                    [:fn:current-word-directory 
                     :modules.core.commands.editor]))
 
-;; TODO: remove enter, add action to ask if user want to save the file
+;; FIX: handle error when not saved
 (fn quit []
   "Quit tsukivim"
   (let [(ok? err) (pcall tsv.cmd :q)]

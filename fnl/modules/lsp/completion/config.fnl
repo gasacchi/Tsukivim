@@ -72,15 +72,21 @@
                                (if (cmp.visible)
                                  (cmp.select_prev_item)
                                  (= (vim.fn.vsnip#jumpable -1) 1) ; ?
-                                 (feed-keys "<Plug>(vsnip-jump-prev)" ""))) [:i :s])}
+                                 (feed-keys "<Plug>(vsnip-jump-prev)" ""))) 
+                             [:i :s])}
       :otherwise (tsv.notify.error 
                    cmp
                    [:local:super-tab :modules.lsp.completion.config]))))
+
+;; TODO: override snippet
+(fn vsnip-config []
+  (tsv.let-global :vsnip_snippet_dir (.. (vim.fn.stdpath :config) :/snippets)))
 
 (let [(ok? cmp) (tsv.require-plugin :cmp)]
     (if ok?
       (do
         (tsv.let-global :completeopt "menu,menuone,noselect")
+        (vsnip-config)
         (cmp.setup 
             {:snippet {:expand (fn [args]
                                  ((. vim.fn :vsnip#anonymous) args.body))}

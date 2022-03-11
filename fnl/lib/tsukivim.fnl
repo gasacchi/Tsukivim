@@ -49,7 +49,7 @@
    key to trigger the command
    cmd command to run when key triggered
    and additional options"
-  (vim.api.nvim_buf_set_keymap mode key cmd opts))
+  (vim.api.nvim_buf_set_keymap buffnumber mode key cmd opts))
 
 (fn cmd [c]
   "Accept string of VimL and run it"

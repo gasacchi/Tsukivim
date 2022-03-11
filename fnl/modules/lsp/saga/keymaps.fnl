@@ -6,9 +6,6 @@
  {:F     [saga-cmd.lsp-finder              :Finder]
   :a     [saga-cmd.code-action             :Code-action]
   :h     [saga-cmd.hover                   :Hover]
-  ;; TODO: ?
-  :<C-f> [(saga-cmd.scroll-action 1)       :Hover-scroll-down]
-  :<C-b> [(saga-cmd.scroll-action -1)      :Hover-scroll-up]
   :H     [saga-cmd.signature-help          :Signature-help]
   :r     [saga-cmd.rename                  :Rename]
   :d     [saga-cmd.preview-definition      :Preview-definition]

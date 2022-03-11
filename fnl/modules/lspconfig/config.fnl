@@ -40,7 +40,7 @@
                                     :modules.lspconfig.config]))))
 
 (let [(ok? lsp-config) (tsv.require-plugin :lspconfig)
-      servers          [:svelte :cssls :html :rust_analyzer :tailwindcss]
+      servers          [:svelte :tsserver :cssls :html :emmet_ls :jsonls :prismals :rust_analyzer :tailwindcss]
       config           (make-config)]
   (if ok?
     (each [_ lsp (ipairs servers)]

@@ -1,0 +1,1 @@
+# This is just for reference only, for who want to configure neovim with fennel programming language. I'm moving to [helix text editor](https://github.com/helix-editor/helix) and moving my new configurations to [Linux Repo](https://github.com/gasacchi/Linux)
